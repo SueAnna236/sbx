@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#d1{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			float: left;
+		}
+		#d2{
+			width: 100px;
+			height: 100px;
+			background: #0ff;
+			float: left;
+		}
+		#d3{
+			width: 100px;
+			height: 100px;
+			background: #ff0;
+			float: left;
+		}
+		#d4{
+			width: 500px;
+			height: 500px;
+			border: 2px solid #00f;
+		}
+	</style>
+</head>
+<body>
+	<div id="d4">
+		<span id="d1">1.脱离文档流，不占页面空间，其他未浮动元素会上前补位宽度的块级元素浮动起</span>
+		<span id="d2">浮动元素会停靠父元素的左边或者右边</span>
+		<span id="d3">浮动解决多个块级元素在同一行显示的问题</span>
+		2.浮动元素会停靠父元素的左边或者右边，或者其他已经浮动元素的边缘文本，行内元素，行内块是不会被浮动元素压在下面的，会巧妙避开，环绕着浮动元素显示
+浮动解决多个块级元素在同一行显示的问题
+	</div>
+</body>
+</html>

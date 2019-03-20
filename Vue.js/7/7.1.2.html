@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-component></my-component>
+
+    <br>
+    <child-component></child-component>
+    <child-component></child-component>
+    <child-component></child-component>
+
+    <br>
+    <table>
+      <tbody is="table-component"></tbody>
+
+    </table>
+    <br>
+
+    <return-component></return-component>
+    <return-component></return-component>
+    <return-component></return-component>
+  </div>
+  <script>
+    Vue.component('return-component',{
+      template: '<button @click="count++">{{ count }}</button>',
+      data: function(){
+        return {
+          count: 0
+        }
+      }
+    })
+    var data = {
+      counter: 0
+    }
+    Vue.component('table-component',{
+      template: '<div>table的组件</div>'
+    })
+    var Child = {
+      template: '<button @click="counter++">{{ counter }}</button>',
+      data: function(){
+        return data
+      }
+    }
+    Vue.component('my-component',{
+      template: '<div>{{ message }}</div>',
+      data: function(){
+        return {
+          message: '全局组件内容'
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+      },
+      components: {
+        'child-component': Child
+      }
+    })
+  </script>
+  
+</body>
+</html>

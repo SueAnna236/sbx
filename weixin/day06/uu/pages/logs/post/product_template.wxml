@@ -1,0 +1,14 @@
+<template name="pro_name">
+  <view class='pink'>{{product.name}}:{{product.price}}</view>
+</template>
+
+<!-- 创建轮播图模板 -->
+<template name="post_item_swiper">
+  <view class='slider'>
+    <swiper autoplay='true'>
+      <swiper-item wx:for="{{list}}" wx:key="index">
+        <image lazy-load='true' mode='aspectFill' src="{{item.img_url}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+</template>>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function liang(fun){
+    //参数fun得到任务function(){ran();}
+    console.log("亮起跑！");
+    setTimeout(function(){
+      console.log("亮到达终点！");
+      //在亮执行完自己的任务后，执行fun任务
+      fun();//(function(){ran();})()
+    },6000);
+  }
+  function ran(fun){
+    console.log("然起跑！");
+    setTimeout(function(){
+      console.log("然到达终点！");
+      fun();
+    },4000);
+  }
+  function dong(){
+    console.log("东起跑！");
+    setTimeout(function(){
+      console.log("东到达终点！");
+    },2000);
+  }
+  //让两个异步任务必须先后执行！
+  liang(function(){//亮起跑时，提前保存意向任务
+    ran(function(){
+      dong();
+    });
+  })
+  </script>
+</body>
+</html>

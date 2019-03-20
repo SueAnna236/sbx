@@ -1,0 +1,25 @@
+{
+  "name": "webstorage",
+  "version": "1.0.0",
+  "description": "storage demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "F:\\Anna_Sue\\pet_children"
+  },
+  "keywords": [
+    "cookie",
+    "session",
+    "storage"
+  ],
+  "author": "a",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6"
+  }
+}

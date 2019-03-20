@@ -1,0 +1,120 @@
+
+
+@function get_if($w){
+  @if($w>1){
+    @return 200px;
+  }@else if($w==1){
+    @return 100px;
+  }@else {
+    @return 0;
+  }
+}
+div{
+  width: get_if(5);
+}
+$type:m;
+p{
+  @if(1+1==2){
+    border-radius: 5px;
+  }
+  @if(5<3){
+    border-radius: 10px;
+  }
+  @if(null){
+    border-radius: 15px;
+  }
+  @if($type==sun){
+    background: #ff0000;
+  }@else if($type==m){
+    background: #ff0;
+  }@else if($type==mark){
+    background: #f0f;
+  }@else {
+    background: #0ff;
+  }
+}
+
+@function get_mywidth($n){
+  $value1: 60px;
+  $value2: 10px;
+  @return $n*max($value1,$value2) + ($n - 1)*min($value1,$value2);
+}
+div{
+  height: get_mywidth(3);
+}
+@function get_width(){
+  $max: 40px;
+  $min: 20px;
+  @return $max -$min;
+}
+div{
+  width: get_width();
+}
+
+$width:ceil(25.6);
+$string:unquote("aabbcc");
+p{
+  width: $width/2+px;
+}
+p:after{
+  content: $string;
+}
+#d5{
+  width: 300px;
+  height: 300px;
+  background: hsl(0,30%,20%);
+}
+
+$d1:10px;
+$d2:20px;
+$c1:#333;
+$c2:#666;
+p{
+  width: ($d1+$d2)*2;
+  height: ($d1+$d2)/2;
+  color: $c2 -$c1;
+}
+
+div::after{
+  content: "i eat #{30+30} pies";
+  color: #001122+#112233;
+  background: rgba(255,0,0,0.4)+rgba(0,255,0,0.4);
+}
+//p{
+//  font: 10px/5px;
+//  $width:1000px;
+//  width: $width/2;
+//  height: 8px+(500px/2px);
+//  margin-left: 8px/2px+5px+5;
+//  margin: 20px+12px auto;
+//}
+
+#d4::before{
+  content: "AAA"+BBB;
+  font-family: "A"+rial;
+
+}
+
+$my_width:5%;
+$my_max_width:$my_width*2;
+$other_size:$my_width+$my_max_width;
+#d3{
+  width: $other_size;
+  height: 1in*2+3pt+2px;
+}
+
+
+.my_border{
+  border: 10px solid transparent;
+  background: #0099cc;
+  width: 400px;
+  height: 400px;
+  margin-left: 20px;
+}
+.my_bottom_border{
+  @extend .my_border;
+  border-bottom: 5px solid #ff0000;
+  &:hover{
+    border-bottom: 5px solid #0000ff;
+  }
+}

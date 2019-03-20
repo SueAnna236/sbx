@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function calc(ename,...salary){
+    //salary[ , , , , ],是收集除ename之外所有的实参值的数组
+    var sum=salary.reduce(function(prev,elem){
+      return prev+elem;
+    });
+    console.log(`${ename}的总工资是${sum}`);
+  }
+  calc("li Lei",10000,1000,2000);
+  calc("han Meimei",3000,4000,4000,2000,1000);
+  </script>
+</body>
+</html>

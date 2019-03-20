@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p id="p1">快下课了，不要慌</p>
+	<input type="button" value="获取文本" onclick="getMsg()">
+	<input type="button" value="更改文本" onclick="setMsg()">
+
+	<script>
+		function getMsg(){
+			var text=p1.innerHTML;
+			alert(text);
+		}
+		function setMsg(){
+			p1.innerHTML="慢走不送！";
+		}
+	</script>
+</body>
+</html>

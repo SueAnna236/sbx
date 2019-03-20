@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+	<h1>操作元素的内容和值</h1>
+	<form action="">
+		用户名:<input name="uname">
+					<span id="uname-msg"></span><br>
+		密码:<input type="password" name="upwd">
+					<span id="upwd-msg"></span><br>
+		<input type="submit" value="提交注册信息">
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		function vali($txt,minlen,maxlen,errMsg){
+			var value=$txt.val();//获得当前文本框的内容
+			var $span=$txt.next();//找到旁边的span
+			//如果文本框的内容符合条件
+			if(value.length>=minlen&&value.length<=maxlen){
+				//就填充span的内容为正确的图片
+				$span.html("<img src='img/ok.png'>");
+				return true;
+			}else{//否则，就填充span的内容为错误的图片偏和错误提示
+				$span.html(`<img src='img/err.png'>${errMsg}`);
+				return false;
+			}
+		}
+		//input:text.onblur=function(){
+		$(":text").blur(function(){
+			//this->input:text->DOM
+			vali($(this),3,9,"用户名必须介于3~9位之间!");
+		});
+		$(":password").blur(function(){
+			vali($(this),6,8,"密码必须介于6~8位之间!");
+		});
+		$("form").submit(function(e){
+			if(!vali($(":text"),3,9,"用户名必须介于3~9位之间!")){
+				e.preventDefault();//如果验证姓名文本框未通过，就取消提交
+			}else if(!vali($(":password"),6,8,"密码必须介于6~8位之间!")){
+				e.preventDefault();//如果验证密码框未通过，也取消提交
+			}
+		})
+    //正确时，使用图片:"<img src='img/ok.png'>"
+    //姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间!"
+    //密码错误时: "<img src='img/err.png'>密码必须介于6~8位之间!"
+    //阻止默认行为: e.preventDefault();
+    //表单提交: $(form).submit();
+	</script>
+ </body>
+</html>

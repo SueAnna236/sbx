@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="checked" id="checked">
+    <label for="checked">选择状态：{{ checked }}</label>
+    <br>
+    <br>
+    <input type="checkbox" v-model="ckd" value="html" id="html">
+    <label for="html">HTML</label>
+    <input type="checkbox" v-model="ckd" value="js" id="js">
+    <label for="js">JavaScript</label>
+    <input type="checkbox" v-model="ckd" value="css" id="css">
+    <label for="css">CSS</label>
+    <p>选中的是：{{ ckd }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        checked: true,
+        ckd: ['html', 'js']
+      }
+    })
+  </script>
+  
+</body>
+</html>

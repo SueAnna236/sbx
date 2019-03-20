@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/5.css">
+</head>
+<body>
+  <form id="form1">
+		<h2>增加管理员</h2>
+		<table>
+			<tr>
+				<td>姓名：</td>
+        <td>
+					<input name="username"/>
+					<span>*</span>
+				</td>
+				<td>
+					<div class="vali_info">
+						10个字符以内的字母、数字或下划线的组合
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td>
+					<input type="password" name="pwd"/>
+					<span>*</span>
+				</td>
+				<td>
+					<div class="vali_info">6位数字</div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="2">
+          <input type="button" value="保存"/>
+          <input type="reset" value="重填"/>
+				</td>
+			</tr>				
+	    </table>
+  </form>
+  <script>
+  //1.查找触发事件元素
+  //var txtName=document.getElementsByName("username")[0];
+  var form=document.forms[0];
+  var txtName=form.username;
+  //var txtPwd=document.getElementsByName("pwd")[0];
+  var txtPwd=form.pwd;
+  //2.绑定事件
+  //function既给了txtPwd，又给了txtName
+  txtName.onfocus=txtPwd.onfocus=function(){
+    //3.查找要修改的元素
+    var txt=this;
+    //txt的父级td的下一个td的第一个孩子div
+    var div=txt.parentNode.nextElementSibling.children[0];
+    //4.修改元素
+    txt.className="txt_focus";
+    div.className="";
+  }
+  txtName.onblur=function(){
+    vali(this,/^\w{1,10}$/);
+  }
+  txtPwd.onblur=function(){
+    vali(this,/^\d{6}$/);
+  }
+  function vali(txt,reg){
+    //查找要修改的元素
+    txt.className="";
+    var div=txt.parentNode.nextElementSibling.children[0];
+    if(reg.test(txt.value)){//如果验证txt的内容通过
+      div.className="vali_success";
+      return true;
+    }else{
+      div.className="vali_fail";
+      return false;
+    }
+  }
+  //查找提交按钮
+  var btnSubmit=form.elements[form.length-2];
+  //绑定单击事件
+  btnSubmit.onclick=function(){
+    //先验证用户名文本框，并获得验证结果
+    //var rName=vali(txtName,/^\w{1,10}$/);
+    //再验证密码框，并获得验证结果
+    //var rPwd=vali(txtPwd,/^\d{6}$/);
+    //if(rName&&rPwd){
+      //form.submit();
+    //}
+
+    //如果验证用户名文本框不正确
+    if(!vali(txtName,/^\w{1,10}$/)){
+      //让用户名文本框自动获得焦点
+      txtName.focus();
+      //否则，如果验证密码框不正确
+    }else if(!vali(txtPwd,/^\d{6}$/)){
+      //让密码框自动获得焦点
+      txtPwd.focus();
+    }else{
+      //手动提交表单
+      form.submit();
+    }
+  }
+  </script>
+</body>
+</html>

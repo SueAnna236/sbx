@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>使用Cookie</h1>
+  请选择你喜欢的背景颜色
+  <select id="selectColor">
+    <option value="-- 请选择 ---"></option>
+    <option value="#fee">红色</option>
+    <option value="#efe">绿色</option>
+    <option value="#eef">蓝色</option>
+  </select>
+  <a href="./exercise2.html">跳转到练习2页面</a>
+  <script>
+    selectColor.onchange = function(){
+      var color = this.value;//用户选定的颜色值
+      console.log(color);
+      // 修改当前页面的背景颜色
+      document.body.style.background = color;
+      // 在客户端存储用户的颜色选项，功后续的页面使用
+      document.cookie = 'myFavBgColor='+color+';expires='+new Date('2020-2-2 0:0:0').toGMTString();
+    }
+  </script>
+  
+</body>
+</html>

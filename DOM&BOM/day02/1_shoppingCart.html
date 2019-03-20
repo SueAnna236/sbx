@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    table{width:600px; text-align:center;
+      border-collapse:collapse;
+    }
+    td,th{border:1px solid black}
+    td[colspan="3"]{text-align:right;}
+  </style>
+</head>
+<body>
+  <table id="data">
+		<thead>
+			<tr>
+				<th>商品名称</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>iPhone6</td>
+				<td>¥4488.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+				<td>¥4488.00</td>
+			</tr>
+			<tr>
+				<td>iPhone6 plus</td>
+				<td>¥5288.00</td>
+				<td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+				</td>
+				<td>¥5288.00</td>
+			</tr>
+			<tr>
+				<td>iPad Air 2</td>
+				<td>¥4288.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+				<td>¥4288.00</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">Total: </td>
+				<td>¥14064.00</td>
+			</tr>
+		</tfoot>
+  </table>
+  <script>
+    //查找table元素
+    var table=document.getElementById("data");
+    //查找所有按钮
+    var btns=table.getElementsByTagName("button");
+    //console.log(btns);
+    /*
+    事件：浏览器自动触发或用户手动触发的页面内容的状态变化
+    事件处理函数：在事件发生时，自动执行的回调函数
+    事件绑定：事件处理函数都要提前绑定到元素上
+    绑定：其实就是将一个函数赋值给元素的一个特殊的事件属性
+    */
+    //遍历btns中每个按钮为其绑定单击事件的处理函数
+    //for(var i=0;i<btns.length;i++){
+      //var btn=btns[i];
+    for(var btn of btns){
+      //为当前按钮绑定单击事件的处理函数：当 单击时...
+      btn.onclick=function(){
+        //this->.前的当前触发事件的btn
+        var btn=this;//局部变量btn是this的别名
+        //内部用btn等于用this等于当前单击的按钮+
+        //获得按钮旁边的span
+        var span=btn.parentNode.children[1];
+        //span.style.background="red";
+        //获得span的内容，转为整数
+        var n=parseInt(span.innerHTML);
+        //如果btn的内容是+，n++
+        if(btn.innerHTML=="+"){
+          n++;
+        }else if(n>1){
+          //否则，如果n>1,n--
+          n--;
+        }
+        span.innerHTML=n;//将n放回span的内容中
+        //修改小计
+        //获得当前btn的父元素的前一个兄弟元素的内容
+        //再选取1位置到结尾的剩余字符串，转为浮点型
+        var price=parseFloat(btn.parentNode.previousElementSibling.innerHTML.slice(1));
+        //小计sub=数量n*单价price
+        var sub=n*price;
+        //设置当前不听你的父元素的下一个兄弟元素的内容为￥sub.00
+        btn.parentNode.nextElementSibling.innerHTML=`￥${sub.toFixed(2)}`;
+        //计算总价：
+        //获得tbody中每行最后一个td：tbody>tr>td:last-child
+        var tds=table.querySelectorAll("tbody>tr>td:last-child");
+        //遍历土tds中每个td，取出其内容，累加，保存在total中
+        var total=0;
+        for(var td of tds){
+          total+=parseFloat(td.innerHTML.slice(1));
+        }
+        //设置tfoot下的tr的最后一个td的内容为￥total.00
+        table.querySelector("tfoot>tr>td:last-child").innerHTML=`￥${total.toFixed(2)}`;
+      }
+      //触发时：自动btn.onclick()
+    }//全局btn->最后一个btn  
+  </script>
+</body>
+</html>

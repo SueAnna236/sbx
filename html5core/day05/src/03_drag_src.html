@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>拖动操作——源对象触发3个事件</h3>
+  <img src="../../res/p3.png" id="p3">
+  <script>
+    var p3 = document.getElementById("p3");
+    p3.ondragstart = function(){
+      console.log(this.width,this.height)
+    }
+    p3.ondrag = function(){
+      console.log("2: drag")
+    }
+    p3.ondragend = function(){
+      console.log("3: dragend")
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<!--pages/post/post.wxml-->
+<!-- 1：引入模板文件 -->
+<import src="item/template"/>
+<!-- 2：调用指定模板 -->
+<template is="item_name2" data="{{user}}"></template>

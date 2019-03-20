@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/css/3.css">
+</head>
+<body>
+  <h2>实现多标签页效果</h2>
+  <div class="tabs">
+    <ul id="tab">
+      <li><a href="javascript:;" data-toggle="tab" data-target="#content1">10元套餐</a></li>
+      <li><a href="javascript:;" data-toggle="tab" data-target="#content2">30元套餐</a></li>
+      <li><a href="javascript:;" data-toggle="tab" data-target="#content3">50元包月</a></li>
+    </ul>
+    <div id="container">
+      <div id="content1" style="z-index:10">
+        10元套餐详情：<br />&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+      </div>
+      <div id="content2">
+        30元套餐详情：<br />&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+      </div>
+      <div id="content3">
+        50元包月详情：<br />&nbsp;每月无限量随心打
+      </div>
+    </div>
+  </div>
+  <script>
+  //1.查找触发事件元素：data-toggle的元素
+  var tabs=document.querySelectorAll("[data-toggle=tab]");
+  //console.log(tabs);
+  //2.事件绑定
+  for(var tab of tabs){
+    tab.onclick=function(){
+      var tab=this;
+      //3.查找要修改的元素
+      //查找当前tab对应的div
+      var id=tab.dataset.target//tab.getAttribute("data-target");
+      var currDiv=document.querySelector(id);
+      console.log(currDiv)
+      //查找现在包含style属性的div
+      var prevDiv=document.querySelector("[style]");
+      //4.修改元素
+      //去掉之前div的style属性
+      prevDiv.removeAttribute("style");
+      //给自己设置z-index=10
+      currDiv.style.zIndex=10;
+    }
+  }
+  </script>
+</body>
+</html>

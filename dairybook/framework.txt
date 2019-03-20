@@ -1,0 +1,1839 @@
+张众磊 teduzzl bjzhangzl@tedu.cn
+
+介绍:
+  1、angular(大型spa)、ionic(基于angular的移动端的ui框架) 
+  2、reactJS（定位视图层的ui库）、reactNative(移动端原生开发)
+  3、python(是一门编程语言)、django（全栈类框架）
+
+推荐:
+ 1、vue的优质项目
+  https://github.com/vuejs/awesome-vue
+ 2、vue中的守卫
+  https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E8%A7%A3%E6%9E%90%E5%AE%88%E5%8D%AB
+ 3、angular 
+  angular.cn angular.io
+  https://cli.angular.io/
+ 
+ 4、fake api
+  http://jsonplaceholder.typicode.com/
+ 
+ 5、rxjs文档手册
+  https://cn.rx.js.org/
+
+ 6、设计模式的推荐资料
+  大话设计模式
+ 
+ 7、ng可以使用的ui组件库:
+  meterialDeisgn: https://material.angular.cn/
+  ngZorro: https://ng.ant.design
+  ngZorroMobile:https://ng.mobile.ant.design/#/docs/introduce/zh
+  ionic: https://ionicframework.com/
+  
+  https://github.com/gdi2290/awesome-angular
+
+ 8、ionic
+  ionicframework.com 官网
+  ionicons.com 图标管理的官网
+ 
+ 9、react
+  reactjs.org
+  https://github.com/enaqx/awesome-react
+  https://github.com/jondot/awesome-react-native
+
+ 10、ReactNative
+  官网
+  https://facebook.github.io/react-native 
+  中文的网站:
+  reactnative.cn
+  weex:http://weex.apache.org/cn/guide/
+
+建议：
+ 1、处理问题的思路
+   ①处理数据
+   ②正确将数据渲染在视图
+   ③处理视图中交互行为
+ 2、出现错误的解决方案
+   ①分析错误出现的原因
+   ②寻找解决方案
+ 3、前后端的交互
+   ①网络请求url地址
+   ②请求方式
+   ③传递的参数的个数和类型不要写错了
+   ④期待服务器端返回的数据类型
+
+一、Vue回顾
+ vue的技术栈/生态圈?
+   vuejs vueRouter vuex（weex/vux） axios Element/MintUI/Mui
+
+ 1、组件以及基本属性
+  组件:可被反复使用的，带有特定功能的视图
+  创建： 
+    cli工具的单文件组件 ***.vue
+    全局：
+      Vue.component('',{
+         data(){return {}},
+         methods:{},
+         computed:{//有依赖缓存的}，
+         watch:{}
+      })
+    局部:
+      Vue.component('',{
+        components:{
+          'my-header':{}
+        }
+      })
+ 
+  调用:
+   <my-header></my-header>
+
+ 2、组件通信
+  props  down(父--》子)
+    ① <son myTitle="购物车"></son>
+    ② props:['myTitle'] // this.myTitle
+
+  events up (子--》父) 
+   ①绑定
+    handleEvent(msg){}
+    <son @myEvent="handleEvent($event)"></son>
+   ②触发
+    this.$emit('myEvent',123)
+  
+  event bus
+   var bus = new Vue()
+   bus.$on('myEvent',(msg)=>{})
+   bus.$emit('myEvent',123)
+   
+  ref:（父主动子的数据）
+    <son ref="mySon"></son>   
+    this.$refs.mySon.** 
+  $parent（子主动获取父的数据）
+   this.$parent.**
+
+ 3、axios
+  不是vue官方的插件 
+   npm i axios
+   import axios from 'axios'
+   axios.get/post().then((response)=>{
+    //response.data
+   })
+ 4、vueRouter
+  路由：建立起url和页面之间的映射关系
+  
+  基本使用:
+    ①准备
+     npm i vue-router
+     improt Router from 'vue-router'
+     vue.use(Router)
+    ②准备一个盛放组件的容器
+     router-view
+    ③创建用到的组件
+    ④配置路由词典(由多个路由对象构成的数组)
+     const myRoutes = [
+       {path:'/',component:**,children:[],redirect:''}
+     ]
+    ⑤完成路由器的创建和使用
+     new Router({
+       routes:[]
+     })
+  跳转和传参
+   this.$router.push()
+   router-link to=""
+   ①配置接收方的路由
+    /detail-->/detail:id
+   ②发送
+    this.$router.push('/detail/10')
+   ③接收
+    this.$route.params.id
+  路由嵌套:
+   在一个spa中，a需要嵌套b\c
+   ①给a指定的容器
+   ②给a的路由对象添加上children
+
+  路由守卫:
+   全局守卫:
+    const router = new VueRouter({ ... })
+
+    router.beforeEach((to, from, next) => {
+     // ...
+   })
+   局部守卫:
+    {
+      path:'',
+      component:**,
+      beforeEnter:(to,from,next)=>{}
+    }
+    
+ 5、vuex
+  state:定义数据
+  getters:在state中的数据基础之上，派生新的数据
+  mutations:完成state数据修改
+  actions:异步行为
+  modules：将应用中的state和相关操作进行模块化
+
+
+二、Angular
+ 核心知识：
+  ①模块
+  ②组件
+  ③模板
+  ④绑定(指令)
+  ⑤管道
+  ⑥服务
+  ⑦装饰器
+  ⑧元数据
+ 1、angular的概述
+   what？
+     是由google在09年所推出js框架
+   when?
+     中大型SPA
+   why? 
+     ①有着成熟的文档和社区支持
+     ②ts(typeScript) 强类型检查机制的语言 在处理更复杂的数据模型时 更有优势
+     ③内置非常多的类和工具
+     ④模块化的开发方式
+     ⑤强大的cli支持
+   how？
+    使用angular开发:
+      封装组件来完成视图的构建
+      封装服务来完成共享的数据和方法
+      封装指令和管道来完成模板的增强
+      。。。
+
+    怎么搭建环境?    
+     npm install -g @angular/cli
+     ng new my-app
+     cd my-app
+     ng serve --open
+     
+     ①将Angular.rar放到指定的目录下
+     C:\xampp\htdocs\codes\ng
+     ②将Angular.rar解压缩到当前文件夹
+     ③用vscode打开C:\xampp\htdocs\codes\ng\myngapp
+     ④启动开发服务器
+      npm start
+     ⑤通过访问指定的端口来确认开发服务器启动成功
+      http://localhost:4200/
+     ⑥修改默认shell
+      文件-》首选项-》设置-》
+      在右侧添加以下:
+      "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+     启动的大致流程：
+      ①找根模块 main.ts--》AppModule
+      ②找根组件 app.module.ts-->app.component.ts
+
+   添加到环境变量的基本步骤：
+    ①我的电脑-》鼠标右键--》属性
+    ②高级系统设置
+    ③环境变量
+    ④将C:\xampp\htdocs\codes\ng\myngapp\node_modules\.bin添加到系统变量的path中
+    ⑤重新启动vscode，检查ng是否可用
+
+ 2、自定义组件的创建和使用
+  创建：ng g component **                                               
+	①创建组件类、模板文件、样式类文件
+	②指定属于某一个模块
+  调用：组件的selector属性对应的值是可以在当前所归属模块的任何一个组件中，作为标签进行调用的
+    
+  练习:
+   ①创建一个组件 demo02-lianxi
+   ②在根组件中 调用上述组件
+   ③在demo02-lianxi的组件类中 准备一个数组
+   myList = [100,200,300],在模板中显示一个ul调用数组中的元素显示在li
+
+ 3、指令和绑定(重点)
+  指令：为了增强html，具有更多的功能，比如循环、条件判断、绑定。。。
+
+  回顾：v-for="(tem,index) in list" v-if=""
+   v-bind/:  v-on:@ v-model
+
+   angular中支持的指令：
+    3.1 循环指令
+     <any *ngFor="let tmp fo muList"></any>
+     <any *ngFor="let tmp fo muList;let myIndex=index"></any>
+
+    3.2 条件判断
+     <any *ngIf="expression"></any>
+
+     多重条件判断：
+      <div [ngSwitch]="expression">
+        <any *ngSwitchCase="expression1"></any>
+	<any *ngSwitchCase="expression2"></any>
+	<any *ngSwitchDefault></any>
+      </div>
+
+     练习：
+      ①完成一个组件的创建和调用
+       demo04-lianxi
+      ②在demo04-lianxi类中，准备一个对象数组(5个对象：score/name/sex)
+      渲染在ul，li显示name（只显示成绩在60分）
+
+
+    3.3绑定
+      事件绑定：
+       <any (eventName)="handleEvent()"></any>
+
+      属性绑定：
+       <any [someAttr]="expression"></any>
+
+      双向数据绑定：
+       准备工作：FormsModule
+        ①找到app.module.ts
+	②引入并配置
+	 import {FormsModule} from '@angular/forms'
+	 @NgModule({
+	  imports:[FormsModule]
+	 })
+
+
+
+
+       <表单元素 [(ngModel)]="uName"></表单元素>
+
+      动态样式：
+       <p [ngStyle]="{color:myColor}"></p>
+
+      动态样式类的绑定：
+       <p [ngClass]="{myRed:isLogin}"></p>
+
+
+     注意事项：
+       ①循环指令和条件判断指令不能同时使用，需要借助于ng-container来解决问题
+
+
+ 4、装饰器和元数据
+  decorator:装饰器
+   告诉angular这个东西是一个什么样的类型
+  metaData:元数据
+   告诉angular如何来处理当前这个类
+
+   @NgModule({
+     declarations:[],
+     imports:[],
+     providers:[],
+     bootstrap:**
+   })
+   @Component({
+    selector:'',
+    templateUrl:"",
+    styleUrls:[]
+   })
+  @Component @Pipe @NgModule @Injectable
+ 5、管道(过滤器)
+    vue.filter('',(value)=>{
+     return **
+    })
+     <any>{{expression | myCurreny(10,20) | myFilter2}}</any>
+    本质:有参数有返回值的方法
+    定位：对数据进行筛选、过滤、格式化的处理，让数据更好的呈现在视图中
+
+    <any>{{expression | pipe1:arg1:arg2 | pipe2}}</any>
+
+    内置管道：
+     uppercase/lowercase 大小写
+     currency 只能处理数字，支持传参
+     number:
+      <p>{{ 3.1415 | number:'4.1-2'}}</p>
+      <p>{{ 3.1415 | number:'a.b-c'}}</p>
+      a:小数点前最少有a位
+      b:小数点后最少有b位
+      c:小数点后最多有c位
+     json:
+      json格式的序列化：将一个对象转换为json字符串的格式
+      json格式的反序列化：将json格式的字符串转换为对象或者数组
+     percent
+      0.4 -->40%
+     slice:
+      {{myData | slice:start[:end]}}
+
+    自定义管道的创建和使用：
+     创建：
+      ng g pipe **
+     配置管道：
+      实现transform value代表竖杠前边表达式执行结果
+     调用管道：
+      和内置的一样
+
+
+ 练习：
+  ①完成demo07-lianxi的组件的创建和使用
+  ②组件模板内容：
+   input/button/ul
+  ③点击button，将输入框的值获取的，添加到ul的li中显示
+
+
+ 6、组件间通信(重点)
+  6.1 props down: 父--》子 Input
+   ①传值
+    <Son myName='zhangsan'></Son>
+   ②接收
+    import {Input} from '@angular/core'
+    @Input() myName="" // this.myName
+   
+
+  6.2 events up ：子--》父  Output/EventEmitter/$event
+   绑定:
+    handleEvent(msg){//msg就是传来的数据}
+    <son (myEvent)="handleEvent($event)"></son>
+   触发:
+    import {Output,EventEmitter} from '@angular/core'
+    @Output() myEvent = new EventEmitter();
+    this.myEvent.emit(123)
+
+   练习:
+   ①完成两个组件类的创建和调用(:-11:50)
+     demo09-chatroom/demo09-input
+   ②模板
+     demo09-input:
+       label/input/button
+     demo09-chatroon:
+      demo09-input/ul
+   ③业务
+     需求1：(父--》子)
+     在demo09-chatroom调用demo09-input，传递值（用户名），
+     显示在demo09-input的label
+
+     需求2：(子--》父) (:- 14:10)
+     在demo09-input,点击按钮时，将输入框的值，传递给demo09-chatroom;
+     demo09-chatroom将接收到的数据显示在ul的li
+
+     $event Output EventEmitter
+
+  
+  6.3 本地变量: 父(模板)主动到子组件取值 #
+    ①给要操作的子组件指定一个本地变量
+     <son #mySon></son>
+    ②父组件的模板中 操作子组件
+     mySon.***
+
+  6.4 ViewChild:父(类)主动到子组件取值
+   写法1：借助于本地变量
+     <son #mySon></son>
+     import {ViewChild} from '@angular/core'
+
+     @ViewChild('mySon') sonInstance
+
+     this.sonInstace.**
+
+   写法2：根据子组件的类进行查找
+    import {ViewChild} from '@angular/core'
+
+    @ViewChild(Demo10SonComponent) demo10Son
+
+    this.demo10Son.**
+   
+  6.5 兄弟通信: service
+   父组件和它的子组件共享同一个服务，利用该服务在家庭内部实现双向通讯
+    xiongba
+    xiongda
+    xionger
+    ①创建服务
+     ng g service comm
+    ②在服务中定义一个变量 用来用来存储通信时要保存的数据
+     msg = ""
+    ③写操作
+    ④读操作
+  
+
+ 7、服务
+  服务类是遵循单例模式(单个实例的模式)
+
+  服务是一个类，在angular中，建议将各个组件中可复用的数据或者方法封装在服务类中
+
+  举例:日志、心跳、测试接口服务。。。
+
+  使用：
+   ①创建 service/@Injetable
+    ng g service my-log
+   ②配置 
+    找到my-log.service.ts文件
+    在此文件中 定义数据或者方法
+   ③调用
+    服务最大的消费者是组件
+    步骤1：引入
+     import {MyLogService} from '../***'
+    步骤2：实例化(将一个类变成对象的过程)
+     constructor(private myService:MyLogService){}
+
+     比较基础的初始化工作 都可以放在构造函数中来写；稍微复杂点的，可以考虑在生命周期的初始化的钩子函数中
+
+    步骤3：调用服务的实例中的属性或者方法
+     this.myService.***
+
+   练习:(:- 16:30)
+    ①完成组件类的创建和调用
+     demo12-lianxi
+    ②创建一个服务类(heart-beat),在这个服务类中封装两个方法:
+     startBeat(启动定时器，每隔0.5输出一句话) stopBeat(关闭定时器)
+    ③在demo12-lianxi这里放置两个按钮，在点击时，能够分别调用服务中的两个方法
+
+
+ 8、网络通信
+   准备工作：
+    app.module.ts  
+      import {HttpClientModule} from '@angular/common/http'
+      @NgModule({
+       imports:[HttpClientModule]
+      })
+   具体使用:
+     import {HttpClient} from '@angular/common/http'
+     
+     constructor(private myHttp:HttpClient){}
+
+     this.myHttp.get/post().subscribe((result)=>{
+     
+     })
+   
+   异步处理：
+    callback/ajax/promise/async/await/rxjs
+
+    Observable/subscribe
+
+   设计模式:
+    创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
+
+    结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
+
+    行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+   设计原则:
+    开闭原则：对于扩展开放，对于修改关闭
+    
+    单一责任原则：每一个方法、文件只做一件事
+    
+    高内聚低耦合:减少不同模块之间的关系
+    
+    最少知识法则:封装的功能单位要小，尽量只与自己相关
+
+    KISS:keep it simple and stupid
+
+    YAGNI:You Aren't Gonna Need It
+
+
+  练习:
+    ①课外作业 ：查阅和rxjs相关的资料
+
+    ②练习
+      1、完成两个组件的创建和调用: demo15-list demo15-item
+
+      2、demo15-item模板:
+       实现一个li ，li中有一个p
+        demo15-list 模板:一个ul，调用demo15-item
+      3、demo15-list
+       组件初始化完毕之后，请求学子商城中的商品列表，将数据保存渲染在多个demo15-item,同时将商品的标题传递过去，在demo15-item的p显示
+
+     
+ 9、路由
+  
+  路由是建立起url和组件之间的映射关系
+
+  9.1 基础用法（实现一个spa）
+    ng g module my-module --routing
+    ①指定容器
+     router-outlet
+     
+     找到app.module.ts
+     import {MyModuleRoutingModule} from '....'
+     @NgModule({
+      imports:[MyModuleRoutingModule]
+      })
+    ②创建要用到的组件
+     ng g component demo16-login
+     ng g component demo16-register     
+    ③配置路由词典
+     找到my-module-routing.module.ts
+      引入要分配路由地址的组件类
+
+      配置路由词典     
+    ④调用路由词典
+     forChild-->forRoot
+    ⑤测试路由词典有没有生效
+     在地址栏中 访问不同的路由地址，检查对应的组件有没有加载并显示
+
+    路由匹配规则:
+     ""
+     "login"
+     "**"
+
+  9.2 路由跳转和传参(重点)
+   9.2.1 跳转 (Router routerLink)
+    Vue回顾:
+      this.$router.push/go
+      <router-link to=""></router-link>
+
+    Angular跳转:
+     1、编程式导航
+      import {Router} from '@angular/router'
+
+      constructor(private myRouter:Router){}
+
+      this.myRouter.navigateByUrl("目的地路由地址")
+
+     2、routerLink
+      <any routerLink="/目的地路由地址"></any>
+
+   9.2.2 路由跳转传参(ActivatedRoute)
+    Vue:
+      ①配置接收方的路由地址
+       /detail --> /detail/:id
+      ②发送
+       this.$router.push('/detail/10')
+       router-link to="/detail/10"
+      ③接收
+       this.$route.params.id
+    Angular:
+      ①配置接收方的路由地址
+       /detail --> /detail/:id
+      ②发送
+       this.myRouter.navigateByUrl('detail/10')
+       <any routerLink="/detail/10"></any>
+
+       动态处理参数:
+       myId = 10
+       this.myRouter.navigateByUrl('detail/'+this.myId)
+       <any [routerLink]="'/detail/'+myId"></any>
+       <any routerLink="/detail/{{myId}}"></any>
+
+      ③接收
+       import {ActivatedRoute} from '@angular/router'
+      
+       constructor(private myRoute:ActivatedRoute){}
+
+       this.myRoute.params.subscribe((result)=>{})
+
+   
+    练习: (:- 15:35)
+    ①完成两个组件类的创建
+     demo18-list demo18-detail
+    ②指定模板内容
+     demo18-detail:<p></p>
+     demo18-list:<ul><li></li></ul>
+    ③各自分配一个路由地址
+     demo18List demo18Detail
+    ④具体功能 
+     demo18List :
+      初始化完毕之后 向服务器端发请求http://localhost:8080/product/list
+      保存起来，动态的渲染多个列表项
+      列表项支持以routerLink点击跳转到详情页，同时将lid传递
+     demo18Detail:
+      接收跳转时 所传来的数据，显示在p中
+  
+    ①网络请求 
+    ②跳转 routerLink="/demo18Detail"
+    ③传参
+        
+  9.3 路由嵌套(进阶)：
+   一个spa的路由词典的路由对象中，通过children属性嵌套其它的路由对象
+
+   比如A组件，需要嵌套B/C
+   ①在A组件指定一个容器 router-outlet
+   ②在A组件的路由对象中指定children属性（将要嵌套的B或者C的路由对象放进去）
+
+   login mail(需要嵌套inbox/outbox)
+   
+   ng g component demo19-login
+   ng g component demo19-mail
+   ng g component demo19-inbox
+   ng g component demo19-outbox
+
+  9.4 路由守卫(进阶)
+   目的:守护某个路由对象的组件是否可以被访问
+
+   实现思路:实现一个服务，在服务中执行一些判断,如果判断的结果是真，允许访问组件，否则就访问不了
+
+   具体方式：
+    ①创建服务
+      ng g service my-guard
+    ②在服务中实现CanActivate
+      import {CanActivate} from '@angular/router'
+      
+      export class MyGuardService implements CanActivate{
+	canActivate(){
+	  //做运算
+	  return true/false/promise/observable
+	}
+      }
+    ③调用服务
+     在路由词典中 找到要保护的路由对象，添加属性canActivate
+      {
+        path:'admin',
+	component:Demo20AdminComponent,
+	canActivate:[MyGuardService]
+      }
+   
+   综合练习:（:- 9:45）
+    ①创建两个组件
+     demo21-login demo21-todobox
+    ②各自指定一个路由地址 
+     demo21Login todobox
+    ③指定demo21Login
+     input/btn
+     点击按钮，跳转到todobox
+    ④指定demo21-todobox
+     input/btn/ul(li(btn/span))
+     
+
+三、Ionic
+
+
+  1、移动端的3种常见开发形式
+   webApp:
+    使用前端技术来实现，提供类似原生app体验的网页，运行在浏览器
+   nativeApp:
+    使用java/kotlin/oc/swift开发员，调用由Apple或者Google所推出的SDK(software development kit)中的api，来完成一个可以运行手机OS的app（Android/iOS）
+   hybridApp:
+    采用前端技术结合原生技术，来生成可以安装手机os中的app
+    phonegap/cordova/dclound/369Cloud/....
+  
+  2、ionic概述
+   what?
+      ionic = angular + ionicModule +icons + phonegap
+   when?
+      ionic用在基于angular移动端的开发
+   why?
+      强大的命令行支持
+      基于angular\phonegap
+      样式和图标比较丰富
+      。。。
+   how?
+     使用ng的语法，调用ionic模块所封装的各种组件和各种类，实现非常棒的移动端的效果
+
+     npm install -g ionic
+     ionic start myApp blank/tabs/sidemenu
+     cd myApp 
+     ionic serve
+
+     步骤:
+      1 将工程解压缩到 
+       C:\xampp\htdocs\codes\ionic
+      2 通过vscode打开 
+        C:\xampp\htdocs\codes\ionic\myProject文件夹
+      3 启动内置终端 执行npm start
+
+     如果ionic指令无法识别，你可以设置环境变量:
+     ①准备好
+     C:\xampp\htdocs\codes\ionic_cmd\node_modules\.bin
+     ②设置环境变量
+      我的电脑-->右键--》属性--》高级系统设置--》环境变量--》双击path，添加刚才的目录
+
+      重新启动vscode，查看有没有生效
+     
+     启动流程:
+      app.module.ts
+      IonicApp
+      IonicModule.forRoot(MyApp)
+      app.component.ts
+      rootPage:any = HomePage
+ 
+  3、ionic中page创建和调用
+     ①创建要用到的页面类
+      ionic g page demo01
+
+     ②到根模块注册下这个页面类
+      app.module.ts
+
+      import {Demo01Page} from '../pages/demo01/demo01'
+
+      @NgModule({
+        declarations:[Demo01Page],
+	entryComponents:[Demo01Page]
+      })
+
+     ③调用
+       app.component.ts
+       import {Demo01Page} from '../pages/demo01/demo01'
+       rootPage:any = Demo01Page
+     
+     注意事项：
+       在修改完page的html之后，页面没有更新，可以试着重新启动开发服务器:
+         ctr+C
+	 npm start
+     
+     练习:
+       ①创建一个demo02,在根组件中调用demo02
+        ionic g page demo02
+
+       ②在demo02中实现一个ul
+
+  4、Ionic常见ui组件使用
+   4.1 button
+     <button ion-button></button>
+     
+     color="**" primary蓝色 danger红色 
+     secondary绿色 light浅灰色 dark黑色
+     是支持自定义的src/theme/variables.scss/36行
+
+     round圆角效果
+     large/small 大小
+     outline 轮廓
+     clear 只保留文本
+     <button ion-button icon-left/right>
+       <ion-icon name="home/person"></ion-icon>
+     </button>
+
+   
+   4.2 list
+     spinner:bubbles/dots/circles/crescent
+
+     普通列表
+      <ion-list>
+        <ion-item>123</ion-item>
+      </ion-list>
+     图标列表
+      <ion-list>
+        <ion-item>
+	  <ion-icon item-start/end></ion-icon>
+	  123
+	</ion-item>
+      </ion-list>
+
+     头像列表
+      <ion-list>
+        <ion-item>
+	 <ion-avatar item-start>
+	   <img/>
+	 </ion-avatar>
+	 123
+	</ion-item>
+      </ion-list>      
+     
+     缩略图列表
+      <ion-list>
+        <ion-item>
+	 <ion-thumbnail item-start>
+	   <img/>
+	 </ion-thumbnail>
+	 123
+	</ion-item>
+      </ion-list> 
+
+     侧滑动列表
+      <ion-list>
+       <ion-item-sliding  *ngFor="let tmp of myList">
+         <ion-item></ion-item>
+	 <ion-item-options side='left/right'>
+	 </ion-item-options>
+       </ion-item-sliding>
+      </ion-list>
+
+     下拉刷新 (ionRefresh $event complete)
+       ①在ionContent的第一个子元素中调用
+         <ion-refresher></ion-refresher>
+       ②设置文本、图标
+         <ion-refresher>
+	  <ion-refresher-content pullingText="" pullingIcon="" refreshingText="" refreshingSpinner="">
+	  </ion-refresher-content>
+	 </ion-refresher>
+       ③绑定事件 
+        当下拉到一定程度松手之后，执行的处理操作；等刷新的操作结束之后，通知ionRefresher可以结束刷新动作
+
+	<ion-refresher (ionRefresh)="handleRefresh($event)">
+	</ion-refresher>
+
+	handleRefresh(myRefresher){
+	  //异步操作
+	  //通知refresher结束刷新动作
+	  myRefresher.complete()
+	}
+
+     上拉加载更多(ionInfinite $event complete)
+       ①在ionContent的最后一个子元素中调用
+        <ion-infinite-scroll></ion-infinite-scroll>
+       ②设置
+        <ion-infinite-scroll>
+         <ion-infinite-scroll-content  loadingText="">
+         </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+       ③绑定事件，执行操作，结束加载的动画
+        loadMore(myInfinite){
+	  //执行加载更多的行为
+	  //结束加载更多的动画效果
+	  myInfinite.complete()
+	}
+
+	<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+	</ion-infinite-scroll>
+     ...
+
+    练习:
+     ①完成demo06-lianxi的page的创建、注册、调用
+
+     ②在demo06-lianxi的页面类中，准备一个数组，在页面初始化完毕之后，插入30条数据
+     
+     ③在模板中，将数组中数据显示在ionList中的ionItem，列表项是支持侧滑动，里面隐藏一个删除的按钮，点击删除按钮，将当前的列表项移除
+
+     ④滚动到底部时，加载5条数据
+            
+
+   4.3 grid （自定义布局）
+     ionic的栅格系统依然是基于flexbox
+
+     基本用法:
+      <ion-grid>
+       <ion-row>
+         <ion-col></ion-col>
+         <ion-col></ion-col>
+       </ion-row>
+       <ion-row></ion-row>
+      </ion-grid>
+
+     常见设置:
+      一行中所有列的沿着交叉轴对齐的处理：
+       <ion-row align-items-start/center/end></ion-row>
+      某一列设置在当前行中交叉轴对齐的处理:
+       <ion-col align-self-start/center/end></ion-col>
+      
+      一行中列的沿着主轴(横向)对齐的处理:
+       <ion-row justify-content-start/center/end></ion-row>
+      列的宽度设置: col-* 1~12之间
+      偏移量设置: offset-*
+      将当前列往右推: push-*
+      将当前列向左拉: pull-*
+      
+     练习: (:- 11:25)
+      ①完成demo08-lianxi page的创建、注册、调用
+      ②在demo08-lianxi的页面类中 准备一个数组
+      数组由13个字符串构成的
+      ③将数组渲染在视图
+       一行3列
+
+   
+   4.4 交互窗口
+    loading：表示一个活动正在进行 (content/duration)
+
+      步骤1：引入并实例化
+       import {LoadingController} from 'ionic-angular'
+       
+       constructor(private loadingCtrl:LoadingController){}
+      
+      步骤2：创建窗口
+       var  myLoading = this.loadingCtrl.create({
+         duration:1000
+       })
+
+      步骤3：显示窗口
+       myLoading.present() //显示
+       myLoading.dismiss() //关闭
+       myLoading.setContent() //设置内容
+
+
+    toast：在操作之后给结果(通知) (message/duration/position/showCloseButton/closeButtonText)
+      步骤1：引入并实例化
+        import {ToastController} from 'ionic-angular'
+	
+	constructor(private toastCtrl:ToastController){}
+      步骤2：创建
+        var myToast = this.toastCtrl.create({
+ 	 message:'',
+	 position:'top/middle/bottom',
+	 duration:1000,
+	 showCloseButton:true,
+	 closeButtonText:''
+	})
+
+      步骤3：显示
+        myToast.present()
+
+ 
+    alert: 警告/确认/输入提示 (title/message/buttons/inputs)
+
+      this.alertCtrl.create({
+        title:'支付'，
+	message:'请输入要操作的金额',
+	inputs:[{placeholder:'请输入数字'}],
+	buttons:[
+	  {
+	    text:'确认',
+	    handler:(result)=>{
+	    //result是一个数组，和inputs的输入框的值是一一对应的
+	    //result[0]
+	  }}
+	]
+      })
+    
+     练习:(:- 15:35)
+      ①完成demo10-lianxi 的创建、注册、调用
+      ②在模板中 指定一个按钮：验证
+      ③点击验证的按钮，显示一个输入提示窗口
+      (一个输入框，确认、关闭按钮，点击确认，显示一个toast)
+      ④toast
+       验证码已经成功的发送到****
+
+
+    actionsheet:当需要让用户从多个选项中做选择时，使用actionsheet （title/buttons）
+     
+     this.asCtrl.create({
+       title:'',
+       buttons:[
+         {
+	   text:"",
+	   handler:()=>{},
+	   role:'cancel/destructive'
+	 }
+       ]
+     })
+
+
+    modal：自定义模态窗口 （ModalController ViewController onDidDismiss）
+     ①引入 实例化
+      import {ModalController} from 'ionic-angular'
+      import {Demo20PayPage} from '****'
+
+      constructor(private modalCtrl:ModalController){}
+     ②创建
+       var myModal = this.modal.create(Demo20PayPage)
+     ③显示
+       myModal.present()
+     ④关闭（ViewController）
+      找到demo20-pay.component.ts
+      import {ViewController} from 'ionic-angular'
+   
+      constructor(private viewCtrl:ViewController){}
+
+      this.viewCtrl.dismiss()
+       
+      ...
+     ⑤关闭窗口时完成值的传递和接收
+      this.viewCtrl.dismiss(123)
+
+      myModal.onDidDismiss((result)=>{
+        //result就是传递来的123
+      })
+
+   4.5 轮播图
+     <ion-slides
+       autoplay=2000 loop pager
+       paginationType="bullets/fraction/progress"
+       speed=1500 
+       effect="slide/cube/flip/fade"
+       direction="horizontal/vertical"
+     >
+       <ion-slide></ion-slide>
+     </ion-slides>   
+
+     
+     注意事项：
+      <ion-slides autoplay=2000 *ngIf="myList.length>0">
+        <ion-slide *ngFor="let tmp of myList"></ion-slides>
+      </ion-slides>
+   
+   练习:
+    准备工作：启动mysql,启动node的http服务（C:\xampp\htdocs\codes\xz_api）
+    (:- 9:40)
+    ①完成demo14-lianxi的page的创建、注册、调用
+    ②功能
+      在页面加载完毕之后，向http://localhost:8080/index发请求
+      解析carouselItems数组，显示在轮播图，只显示商品的标题
+
+      ①做好HttpClient准备工作，然后再调用
+        HttpClientModule
+
+   4.6 表单处理(靠ionList管理)
+    ionic中的表单是通过ionList和ionItem来进行管理
+     
+    4.6.1 label显示的不同情况
+     <ion-list>
+       <ion-item>
+         <ion-label stacked/floating>名字</ion-label>
+	 <ion-input></ion-input>
+       </ion-item>
+     </ion-list>
+    
+    4.6.2 checkbox 复选框
+       <ion-checkbox></ion-checkbox>
+    4.6.3 radio 单选
+       <ion-list radio-group>
+         <ion-item>
+	   <ion-label></ion-label>
+	   <ion-radio></ion-radio>
+	 </ion-item>
+         <ion-item>
+	   <ion-label></ion-label>
+	   <ion-radio></ion-radio>
+	 </ion-item>
+       </ion-list>
+    4.6.4 range 滑动组件
+       <ion-range min=0 max=100 pin step=1>
+         <ion-label range-left>0</ion-label>
+         <ion-label range-right>100</ion-label>
+       </ion-range>
+    4.6.5 toggle 滑动开关
+      <ion-toggle></ion-toggle>
+    4.6.6 select 下拉菜单
+      <ion-select>
+        <ion-option></ion-option>
+        <ion-option></ion-option>
+      </ion-select>
+
+   4.7 fab（悬浮式操作按钮）
+    Floating Action Button 悬浮式操作按钮
+
+    <ion-fab right/left/center top/bottom/middle>
+      <button ion-fab></button>
+      <ion-fab-list>
+       <button ion-fab></button>
+       <button ion-fab></button>
+      </ion-fab-list>
+    </ion-fab>
+
+   4.8 card(以卡片式更好展示信息)
+    卡片
+    <ion-card>
+      <ion-card-header></ion-card-header>
+      <ion-card-content></ion-card-content>
+    </ion-card>
+
+   4.9 scroll(支持滚动的容器scrollX/Y)
+    <ion-scroll scrollX scrollY>
+      
+    </ion-scroll>
+
+   4.10 tabs
+    使用tabs实现底部的导航条/工具栏/标签页栏
+    
+    ①引入页面类
+     import {IndexPage} from '.....'
+
+     pageIndex = IndexPage
+    ②指定ionTabs
+     <ion-tabs>
+       <ion-tab [root]="pageIndex"
+        tabTitle="" tabIcon=""
+       ></ion-tab>
+       <ion-tab [root]="pageIndex"
+        tabTitle="" tabIcon=""
+       ></ion-tab>
+       <ion-tab [root]="pageIndex"
+        tabTitle="" tabIcon=""
+       ></ion-tab>
+     </ion-tabs>
+
+    练习:(:- 14:00)
+     ①完成以下页面类的创建、注册、调用
+      demo18-lianxi （作为当前app默认要显示的页面）/demo18-index/demo18-person
+      /demo18-settings
+    ②指定模板内容
+      demo18-lianxi:有一个tabs，3个tab，点击分别选中demo18-index\demo18-person\demo18-settings
+      demo18-index：准备一个数组，显示在ionList
+      demo18-person:准备一个登录窗口：两个输入框（提示输入用户名、密码），一个登录按钮(填充父容器宽度)
+      demo18-settings:指定一个h2
+    
+
+
+
+   ....
+
+  
+  5、ionic导航处理
+   5.1 导航(直接导航到目的地页面类)
+    方式1：
+      import {NavController} from 'ionic-angular'
+      import {DestinationPage} from '***'
+
+      constructor(private navCtrl:NavController){}
+
+      this.navCtrl.push(DestinationPage)
+      this.navCtrl.canGoBack()//true/false
+      this.navCtrl.pop()
+
+    方式2：
+      import {DestinationPage} from '**'
+
+      destination = DestinationPage
+
+      <any [navPush]="destination"></any>
+   
+   5.2 传参
+	vue/angular: 
+	 ①配置接收方的路由地址
+	  /detail  /detail/:id
+	 ②发送
+	  /detail/10
+	 ③接收
+	  this.$route.params
+	  ActivatedRoute
+	  this.myRoute.params.subscribe()
+       
+       ①发送
+        this.myCtrl.push(Demo19MainPage,{id:1})
+
+	<any [navPush]="main" [navParams]="{id:1}"></any>
+
+       ②接收
+        import {NavParams} from 'ionic-angular'
+	constructor(private navParams:NavParams){} 
+        
+	this.navParams.get('id')
+	
+	this.navParams.data.id
+
+   练习:(:- 16:00)
+    ①完成两个页面类创建、注册
+     demo20-list （根组件默认显示）demo20-detail
+    ②demo20-list
+      组件初始化完毕之后，向指定的url发送请求
+      http://localhost:8080/product/list
+      将请求到的数据，显示在ionList(ionItem就显示标题)，点击ionItem，跳转（push）到demo20-detail并且将商品的lid发送过去
+    ③demo20-detail
+      接收参数，保存参数，显示在h2
+    
+
+  6、生命周期
+    生命周期的钩子函数存在的意义，是为了在指定的时间节点做需要用到的处理，比如创建时做初始化的工作，消亡时执行清理的工作，数据更新时，执行逻辑判断
+    
+    vue:
+      create/mount/update/destroy
+      beforeCreate/created
+      beforeMount/mounted
+      ...
+    
+    angular:
+     angular组件其实就是带有模板内容的指令而已，所以组件的钩子函数和指令的钩子函数很相似，只有部分是组件特有的
+     ngOnInit
+     ngOnChanges
+     ngOnDestroy
+
+    ionic:
+     ionViewDidLoad //只会执行一次
+     ionViewWillEnter //
+     ionViewCanEnter
+     ionViewDidEnter
+
+     ionViewCanLeave
+     ionViewWillLeave
+
+     钩子函数以及描述信息:
+      https://ionicframework.com/docs/v3/api/navigation/NavController/
+
+四、Ionic项目总结
+
+ 项目处理流程:
+  需求分析
+  可行性分析
+  概要设计
+  详细设计
+  编码
+  测试
+  部署上线
+  升级(迭代、维护)
+
+
+ 技术方案：
+  前端:
+     页面布局和样式、图标:ionic
+     数据处理: angular
+     网络通信处理:HttpClient
+     组件内部通信:props down/events up/...
+ 
+  后端:node+express+mysql
+
+五、React
+
+ 生态圈:
+  ReactJs ReactNative React360 redux...
+ 
+ 1、ReactJS
+  1.1 概述
+    what
+      react是一个Facebook所推出的用来构建ui层的js库
+    when
+      facebook、instgram、uber、Airbnb
+      阿里 美团 去哪儿
+      用在数据操作比较频繁的场景
+    why
+      历史背景:
+        ①浏览器性能瓶颈
+	  VDOM (virtual DOM/虚拟DOM)
+	②代码开发维护成本越来越高
+	  jsx
+	  单向数据流
+    how
+      方案1：
+       引入对应的js
+      方案2：cli
+        npx create-react-app my-app
+	cd my-app
+	npm start
+  
+  1.2 核心思想
+   (Thinking in React)
+   Everything is Component!
+
+  1.3 核心概念
+   第一个案例:
+    ①方法
+     ReactDOM.render(A,B)
+    ②编译器 babel
+     可以将es6、jsx转换为浏览器能够识别的语法
+    
+    注意:
+     ①注意js文件引入的先后顺序
+     ②要同时渲染多个标签，要放在一个顶层标签中
+     ③每个元素都得有开始和结束标记
+     ④jsx优点：可以非常方便的将数据和视图封装起来 缺点：①增加了数据和视图处理的耦合度 ②虽然支持在js中写标签，但是有些设置和自带的不太一样 class-->className
+     for-->htmlFor
+   slogan: learn once,write anywhere
+    
+   1.3.1 jsx
+    jsx并不是一种新的语言，是js的扩展
+    ①遇到<,首字母是小写-》是通过html来处理；首字母是大写，会按照组件的方式来解析
+    ②遇到{,是通过js来处理
+
+    练习: (:- 15:25)
+     demo03_lianxi.html
+
+     需求：将一个无序列表通过react方式显示在id为example的容器中
+
+   1.3.2 component
+    组件：是可被反复使用，带有特定功能的视图
+
+    回顾:
+     Vue.component('demo01',{
+       components:{}
+     })
+     @Component({
+       seletor:'demo01'
+     })
+     <demo01></demo01>
+
+    React：
+     1. 创建组件
+      var Test = React.createClass({
+       render:function(){
+         return <h2>123</h2>
+       }
+      })     
+     2. 调用组件
+      <Test></Test>
+     
+     注意事项:
+      ①组件类的名字要遵循全驼峰
+      ②返回多个 要放在一个容器中
+      ③返回元素，第一个标签不要直接换行（配合小括号）
+    
+    事件绑定:
+     <button onClick={this.handleClick}></button>
+     <input onChange={this.handleChange}/>
+     (:- 16:32)
+     练习:demo06_lianxi.html
+       创建5个组件
+       MyForm = 
+       MyInputName +
+       MyInputPwd +
+       MyButtonLogin +
+       MyButtonRegister
+        
+   1.3.3 props
+     知识点1： 父--》子(props基本用法)
+        ①传值
+        <MyHeader myTitle='123'></MyHeader>
+	②接收去用
+	<h2>{this.props.myTitle}</h2>
+
+     知识点2：子--》父 (关键词:有参数的方法)
+        共识：属性传值，值还可以是方法
+	①在父组件中准备一个有参数的方法
+	 handleLogin(msg){}
+	②将方法通过属性传递给子组件
+	 <MyButton myFunc={this.handleLogin}>
+	 </MyButton>
+	③子组件调用方法进行传值
+	 this.props.myFunc(123)
+   
+     知识点3：children
+      this.props.children代表的是当前组件被调用时的子标签
+
+      this.props对象中的键值对和当前组件调用时指定的属性是一一对应的，但是有一个是例外 this.props.children
+
+      注意：this.props.children
+       ①有多个子标签 数组
+       ②有一个子标签 对象
+       ③没有子标签 undefined
+      
+      方法:
+       React.Children.map(
+         this.props.children,
+	 (value)=>{
+	   return value
+	 }
+       )
+  
+     练习:(:- 9:35)
+      demo10_lianxi.html
+      封装4个组件:
+      ToDoBox = ToDoInput+ToDoList(多个ToDoItem)
+
+   1.3.4 ref
+    reference 引用/参考/参照
+    
+    在react中，可以借助于ref，得到子组件或者html标签
+
+    在react中，可以通过ref给一个子组件指定一个引用的名称，通过引用的名字直接得到子组件的实例对象
+
+    步骤1：指定ref
+     <Son ref="mySon"></Son>
+    步骤2：根据引用的名称操作子组件中属性
+     this.refs.mySon.**
+   
+   1.3.5 state
+    state在react中是负责将组件中的数据进行统一管理
+    知识点1：
+     state是有绑定效果
+    知识点2：
+     state管理数据的3个基本操作
+      ①初始化
+       getInitialState(){
+        return {count:0}
+       }
+      ②读
+       this.state.count
+      ③写
+       this.setState({count:1})
+       this.setState({count:1},()=>{
+        //状态写成功之后 会执行的一个处理函数
+       })
+       (:- 11:40 )
+       练习:demo14_lianxi.html
+
+       封装一个组件，模板只有一个button，
+       按钮按下时，按钮的文本内容:开、关
+
+   总结:
+    jsx在react中是构成组件的基础，
+    component是负责将要复用的视图封装，
+    props可以实现父子之间的通信工作，
+    ref方便的实现对于元素或者子组件的操作state实现绑定效果和管理数据
+
+  1.4 lifecycle
+   需求：在业务的处理过程中，需要知道什么时候初始化的工作、清理工作
+   
+   回顾:
+    vue:
+     create/mount/update/destroy
+     beforeCreate/created
+    angular:
+     init/update/destroy
+     ngOnInit/ngOnDestroy
+    ionic
+     enter/load/leave/unload
+     ionViewWillEnter/Leave...
+   
+   React:
+    mount/update/unmount
+    componentWillMount
+    componentDidMount
+
+    componentWillUpdate
+    componentDidUpdate
+    componentWillReceiveProps
+
+    componentWillUnmount
+
+    注意事项：
+     ①在mount阶段，如果要操作DOM元素 必须等到DidMount或者之后
+     ②当state、props变化时，会触发update
+     ③不允许在componentWill/DidUpdate中，完成状态的写操作
+     ④this.props对象 是只读的，不允许做修改
+     ⑤componentWillReceiveProps钩子函数是在通过属性传来的值 变化时 会被执行；它允许对状态做写操作
+
+     练习:
+      demo16_lianxi.html (:- 14:45)
+      要求:
+       ①完成一个组件类的封装和调用
+        显示一个h1
+       ②在组件挂载完毕之后，启动一个定时器，让h1的透明度0 0.1 0.2 ~ 1
+       
+       <h1 style={{opacity:变量}}></h1>
+       <h1 style={[opacity:变量1,color:变量2]}></h1>
+
+
+  1.5 受控元素的处理
+   前提:只有需要给表单元素指定默认值，才会按照受控的方式来处理！
+
+   在reactjs中处理表单元素时，如果表单元素指定了属性value/checked/selected,表单元素就受react控制了，称之为受控表单元素
+
+   方案1:
+    defaultValue
+   方案2:
+    onChange（依赖状态的绑定特性）
+    ①准备状态
+    ②将状态的值绑定给value
+    ③绑定Change，在事件处理函数对状态做修改
+
+   
+
+  1.6 进阶知识
+   1.6.1 事件处理函数中进行自定义传值
+     vue:
+      <button @click="handleClick(123)"></button>
+     angular:
+      <button (click)="handleClick(123)"></button>
+     
+     react:
+      <button  onClick={()=>this.handleClick(123)}>
+          clickMe
+      </button>
+
+   1.6.2 选择
+    *ngIf v-if
+    方案1：适用于简单条件(逻辑与)
+      通过逻辑与运算的短路逻辑
+      {
+        expression
+	&&
+	<标签/>
+      }
+
+    方案2: 适用于复杂条件(方法)
+       showSth(){
+         //运算
+	 返回根据不同的条件要显示的结果
+       }
+
+       {
+        this.showSth()
+       }
+
+   1.6.3 循环 (遍历)
+    *ngFor v-for
+ 
+    this.state.list.map((value,index)=>{
+      return <li key={index}>{value}</li>
+    })
+
+    注意:
+    给循环创建的元素指定一个不会重复的key，提升性能
+   
+  1.7 综合练习
+   ①完成静态页面
+   ②ToDoInput传递输入框的值给ToDoBox
+     关键词:有参数的方法
+     需求：点击add按钮，在ToDoBox接收到传递来的值，打印
+   (:- 17:50)
+   ③ToDoBox接受到值，保存，传递给ToDoList，ToDoList接收到值，动态的创建多个ToDoItem
+
+    提示：在ToDoBox中定义一个状态，是一个数组，保存每一次ToDoInput传来的数据
+   
+   ④实现删除功能
+    将要删除下标传递给ToDoBox，接收到下标删除指定位置的元素
+ 
+ 2、RN(ReactNative)
+   2.0 常见错误:
+    2.0.1 导出和引入方式
+     Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in.
+     导出类的时候，加了default，引入无需写花括号；如果没有指定default，引入时必须写花括号
+    2.0.2 调用了不存在的组件
+      Expected a component class, got [object Object].
+    2.0.3 没有引入就去调用
+     Can't find variable :Text
+    2.0.4 myapp启动闪退
+     方案1:在设置--》应用--》myapp--》清除数据
+     方案2:卸载--》重新安装
+      C:\xampp\htdocs\codes\react\rn_myapp\android\app\build\outputs\apk 
+     方案3:如果还闪退，试着重新调整下分辨率
+    
+    2.0.5 myapp启动时 连接开发服务器失败
+      ip地址是动态分配的
+      摇一摇/按下菜单键--》DevSettings-->Debug Server Host & Port for device-->输入ip地址和端口号
+
+     
+
+   2.1 概述
+    Build Native Mobile apps using JS and React
+    采用React中的核心概念和js的语法，调用RN所封装的组件来构建原生的移动端的app 
+    竞品:flutter weex reactNative
+   
+    工作方式：
+     举例：在RN中封装一个View的组件，在不同的平台下运行时，编译成指定平台下原生的组件
+     uiView div android.View
+
+    搭建开发环境:
+      方式1：
+       npm install -g expo-cli
+       expo init AwesomeProject
+       cd AwesomeProject
+       npm start #you can also use: expo start
+
+       参考文档:
+       https://docs.expo.io/versions/latest/
+
+      方式2：
+       1、准备PC
+        ①将rn_myapp.zip放到C:/xampp/htdocs/codes/react,解压缩到rn_myapp文件夹中
+	②通过vscode打开这个文件夹C:/xampp/htdocs/codes/react/rn_myapp
+	③启动开发服务器
+	 npm start
+	④测试开发服务器有没有启动成功
+	 在浏览器中输入:
+	  localhost:8081
+
+       2、准备Mobile
+         ①启动模拟器
+	  夜神、mumu、腾讯手游助手、蓝叠bluestack
+	 ②安装apk的包
+	 C:\xampp\htdocs\codes\react\rn_myapp\android\app\build\outputs\apk    负责预览效果
+
+	 ③在模拟器中，输入ip和port连接pc端的开发服务器
+	 windows+R-->cmd-->ipconfig
+	 172.163.100.230:8081
+
+	 摇一摇(或者按下菜单键)--》
+	 DevSettings --> Debug Server Host and Port for device-->输入ip地址和端口-->确定
+
+	 摇一摇--》reload
+
+	 如果reload进度100%之后，还是没有东西显示，可以试着按下右下角的多任务按钮，关闭myapp，打开myapp
+
+   2.2 RN基础知识
+    2.2.1 完成自定义组件的封装和调用
+      创建:
+       export default class Demo01Component extends Component{
+        render(){
+	 return <显示的组件/>
+	}
+       }
+      调用:
+       方式1：嵌套调用
+        index.android.js
+	import Demo01Component from './components/demo01'
+	<Demo01Component></Demo01Component>
+
+       方式2：作为根组件
+        AppRegistry.registerComponent("myapp",()=>Demo01Component)
+       方式3：路由访问
+        ....
+      
+      注意事项:
+       ①组件类导出和引入的方式
+          导出类的时候，加了default，引入无需写花括号；如果没有指定default，引入时必须写花括号
+       ②引入才可使用
+
+    2.2.2 处理数据(state)
+     初始化:
+      在rn的编程规范中，建议直接状态的初始化操作放在构造函数中
+      constructor(){
+        super()
+	this.state = {myCount:0}
+      }
+     读、写操作和之前reactjs是一样的
+     
+     (:- 14:40)
+     练习: demo03_lianxi.js
+      ①完成一个组件类的创建和调用
+      ②组件类的模板只有一个Text
+      ③组件挂载完毕之后，启动一个定时器，修改Text的透明度0~0.1~0.2...1
+
+      style={{opacity:**}}
+
+    2.2.3 处理样式和布局
+      基础用法:
+	<Text style={{color:'red',fontSize:40}}>
+	hello
+	</Text>
+      
+      样式类的封装:StyleSheet
+        StyleSheet
+	封装:
+	 import {StyleSheet} from 'react-native'
+	 
+	 const myStyles = StyleSheet.create({
+	   myText:{
+	    color:'',
+	    fontSize:20
+	   },
+	   myImg:{},
+	   myView:{}
+	 })
+	调用:
+	 <Any style={myStyles.myImg}></Any>
+      
+      布局处理:flexbox
+        flexDirection
+	alignItems
+	justifyContent
+        注意事项:rn中默认的主轴是column
+
+    2.2.4 网络通信
+     fetch(url)
+      .then((response)=>response.json())
+      .then((result)=>{
+        //result就是服务器端返回的结果
+      })
+
+    c:/xampp/htdocs/codes/xz_api/app.js
+    练习：(:- 16:45)
+     ①完成demo07_lianxi.js的创建
+     ②在此组件挂载完毕之后，请求服务器端的数据，保存，循环创建多个Text
+     无外网:
+     http://172.***:8080/product/list Text显示title
+     有外网:
+     http://jsonplaceholder.typicode.com/users Text显示name
+        
+   
+   2.3 RN所封装的各种组件
+    2.3.1 View
+     目标：指定一个容器
+     使用: ①引入 import {View} from 'react-native'
+           ②用 <View> </View>
+
+    2.3.2 Text
+     目标：显示文本内容
+     使用: ①引入 import {Text} from 'react-native'
+           ②用 <Text> 123 </Text>
+    
+    2.3.3 Button
+      目标：实现一个按钮，接收用户的操作
+      使用:
+       ①引入
+        import {Button} from 'react-native'
+       ②调用
+        handlePress=()=>{
+
+	}
+        <Button title='clickMe' onPress={this.handlePress}></Button>
+
+    2.3.4 FlatList
+     定位：实现一个高性能的列表
+     调用:
+       //有参数(对象，包含item/index)有返回值(列表项要显示的内容)
+       showItem=(info)=>{
+         return <Text>{info.item}</Text>
+       }
+       
+       <FlatList data={[1,2,3]} renderItem={this.showItem}></FlatList>
+     进阶：
+       extraData={this.state} 保证状态在发生变化时，视图能够正确的更新
+       下拉刷新 onRefresh
+       上拉加载更多 onEndReached
+       解决key: 是从数据源着手，数据源应该是对象数组，每一个对象都要一个key的属性，值保证唯一的
+    
+    2.3.5 TextInput
+     定位：获取用户所输入的信息
+     使用:
+       handleChangeText=(msg)=>{
+        //msg就是输入框的数据
+       }
+
+       <TextInput
+        placeholder=""
+	secureTextEntry={true}
+	onChangeText={this.handleChangeText}
+        ></TextInput>
+
+    2.3.6 Switch
+     定位：实现一个滑动开关
+     注意：默认是一个受控的元素
+     
+     受控表单元素解决方案：
+      ①准备状态
+      ②将状态的值绑定到视图
+      ③在对应的事件(onValueChange)处理函数中，修改状态
+     
+     练习:
+      demo12_lianxi.js
+      ①在此文件中完成一个组件类的封装，到index.android.js中调用
+      ②组件内容:
+       TextInput Button FlatList
+      (:- 14:10)
+      ③点击Button，将TextInput的值(通过ChangeText事件处理函数的形参获取)，添加到FlatList中显示
+    
+    2.3.7 TouchableOpacity
+     是一个容器，放在此容器中的组件会在点按时有透明度变化的效果，而且支持点按事件
+
+     <TouchableOpacity onPress={}>
+      <Text></Text>
+     </TouchableOpacity>
+
+    2.3.8 ScrollView
+     放在该容器中的元素 滚动效果
+     <ScrollView></ScrollView>
+
+     进阶用法:借助于ScrollView来实现固定页脚的效果
+     
+    2.3.9 Image
+     定位：显示图片
+     使用:
+       本地图片
+        <Image source={require("../imgs/3.jpg")}></Image>
+	注意：不允许做运算
+       
+       网络资源图片
+        <Image 
+        style={{width:100,height:100}}
+        source={{uri:"http://172.163.100.230/3.jpg"}}></Image>
+	注意：必须设置宽高
+
+    2.3.10 ActivityIndicator
+     定位：实现一个活动指示器(loading)
+     使用:
+      <ActivityIndicator  size="large" color='red'></ActivityIndicator>
+
+     练习:(:- 16:30)
+      demo16_lianxi.html
+      ①完成组件类的封装和调用
+      ②指定一个按钮，一个ActivityIndicator
+      ③按钮按下，切换ActivityIndicator显示或者关闭,
+
+   2.4 RN路由处理
+    2.4.1 概述:
+     ReactNative官方并没有提供路由功能，不过有一个非常受欢迎的开源项目：ReactNavigation
+     
+     reactnavigation.org
+
+     定位：Routing and navigation for your React Native apps
+      针对rn的应用实现路由和导航
+     
+     路由的本质：建立起映射关系
+    2.4.2 使用:
+     ①安装
+      npm install --save react-navigation
+     ②完成组件的创建      
+
+     ③完成路由词典的设置
+      import Demo17LoginComponent from '**'
+      import Demo17MainComponent from '**'
+      import {createStackNavigator} from 'react-navigation'
+
+      var myNavigator = createStackNavigation({
+       'login':{
+         screen:Demo17LoginComponent
+       },
+       ***
+      })
+
+      AppRegistry.registerComponent('myapp',()=>myNavigator)
+       	
+     ④跳转和传参
+      rn项目一旦调用了reactNavigation之后，rn的每一个组件的props对象中会多一个属性：this.props.navigation
+
+      跳转:
+       this.props.navigation.navigate()
+      传参:
+       发送:
+        this.props.navigation.navigate("login",{id:10})
+       接收:
+        this.props.navigation.getParam('id')
+       
+   练习:
+    ①完成组件类的创建
+     demo18_list.js demo18_detail.js
+    ②各自分配路由地址 list/detail
+    ③在demo18_list.js中
+     步骤1：准备一个对象数组，对象包含stuName stuId
+     步骤2：将数组显示在FlatList,列表项通过Text显示学生的stuName
+     步骤3：点击Text(结合TouchableOpacity)，跳转到demo18_detail.js,同时将stuId作为参数发送
+    ④在demo18_detail.js接收传来的数据，显示在Text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

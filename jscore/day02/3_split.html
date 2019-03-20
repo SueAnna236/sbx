@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="ulScores">
+    <li>85</li>
+    <li>95</li>
+    <li>58</li>
+    <li>36</li>
+    <li>76</li>
+    <li>84</li>
+  </ul>
+  <script>
+    //元素的id自动会成为全局变量，指向所在的元素对象----开发不能用
+    //获得id为ulScores的<ul>元素的内容字符串
+    var html=ulScores.innerHTML;
+    //掐头去尾
+    html=html.replace(/^\s+<li>|<\/li>\s+$/g,"");
+    console.log(html);
+    //按</li>空字符<li>切割
+    var arr=html.split(/<\/li>\s*<li>/);
+    //数组降序排列
+    arr.sort(function(a,b){return b-a});
+    console.log(arr);
+    html=`<li>${arr.join("</li><li>")}</li>`;
+    console.log(html);
+    ulScores.innerHTML=html;
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		#r{
+			width: 400px;
+			height: 400px;
+			border:2px solid #00f;
+			border-radius: 50%;
+			position: relative;
+		}
+		#minutes{
+			width: 6px;
+			height: 130px;
+			background: #b5b;
+			position: absolute;
+			top: 70px;
+			left: 197px;
+			transform-origin: center bottom;
+			animation: turn 3600s linear infinite;
+		}
+		#seconds{
+			width: 4px;
+			height: 170px;
+			background: #00f;
+			position: absolute;
+			top: 30px;
+			left: 198px;
+			transform-origin: center bottom;
+			animation: turn 60s linear infinite;
+		}
+		@keyframes turn{
+			0%{transform: rotate(0deg);}
+			100%{transform: rotate(360deg);}
+		}
+	</style>
+</head>
+<body>
+	<div id="r">
+		<div id="minutes"></div>
+		<div id="seconds"></div>
+	</div>
+</body>
+</html>

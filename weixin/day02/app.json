@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/exam3/exam3",
+    "pages/exam2/exam2",
+    "pages/exam/exam",
+    "pages/index/index",
+    "pages/logs/logs"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#226aff",
+    "navigationBarTitleText": "学子商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+    {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "pages/assets/tabs/home.png",
+      "selectedIconPath": "pages/assets/tabs/home-active.png"
+    },
+    {
+      "pagePath": "pages/exam/exam",
+      "text": "会员",
+      "iconPath": "pages/assets/tabs/profile.png",
+      "selectedIconPath": "pages/assets/tabs/profile-active.png"
+    },
+    {
+      "pagePath": "pages/exam2/exam2",
+      "text": "留言",
+      "iconPath": "pages/assets/tabs/message.png",
+      "selectedIconPath": "pages/assets/tabs/message-active.png"
+    },
+    {
+      "pagePath": "pages/exam3/exam3",
+      "text": "联系我们",
+      "iconPath": "pages/assets/tabs/contact.png",
+      "selectedIconPath": "pages/assets/tabs/contact-active.png"
+    }
+    ]
+  }
+}

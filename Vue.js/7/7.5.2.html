@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <script src="../js/vue.js"></script> -->
+  <!-- <script src="https://vuejs.org/js/vue.min.js"></script> -->
+  <script src="../js/vue.min.js"></script>
+  <!-- <script src="https://unpkg.com/vue/dist/vue.min.js"></script> -->
+</head>
+<body>
+  <div id="app">
+    <child-component inline-template> 
+      <div>
+        <h2>在父组件中定义子组件的模板</h2>
+        <p>父：{{message}}</p>
+        <p>子：{{msg}}</p>
+      </div>
+    </child-component>
+  </div>
+  <script>
+    Vue.component('child-component', {
+      //props: ['message'],
+      template: '<p>hello</p>',
+      data: function(){
+        return {
+          msg: '在子组件中声明数据'
+        }
+      }
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: '父组件中声明的数据'
+      }
+    })
+  </script>
+  
+</body>
+</html>

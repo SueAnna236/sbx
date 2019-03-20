@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button>按钮一</button>
+  <script> 
+    // 创建Worker对象,并且发送新的线程执行1.js
+    var w = new Worker("js/1.js")
+    w.postMessage(999);
+    w.onmessage = function(e){
+      console.log(e.data)
+    }
+  </script>
+  <button>按钮二</button>
+</body>
+</html>

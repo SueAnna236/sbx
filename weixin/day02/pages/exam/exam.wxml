@@ -1,0 +1,16 @@
+<!--pages/exam/exam.wxml-->
+<swiper autoplay='true' interval='2500' indicator-dots='true' indicator-color='#fff' indicator-active-color='#3289d9' vertical=''>
+  <swiper-item>
+    <image class='pic' src='http://127.0.0.1:3000/img/banner1.png' lazy-load='true' mode='aspectFill'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class='pic' src='http://127.0.0.1:3000/img/banner2.png' lazy-load='true' mode='aspectFill'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class='pic' src='http://127.0.0.1:3000/img/banner3.png' lazy-load='true' mode='aspectFill'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class='pic' src='http://127.0.0.1:3000/img/banner4.png' lazy-load='true' mode='aspectFill'></image>
+  </swiper-item>
+</swiper>
+

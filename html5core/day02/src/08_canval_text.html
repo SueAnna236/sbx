@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    canvas{
+      background: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    var str = "abcxyz"; //创建文本对象
+    ctx.font = "19px sans-serif"; //创建字体
+    ctx.textBaseline = "top"
+    //ctx.fillText(str,0,0);  //填充文本0,0
+    // 练习：画布的左上角 右上角 左下角 右下角绘制文本
+    var lefttop = "Left-Top";
+    ctx.fillText(lefttop,0,0);
+
+    // 获取文本的宽度
+    var obj = ctx.measureText(righttop)
+    var righttop = "Right-Top";
+    ctx.fillText(righttop,500-ctx.measureText(righttop).width,0);
+
+    var leftbottom = "Left-Bottom";
+    ctx.fillText(leftbottom,0,400-30);
+
+    var rightbottom = "Right-Bottom";
+    ctx.fillText(rightbottom,500-ctx.measureText(rightbottom).width,400-30);
+  </script>
+</body>
+</html>

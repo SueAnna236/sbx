@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body onload="getUserInfo()">
+	<h1>用户信息修改页面</h1>
+	<form action="">
+		<p>登录名称：
+			<input type="text" id="uname">
+		</p>
+		<p>电子邮箱：
+			<input type="email" id="email">
+		</p>
+		<p>联系方式：
+			<input type="text" id="phone">
+		</p>
+		<p>真实姓名：
+			<input type="text" id="user_name">
+		</p>
+		<p>用户性别：
+			<input type="radio" name="gender" id="man" value="1"><label for="man">男</label>
+			<input type="radio" name="gender" id="woman" value="0"><label for="woman">女</label>
+		</p>
+		<p>
+			<input type="hidden" id="h_uid">
+			<input type="button" value="修改" onclick="updateUser()">
+		</p>
+	</form>
+	<script>
+		//修改流程
+		function updateUser(){
+			//1.获取所有input的值
+			//var urlParams=new URLSearchParams()
+			var input_uid=h_uid.value;
+			var input_uname=uname.value;
+			var input_email=email.value;
+			var input_phone=phone.value;
+			var input_username=user_name.value;
+			if (man.checked==true)
+			{
+				var input_gender=1;
+			}else if (woman.checked==true)
+			{
+				var input_gender=0;
+			}else{
+				var input_gender=null;
+			}
+			//2.xhr四部曲
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					if (result=="1")
+					{
+						//跳转到用户列表列
+						window.location.href="http://127.0.0.1:3000/02_list.html";
+					}
+					console.log (1245);
+					console.log(result);
+				}
+			}
+			//?uname= 			+input_uname+"&emai="+input_email+"&phone="+input_phone+"&user_name"+input_username+"&gender="+input_gender
+			xhr.open("post","/pro/updateuser",true);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			var formdata="uname="+input_uname+"&email="+input_email+"&phone="+input_phone+"&user_name="+input_username+"&gender="+input_gender+"&uid="+input_uid;
+			xhr.send(formdata);
+		}
+		function getUserInfo(){
+			//1.获取地址栏上的url，02_list.html传过来的参数
+			//URLSearchParams()是访问地址栏查询参数的对象
+			var urlParams=new URLSearchParams(location.search);
+			var uid=urlParams.get("uid");
+			alert(uid);
+			h_uid.value=uid;
+		
+			//2.xhr四部曲
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					var user=JSON.parse(result);
+					if (result=="0")
+					{
+						alert("查无此人");
+					}else{
+					//2--->把响应数据放入input-text中显示
+						//console.log(result);
+						//console.log(user);
+						//console.log(users[0].uid);
+						//console.log(users[0].uname);
+						uname.value=user[0].uname;
+						email.value=user[0].email;
+						phone.value=user[0].phone;
+						user_name.value=user[0].user_name;
+						
+						if (user[0].gender==1)
+						{
+							man.checked=true;
+						}else if (user[0].gender==0)
+						{
+							woman.checked=true;
+						}
+					}
+				}				
+			}
+			xhr.open("get","/pro/userquery?uid="+uid,true);
+			xhr.send(null);
+			//console.log(125521);
+			//3.点击本页面的更新按钮，把数据传递给服务器
+		}
+	</script>
+</body>
+</html>

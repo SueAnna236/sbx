@@ -1,0 +1,4 @@
+<!--pages/backAudio2/backAudio2.wxml-->
+<view bindtap='play2'>播放背景音乐</view>
+<view bindtap='pause2'>暂停播放背景音乐</view>
+<view bindtap='stop2'>停止播放背景音乐</view>

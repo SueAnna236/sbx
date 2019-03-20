@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="jquery-1.11.3.js"></script>
+  <style>
+    body{
+      text-align: center;
+    }
+    canvas{
+      background: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="550" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    $.ajax({
+      url:"http://127.0.0.1:3000/sales",
+      success:(res)=>{
+        console.log(res)
+        for(var i=0;i<res.length;i++){
+          var w = 50; //宽度
+          var h = res[i].value; //高度
+          var y = 400-h;  //y坐标
+          var x = i * 100 + 50; //x坐标
+          ctx.fillStyle = rc();
+          ctx.fillRect(x,y,w,h);
+          //ctx.textBaseline = "top";
+          var str = res[i].name;  //分公司名称
+          ctx.font = "19px 隶书";
+          ctx.fillStyle = "#000"
+          ctx.fillText(str,x+5,y-10);
+          // 练习：每个柱子不同颜色 随机
+          function rc(){
+            var r = Math.floor(Math.random()*255);
+            var g = Math.floor(Math.random()*255);
+            var b = Math.floor(Math.random()*255);
+            return `rgb(${r},${g},${b})`
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

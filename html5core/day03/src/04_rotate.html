@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    canvas{background-color: #dddddd}
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    var p3 = new Image();
+    p3.src = "../../res/p3.png";
+    p3.onload = function(){
+      ctx.drawImage(p3,0,0);  //没有旋转
+      ctx.rotate(10*Math.PI/180);
+      ctx.drawImage(p3,0,0);  //旋转10度后
+      //绘制图片旋转有累加效果
+      ctx.rotate(10*Math.PI/180);
+      ctx.drawImage(p3,0,0);  //旋转20度后
+      //平移原点
+      ctx.translate(250,200);
+      ctx.drawImage(p3,0,0);
+      ctx.rotate(10*Math.PI/180);
+      ctx.drawImage(p3,0,0);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  "use strict";
+  function Emp(eid,ename,age,salary,gender){
+    this.gender=gender;
+    this.ename=ename;
+    Object.defineProperties(this,{
+      eid:{
+        value:eid,
+        writable:false,
+        enumerable:true,
+        //configurable:false
+      },
+      salary:{
+        value:salary,
+        writable:true,
+        enumerable:false,
+        //configurable:false
+      },
+      _age:{
+        writable:true,
+        enumerable:false,
+        //configurable:false
+      }
+    });
+    this.age=age;
+    //Object.preventExtensions(this);
+    Object.seal(this);
+  }
+  Object.defineProperty(Emp.prototype,"age",{
+      get:function(){
+        return this._age;
+      },
+      set:function(value){
+        if(value>=18&&value<=65)
+          this._age=value;
+        else
+          throw new  Error("年龄超出范围！");
+      },
+      enumerable:true,
+      //configurable:false
+    });
+    //eric.Age=22;
+  var eric=new Emp(1001,"elik",25,120000,1);
+  eric.age=26;
+  delete eric.gender;
+  //delete eric.ename;
+  //eric.eid=1002;
+  for(var key in eric){
+    console.log(`${key}:${eric[key]}`);
+  }
+  </script>
+</body>
+</html>

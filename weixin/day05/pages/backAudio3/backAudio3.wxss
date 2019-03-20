@@ -1,0 +1,14 @@
+/* pages/backAudio3/backAudio3.wxss */
+play{
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+}
+image{
+  width: 51rpx;
+  height: 55rpx;
+  position: absolute;
+  top: 0;
+  right: 10rpx;
+}

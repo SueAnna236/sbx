@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    svg{background-color: #dddddd;}
+    rect{
+      fill: #ffaaaa;
+      stroke: #880000;
+    }
+  </style>
+</head>
+<body>
+  <!-- 练习：在画布的中央创建一个30*300的矩形 初始化淡红色填充
+  (#faa)和深红色描边(#800) 都是半透明的 鼠标悬停时变为不透明 -->
+  <svg id="s3" width="500" height="400">
+    <rect id="r3" x="235" y="50" width="30" height="300" fill-opacity="0.5" stroke-opacity="0.5"></rect>
+  </svg>
+  <script>
+    var r3 = document.getElementById("r3");
+    r3.onmouseover = function(){
+      this.setAttribute("fill-opacity",1);
+      this.setAttribute("stroke-opacity",1);
+    }
+    r3.onmouseout = function(){
+      this.setAttribute("fill-opacity",0.5);
+      this.setAttribute("stroke-opacity",0.5);
+    }    
+  </script>
+</body>
+</html>

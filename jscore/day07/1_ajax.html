@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  /*
+  function ajax(url,type,data,datatype){
+    console.log(`向${url}发送${type}请求`);
+    if(data!==undefined) 
+      console.log(`携带参数${data}`);
+    if(datatype==="json")
+      console.log(`自动将json转为对象`);
+  }
+  */
+  //function ajax({"url":url,"type":type,"data":data,"datatype":datatype}){
+  function ajax({url,type,data,datatype}){
+    console.log(`向${url}发送${type}请求`);
+    if(data!==undefined) 
+      console.log(`携带参数${data}`);
+    if(datatype==="json")
+      console.log(`自动将json转为对象`);
+  }
+  //问题：形参列表中有多个参数不确定是否有值
+  //解决：参数结构
+  //如何：2步
+  //1.定义函数时：形参列表使用对象语法
+  //2.调用函数时：也使用对象语法
+  /*
+  ajax("http...","post","uname=dingding&upwd=123456");
+  */
+  ajax({
+    "url":"http...",
+    "type":"post",
+    "data":"uname=dingding&upwd=123456"
+    });
+  /*
+  ajax("http//www....","get","json");
+  */
+  ajax({"url":"http//www....","type":"get","datatype":"json"});
+  </script>
+</body>
+</html>

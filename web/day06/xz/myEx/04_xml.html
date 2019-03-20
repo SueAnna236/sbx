@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="button" value="获取xml数据" onclick="getXML()">
+	<script>
+		function getXML(){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+			//console.log(11111);
+				{
+					var result=xhr.responseXML;
+					console.log(result);
+					var students=result.getElementsByTagName("student");
+					var s1=students[0];
+					var names=s1.getElementsByTagName("name")[0];
+					console.log(names.innerHTML);
+				}
+			}
+			xhr.open("get","student.xml",true);
+			xhr.send(null);
+		}
+	</script>
+</body>
+</html>

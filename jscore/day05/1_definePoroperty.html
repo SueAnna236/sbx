@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+    var eric={
+      eid:1001,
+      ename:"ailike",
+      salary:12000
+    }
+    /*
+    Object.defineProperty(eric,"eid",{
+      writable:false,
+      configurable:false
+    })
+    Object.defineProperty(eric,"ename",{
+      configurable:false
+    })
+    Object.defineProperty(eric,"salary",{
+      enumerable:false,
+      configurable:false
+    }*/
+    Object.defineProperties(eric,{
+      eid:{
+        writable:false,
+        configurable:false
+      },
+      ename:{
+        configurable:false
+      },
+      salary:{
+        enumerable:false,
+        configurable:false
+      }
+    })
+    //eric.eid=1003;
+    //delete eric.ename;
+    for(var key in eric){
+      console.log(`${key}:${eric[key]}`)
+    }
+  </script>
+</body>
+</html>

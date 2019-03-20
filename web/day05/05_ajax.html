@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+		//异步对象标准的创建
+		var xhr=new XMLHttpRequest();
+		console.log(xhr);
+		console.log(xhr.readyState);
+		console.log(xhr.status);
+		console.log(xhr.onreadystatechange);
+		//IE8.0以下
+		//var xhr1=new ActiveXObject("Microsoft.XMLHTTP");
+		//console.log(xhr1);
+		//通过window.XMLHttpRequest，来判断浏览器是否支持标准的创建
+		//if (window.XMLHttpRequest)
+		//{
+		//	var xhr=new XMLHttpRequest();
+		//}else{
+			//浏览器不支持标准创建
+		//	var xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		//}
+	</script>
+</body>
+</html>

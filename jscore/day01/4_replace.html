@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var msg="我擦！你家真大！";
+        msg=msg.replace(/我擦/ig,"**");
+        console.log(`李然说：${msg}`);
+
+        var str="you can you do";
+        str=str.replace(/\b[a-z]/ig,function(kword){
+            return kword.toUpperCase();
+        })
+        console.log(str);
+    </script>
+</body>
+</html>

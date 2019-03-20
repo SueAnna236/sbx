@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="echarts.min.js"></script>
+  <script src="jquery-1.11.3.js"></script>
+</head>
+<body>
+  <div id="main" style="width:860px;height:430px"></div>
+  <script>
+    // 3：获取容器并且创建echarts对象
+    var main = document.getElementById("main");
+    var mychart = echarts.init(main);
+    // 4：发送ajax请求
+    $.ajax({
+      url:"http://127.0.0.1:3000/hospital",
+      data:{name:"西瓜霜"},
+      success:(res)=>{
+        console.log(res);
+        var month = [];
+        var count = [];
+         for(var item of res.data){
+           month.push(item.month+"月");
+           count.push(item.sales);
+         }
+        var option = {
+          title : {
+            text : "医疗行业销售统计图"
+          },
+          xAxis : {
+            data : month
+          },
+          yAxis : {},
+          series : [{
+            type : "bar",
+            data :  count
+          }]
+        }
+        mychart.setOption(option);
+      }
+    })
+  </script>
+</body>
+</html>

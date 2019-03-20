@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <script src="../js/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 6. 添加<router-view>占位标签 -->
+    <router-view></router-view>
+  </div>
+  <!-- 1. 定义多个“页面”的模板片段 -->
+  <template id="tplHome">
+    <div>
+      <h1>这是home页</h1>
+      <hr>
+      <h2>Welcome dingding</h2>
+    </div>
+  </template>
+  <template  id="tplLogin">
+    <div>
+      用户名：<input type="text"><br>
+      密码：<input type="password"><br>
+      <button>登录</button>
+    </div>
+  </template>
+  <script>
+    // 2. 封装<template>为子组件
+    var home={
+      template:"#tplHome"
+    }
+    var login={
+      template:"#tplLogin"
+    }
+    // 3. 定义路由字典：相对路径与子组件的对应关系列表
+    var routes=[
+      {path:"/",component:home},//默认首页
+      {path:"/home",component:home},
+      {path:"/login",component:login},
+      {path:"/*",component:{template:"<h1>404:未找到页面！</h1>"}}
+    ];
+
+    // 4. 将路由字典放入新创建的路由中
+    var router=new VueRouter({routes});
+  </script>
+  <script>
+    new Vue({
+      el:"#app",
+      // 5. 将路由器加入到当前页面的根组件中
+      router
+    })
+  </script>
+  
+</body>
+</html>

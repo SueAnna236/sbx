@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="d1">这是今天的作业内容</div>
+	<p id="d2">这是一个p文本</p>
+	<input type="button" value="获取打印" onclick="getDivp()">
+	<input type="button" value="文本互换" onclick="setDivp()">
+	<script>
+		function getDivp(){
+			text1=d1.innerHTML;
+			text2=d2.innerHTML;
+			text=text1+text2;
+			alert(text);
+			console.log(text);
+		}
+		function setDivp(){
+			text1=d1.innerHTML;
+			text2=d2.innerHTML;
+			d1.innerHTML=text2;
+			d2.innerHTML=text1;
+		}
+	</script>
+</body>
+</html>

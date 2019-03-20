@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function indexOf(arr,value,starti=0){
+    //如果没有starti，就默认为0
+    //if(starti===undefined) starti=0;
+    //从指定位置开始，遍历数组中每个元素
+    for(var i=starti;i<arr.length;i++){
+      if(arr[i]===value)
+      //如果找到value，就返回i
+        return i;
+    }
+    //如果执行到这里，说明没找到！
+    return -1;
+  }
+  var arr=[1,2,3,4,3,2,1];
+  //在arr中从0位置开始找第一个3的位置
+  console.log(indexOf(arr,3),
+  //从3位置开始找arr中下一个3的位置
+  indexOf(arr,3,3),
+  indexOf(arr,3,5),
+  indexOf(arr,5));
+  </script>
+</body>
+</html>

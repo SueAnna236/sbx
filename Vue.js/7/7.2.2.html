@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-component :width="100" :init-count="1"></my-component>
+  </div>
+  <script>
+    Vue.component('my-component',{
+      props: [ 'width', 'initCount' ],
+      template: '<div :style="style"><h1>{{ count }}</h1></div>',
+      data: function() {
+        return {
+          count: this.initCount
+        }
+      },
+      computed: {
+        style: function(){
+          return {
+            width: this.width + 'px'
+          }
+        }  
+      }
+    })
+    
+    var vm = new Vue({
+      el: '#app'
+    })
+  </script>
+  
+</body>
+</html>

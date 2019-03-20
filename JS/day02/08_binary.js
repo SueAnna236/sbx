@@ -1,0 +1,13 @@
+console.log(3&5);
+console.log(5&7);//5
+console.log(3|5);//7
+console.log(3^5);//6
+console.log(7|9);
+console.log(7^9);
+console.log(15<<1);
+console.log(15<<2);
+console.log(120>>1);
+console.log(120>>2);
+console.log(120>>3);
+console.log(2<<4);
+console.log(18>>2);

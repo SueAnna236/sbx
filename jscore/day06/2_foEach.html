@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var a=3;
+  var b=a;//原始类型赋值，是将原值复制一个副本给对方
+  b++;
+  console.log(a);
+
+  var a={x:3};
+  var b=a;//引用类型赋值：仅将地址值复制给对方，原对象始终只有一个。两个变量使用相同的地址值，指向同一个对象
+  b.x++;//任何一方修改，另一方同时受影响
+  console.log(a.x);
+
+  var nums=[1,2,3,4,5];
+  nums.forEach(function(elem,i,arr){//elem拿到的数据是原数据的副本
+    arr[i]*=2;
+    //arr[i]=elem*2
+  });
+  console.log(nums);
+
+  var objs=[{x:1},{x:2},{x:3},{x:4},{x:5}];
+  objs.forEach(function(elem){
+    elem.x*=2;
+  });
+  console.log(objs);
+  </script>
+</body>
+</html>

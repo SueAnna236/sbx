@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!--
+    <li>85</li>
+    <li>95</li>
+    <li>58</li>
+    <li>36</li>
+    <li>76</li>
+    <li>84</li>
+  </ul> -->
+  <script>
+    /*
+    //replace替换
+    var msg="我擦！你家真大！";
+    msg=msg.replace(/我擦/,"**");
+    console.log(msg);
+    */
+
+    /*
+    //将单词首字母变成大写
+    var str=prompt("请输入... ...");
+    str=str.replace(/\b[a-z]/ig,function(kwords){
+      return kwords.toUpperCase();
+    })
+    alert(str);
+    */
+
+    /*
+    //去掉开头和结尾的空字符
+    var str="     This is a demo!      ";
+    function trim(str){
+      return str=str.replace(/^\s+|\s+$/g,"");
+    }
+    console.log(`|${trim(str)}|`);
+    document.write(`|${trim(str)}|`); 
+    */
+    
+    /*
+    //不使用数组API翻转字符串
+    var pid="130102199512262151";
+    pid=pid.split("");
+    pid=pid.reverse().join("");//reverse() sort()都可以修改原数组，join()生成新的字符串
+    console.log(pid);
+    */
+    
+    /*
+    //将页面中的内容处理后重新放回去
+    var html=ulScores.innerHTML;
+    html=html.replace(/^\s+<li>|<\/li>\s+$/g,"").split(/<\/li>\s*<li>/).sort((a,b)=>b-a).join("</li><li>");
+    html=`<li>${html}</li>`;
+    ulScores.innerHTML=html;
+    console.log(html)
+    */
+    
+    /*
+    //用test()验证密码输入是否正确
+    var reg=/^\d{6}$/;
+    var input=prompt("请输入密码");
+    var res=reg.test(input);
+    if(res){
+      document.write(`<h1 style='color:green'>验证通过</h1>`);
+    }else{
+      document.write(`<h1 style='color:red'>验证未通过</h1>`);
+    }
+    */
+
+    //使用exec()方法符合规则的关键词的内容和位置
+    var str="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, minima accusantium officia, provident quos recusandae molestiae nesciunt voluptate voluptatem facere et debitis iure! Facere dolores fugiat, quasi facilis repellat iure.";
+    var reg=/it|ate/ig;
+    do{
+      var arr=reg.exec(str);
+      if(arr!=null){
+        document.write(`发现关键词：${arr[0]},位置是${arr.index}<br>`);
+      }else{
+        break;
+      }
+    }while(true);
+    
+
+    //
+    var START = END -100;
+var count = 0;
+for(var i = START ; i <= END ;i++){
+count ++;
+}
+console.info(count);
+    
+
+
+
+  </script>
+</body>
+</html>

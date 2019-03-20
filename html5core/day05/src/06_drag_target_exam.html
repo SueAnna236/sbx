@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 使用拖动事件的源对象和目标对象，实现“拖动删除的效果” -->
+  <h3>拖动目标对象：触发四个对象</h3>
+  <img src="../../res/trash.png" id="trash">
+  <hr>
+  <div class="container">
+    <img src="../../res/p3.png" id="p1">
+    <img src="../../res/p4.png" id="p2">
+    <img src="../../res/p5.png" id="p3">
+  </div> 
+  <script>
+    // 1：偶去所有元素
+    var trash = document.getElementById("trash");
+    var container = document.querySelector(".container");
+    var list = document.querySelectorAll(".container img")
+    // 2：创建全局变量保存要删除的小飞机id
+    var pid = 0;
+    // 3：创建循环
+    for (item of list){
+      // 4：为每架小飞机绑定拖动事件 3 件
+      item.ondragstart = function(){
+        // 4.1：拖动开始保存当前小飞机id在全局变量中
+        pid = this.id
+        console.log(pid)
+      };
+      item.ondrag = function(){};
+      item.ondragend = function(){}
+    }  
+    // 5：为垃圾箱绑定拖动事件 4 件
+    
+    trash.ondragenter = function(){console.log(1)};
+    trash.ondragover = function(e){
+      e.preventDefault();
+      console.log(2)
+    };
+    trash.ondragleave = function(){console.log(3)};
+    trash.ondrop = function(){
+      var img = document.getElementById(pid);
+      // 5.1：依据全局变量中的值删除对应小飞机
+      //container.removeChild(img);
+      img.style.visibility = "hidden"
+      console.log(4)
+    }
+    
+
+  </script>
+</body>
+</html>

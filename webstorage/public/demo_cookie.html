@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Cookie的使用</h1>
+  <hr>
+  <h3>在客户端生成并读取Cookie</h3>
+  <button id="bt1">客户端创建Cookie(会话级)</button>
+  <button id="bt2">客户端创建Cookie(永久级)</button>
+  <script>
+    bt1.onclick = function(){
+      // 使用浏览器生成Cookie
+      document.cookie = 'uname=dangdang';//Cookiede KV 对中“=”不能加空格
+      document.cookie = 'loveColor=red';//不会覆盖上一次的赋值，实际是多加了一个Cookie
+      document.cookie = 'productHistory=15,28,33';
+
+    }
+    bt2.onclick = function(){
+      // 生成永久Cookie
+      document.cookie = 'uname=dangdang;expires='+new Date('2020-1-1 0:0:0').toGMTString();//Cookiede KV 对中“=”不能加空格
+      document.cookie = 'loveColor=red;path=/;expire='+new Date(0).toGMTString('1969-10-1 0:0:0');//过期的Cookie，即回话级Cookie
+      document.cookie = 'productHistory=15,28,33';
+
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <label><input type="radio" name="planes" value="../imgs/p3.png" v-model="chosen">红飞机</label>
+    <label><input type="radio" name="planes" value="../imgs/p4.png" v-model="chosen">蓝飞机</label>
+    <label><input type="radio" name="planes" value="../imgs/p5.png" v-model="chosen">黄飞机</label>
+    <hr>
+    <img :src="chosen">
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data:{
+        chosen: '../imgs/p0.png'
+      }
+    })
+  </script>
+  
+  
+</body>
+</html>

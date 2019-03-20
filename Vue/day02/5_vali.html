@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app" class="container">
+    手机号：<input type="text" v-model="phone">
+    <label class="alert" :class="labelClass">{{msg}}</label>
+
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        phone:"",
+        msg:"",
+        labelClass:{
+          "alert-success":false,
+          "alert-danger":false,
+        }
+      },
+      watch: {
+        phone(){
+          var reg=/^1[345678]\d{9}$/;
+          if(reg.test(this.phone)){
+            this.msg="验证通过";
+            this.labelClass["alert-success"]=true;
+            this.labelClass["alert-danger"]=false;
+          }else{
+            this.msg="手机号码格式不正确";
+            this.labelClass["alert-success"]=false;
+            this.labelClass["alert-danger"]=true;
+          }
+        }
+      },
+    })
+  </script>
+  
+</body>
+</html>

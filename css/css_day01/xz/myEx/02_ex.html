@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="button" onclick="getMsg()" value="获取后端数据">
+	<div id="d1"></div>
+	<script>
+		function getMsg(){
+			var xhr=new XMLHttpRequest();
+			console.log(11);
+			xhr.onreadystatechange=function(){
+				console.log(22);
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					console.log(33);
+					var result=xhr.responseText;
+					console.log(result);
+					d1.innerHTML=result;
+				}
+			}
+			xhr.open("get","demo/ajaxDemo",true);
+			xhr.send(null);
+		}
+	</script>
+</body>
+</html>

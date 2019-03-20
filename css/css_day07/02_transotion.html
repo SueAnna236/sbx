@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: #00f;
+/*			transition-property: background border-radius;*/
+/*			transition-property: all;*/
+/*			transition-duration: 3s;*/
+/*			transition-timing-function: linear;*/
+/*			transition-delay: 2s;*/
+			transition: all 5s linear 2s;
+		}
+		div:hover{
+			background: #ff0;
+			border-radius: 50%;
+		}
+		#d1{
+			width: 200px;
+			height: 200px;
+			background: url("timg.jpg") no-repeat;
+			background-size: 200px;
+			border-radius: 50%;
+			transition: all 7s linear;
+		}
+		#d1:hover{
+			transform: translate(800px,800px) rotate(1800deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="d1"></div>
+	<div></div>
+</body>
+</html>

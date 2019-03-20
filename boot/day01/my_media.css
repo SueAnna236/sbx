@@ -1,0 +1,29 @@
+body{
+  font: 16px "黑体";
+  margin: 0;
+  padding: 0;
+}
+/*pc*/
+@media screen and (min-width: 992px){
+  .content{
+    color: #fff;
+    background: #0000ff;
+    font-size: 12px;
+  }
+}
+/*pad*/
+@media screen and (min-width:768px) and (max-width:991px) {
+  .content{
+    color: #fff;
+    background: #f00;
+    font-size: 12px;
+  }
+}
+/*phone*/
+@media screen and (max-width: 767px) {
+  .content{
+    color: #fff;
+    background: #f0f;
+    font-size: 12px;
+  }
+}

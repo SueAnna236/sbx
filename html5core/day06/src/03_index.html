@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* body{
+      margin: 0;
+    }
+    div{
+      position: relative;
+    }
+    button{
+      position: absolute;
+      top: 25px;
+      left: 90%;
+    } */
+    .welcome{
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    练习1：用户登录信息
+    index.html  首页  右上角提示“请登录”超了连接
+    login.html  登录  输入用户名和密码提交按钮 登录成功3s后跳转到首页 setTimeout+localcation.href 到首页 右上角提示“欢迎回来** 退出”
+    logout.html 退出  提示：您已退出3s后自动跳转首页 到首页 右上角提示“请登录”超了连接
+    #将数据保存到sessionStorage 登录用户名
+    
+   -->
+  <h3>首页</h3>
+  <div class="welcome">
+    请登录<a href="04_login.html"><button>登录</button></a>
+  </div>
+  <script>
+    // 用户是否登录成功 普安段条件
+    // uname
+    var uname = sessionStorage.getItem("uname");
+    if(uname){
+      var div = document.querySelector(".welcome");
+      div.innerHTML = "欢迎回来" + uname;
+      div.innerHTML += `<a href="05_logout.html"><button>退出</button></a>`;
+    }
+  </script>  
+</body>
+</html>

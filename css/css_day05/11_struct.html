@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		p{
+			width: 100px;
+			height: 100px;
+			background: #ff0;
+		}
+		p:first-child{
+			color: #f00;
+		}
+		p:last-child{
+			color: #00f;
+		}
+		p:nth-child(3){
+			color: #f0f;
+		}
+		table{
+			width: 400px;
+			height: 400px;
+		}
+		table td{
+			border: 1px solid #000;
+		}
+		tr:first-child{
+			background: blue;
+		}
+		tr:last-child{
+			background: yellow;
+		}
+		tr:nth-child(3) td:nth-child(2){
+			background: red;
+		}
+		p:empty{
+			width: 200px;
+			height: 200px;
+			background: #e34f6a;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<div>
+		<p>大娃</p>
+		<p>二娃</p>
+		<p>三娃</p>
+		<p>四娃</p>
+		<p>五娃</p>
+		<p>六娃</p>
+		<p>七娃</p>
+		<p>爷爷</p>
+		<p>爷爷</p>
+		<p></p>
+	</div>
+</body>
+</html>

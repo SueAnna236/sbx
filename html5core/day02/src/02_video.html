@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- video 完整示例 -->
+  <div id="box" style="width:100%;height:100%">
+    <video id="v3" src="../res/x.mp4" controls webkit-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint"></video>
+  </div>
+  <script>
+    // 1：解决全屏播放方向错位
+    var v3 = document.getElementById("v3");
+    // 2：监听方向修改
+    window.onresize = function(){
+      v3.style.width = window.innerWidth+"px";
+      v3.style.height = window.innerHeight+"px";
+    }
+    // 3：canplaythrough
+    v3.addEventListener("canplaythrough",function(){
+      console.log("1:canplaythrough");
+      console.log("总时长："+v3.duration)
+    })
+    // 4：timeupdate
+    v3.addEventListener("timeupdate",function(){
+      console.log("2:timeupdate");
+      console.log(v3.currentTime);
+    })
+    // 5：ended
+    v3.addEventListener("ended",function(){
+      console.log("3:播放事件：结束")
+    })
+  </script>
+  
+</body>
+</html>

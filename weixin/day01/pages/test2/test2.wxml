@@ -1,0 +1,18 @@
+<!--pages/test2/test2.wxml-->
+<view class='container1'>
+  <text selectable='selectable'>用户登陆</text>
+  <form>
+    <view>
+      用户名：
+      <input type='text'></input>    
+    </view>
+    <view>
+      密码：
+      <input type='password'></input>    
+    </view>
+    <view>
+      <button>登录</button>   
+    </view>      
+  </form>
+</view>
+

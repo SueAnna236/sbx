@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>lianxi2</h1>
+  <script>
+    // 读取存储在客户端的Cookie数据
+    var arr = document.cookie.split('; ');
+    var cookieObj = {};
+    arr.forEach((str)=>{
+      var pair = str.split('=');
+      cookieObj[pair[0]] = pair[1];
+    });
+    // 读取myFavBgColor这一个Cookie的值
+    document.body.style.background = cookieObj.myFavBgColor;
+
+  </script>
+  
+</body>
+</html>

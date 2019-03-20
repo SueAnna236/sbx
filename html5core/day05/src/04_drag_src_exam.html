@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{position: relative;margin: 0}
+    #p3{position: absolute;}
+  </style>
+</head>
+<body>
+  <!-- 练习：使用拖动源对象提供的三个事件 实现“可以随鼠标推动而移动的小飞机” -->
+  <h3>拖动操作——源对象触发3个事件</h3>
+  <img src="../../res/p3.png" id="p3">
+  <script>
+    var p3 = document.getElementById("p3");
+    var startX = 0;//保存鼠标在小飞机上的偏移量
+    var startY = 0;//拖动开始
+    p3.ondragstart = function(e){
+      startX = e.offsetX;//鼠标相对图片的偏移量
+      startY = e.offsetY;
+      console.log("1: dragstart")
+    }
+    p3.ondrag = function(e){
+      var x = e.clientX;
+      var y = e.clientY;
+      console.log(x+":"+y)
+      //console.log("2: drag")
+      if(x == 0 && y == 0){return}
+      p3.style.left = (x-startX)+"px";
+      p3.style.top = (y-startY)+"px";
+    }
+    p3.ondragend = function(){
+      console.log("3: dragend")
+    }
+  </script>
+</body>
+</html>

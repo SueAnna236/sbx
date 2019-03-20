@@ -1,0 +1,25 @@
+/* pages/profile/profile.wxss */
+/* 1：头像 */
+.avatar{
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ED712F;
+}
+.avatar image{
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 50%;
+  border: 4px solid rgba(0,0,0,0.2);
+}
+/* 项目的条目 */
+.cell{
+  background: #fff;
+  font-size: 16px;
+}
+.cell-item{
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #ddd;
+}

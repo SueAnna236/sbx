@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str="   zhang   dong    ";
+        function ltrim(str){//删除str开头的空字符
+            return str=str.replace(/^\s+/,"");
+        }
+        console.log(`|${ltrim(str)}|`);
+        function rtrim(str){//删除str结尾的空字符
+            return str=str.replace(/\s+$/,"");
+        }
+        console.log(`|${rtrim(str)}|`);
+        function trim(str){//删除str开头和结尾的空字符
+            return str=str.replace(/^\s+|\s+$/g,"")
+        }
+        console.log(`|${trim(str)}|`)
+    </script>
+</body>
+</html>

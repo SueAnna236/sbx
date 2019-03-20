@@ -1,0 +1,56 @@
+.my_rounded, .rounded_shadow {
+  border: 1px solid red;
+  border-radius: 2px;
+  background: #0000ff; }
+
+.rounded_shadow {
+  box-shadow: 0 0 10px; }
+
+p {
+  box-shadow: 0 0 50px 20px #f00;
+  -moz-box-shadow: 0 0 50px 20px #ff0000;
+  -ms-box-shadow: 0 0 50px 20px #ff0000;
+  -o-box-shadow: 0 0 50px 20px #ff0000;
+  -webkit-box-shadow: 0 0 50px 20px #ff0000; }
+
+h5 {
+  box-shadow: 0 0 5px #f00;
+  -moz-box-shadow: 0 0 5px 2px #f00;
+  -ms-box-shadow: 0 0 5px 2px #f00;
+  -o-box-shadow: 0 0 5px 2px #ff0000;
+  -webkit-box-shadow: 0 0 5px 2px #ff0000; }
+
+h3 {
+  box-shadow: 0 0 5px #f00;
+  -moz-box-shadow: 0 0 5px 2px #f00;
+  -ms-box-shadow: 0 0 5px 2px #f00;
+  -o-box-shadow: 0 0 5px 2px #ff0000;
+  -webkit-box-shadow: 0 0 5px 2px #ff0000; }
+
+#btn1 {
+  background: #0aa1ed;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin: 20px;
+  text-decoration: none;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  line-height: 50px; }
+
+#btn2 {
+  background: #0aa1ed;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin: 20px;
+  text-decoration: none;
+  width: 150px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px; }
+
+/*# sourceMappingURL=03.css.map */

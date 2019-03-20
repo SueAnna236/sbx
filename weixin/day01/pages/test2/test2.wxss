@@ -1,0 +1,13 @@
+/* pages/test2/test2.wxss */
+/* 在小程序的组件中不需要显示引入test2.wxss test2.js */
+/* 小程序自动打包引入 */
+.container1{
+  width: 100%;
+  border: 2px solid #ddd;
+  padding-top: 20rpx;
+  background-color: #fff;
+  font-size: 14px;
+}
+.container1 text{
+  color: #ff0000;
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+	/*
+		.fr {
+			color: red;
+		}
+		p.bg {
+			background: black;
+		}
+		#s1 {
+			color: #663300;
+		}
+		#pur {
+			color: purple;
+			font-style: italic;
+		}
+		#pur,span,.fr{
+			background: #ccffee;
+		}
+		div p span{
+			color: purple;
+		}
+		*/
+		div span{
+			color: red;
+		}
+		div>span{
+			color: yellow;
+		}
+		div p span{
+			color: purple;
+		}
+		#a1:link{/*a标签被点击之前的状态*/
+			color: red;
+		}
+		#a1:visited{
+			color: #999;
+		}
+		img:hover{
+			width: 500px;
+		}
+		#btn:active{
+			background: purple;
+			color: yellow;
+		}
+		#txt:focus{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="激活">
+	<img src="image/06.png" alt="bingbing">
+	<img src="image/07.png" alt="bingbing">
+	<img src="image/08.png" alt="bingbing">
+
+	<a href="http://www.sina.com.cn" id="a1">新浪</a>
+
+	<hr>
+	<hr>
+	<div>
+		<p>1111
+			<span>2222222222222</span>
+		</p>
+		<span>3333333333333333333</span>
+	</div>
+
+	<div>
+		<span>大家肯定好看就好</span>
+		<p>点附近开了
+			<span>llkl得到</span>
+		</p>
+	</div>
+	<h2 id="pur">4.ID选择器
+设置指定id元素的样式（专属样式）
+#id 值{}
+<any id="id 值"></any></h2>
+	<div >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis commodi at magni iusto aliquid reiciendis vero qui consectetur expedita voluptate laudantium quasi maiores ipsum eaque tenetur itaque obcaecati! Velit suscipit.</div>
+	<span id="s1">（1）声明，必须以点（.）开头，点是不能省略的
+（2）引用的时候，直接写在class中，没有电
+（3）类名不能以数字开头
+（4）类名不能包含特殊字符（除了-、_）
+特殊用法1：多类选择器
+让元素同时引用多个类</span>
+	<div class="fr">规范了页面中哪些元素能够使用定义好的样式，为了匹配元素
+可以把选择器看成匹配规则，符合规则的标签就能够应用样式</div>
+	<p class="fr bg">定义页面上某个或某类元素的样式（公共的样式，谁都可以使用）
+特点：通过元素的class属性来引用的</p>
+</body>
+</html>

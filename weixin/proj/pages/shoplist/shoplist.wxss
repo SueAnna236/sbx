@@ -1,0 +1,63 @@
+/* pages/shoplist/shoplist.wxss */
+/* 1：组件白色背景 */
+page{
+  background: #fff;
+}
+/* 2：当前一个商品的条目 */
+.shop{
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1px solid #f1f1f1;
+  /* 定位打分的组件 父元素相对定位 子元素绝对定位 */
+  position: relative;
+}
+/* 3：当前商品的图片 */
+.shop-img{
+  width: 160rpx;
+  height: 158rpx;
+  margin-right: 20rpx;
+}
+/* 4：商品信息 */
+.shop-info{
+  width: 380rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+/* 5：店铺名称 */
+.shop-title{
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+/* 6：店铺电话 */
+.shop-tel{
+
+}
+/* 7：店铺地址 */
+.shop-address{
+  font-size: 12px;
+
+}
+/* 8：店铺营业时间 */
+.shop-time{
+
+}
+/* 9：打分 */
+.shop-star{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+.star-after{
+  color: #e2e2e2;
+}
+.star-brfore{
+  color: #f19e38;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}

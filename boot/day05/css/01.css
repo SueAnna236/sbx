@@ -1,0 +1,21 @@
+#content div.top {
+  background: #f00; }
+  #content div.top h1 {
+    color: #f00; }
+  #content div.top p {
+    font-size: 16px; }
+    #content div.top p a {
+      color: #f00; }
+      #content div.top p a:hover {
+        color: #fdf; }
+
+#content div.middle {
+  background: #f00; }
+
+nav a, aside a, footer a {
+  color: #d1ecf3; }
+
+nav {
+  border-style: solid;
+  border-width: 38px;
+  border-color: #0000ff; }

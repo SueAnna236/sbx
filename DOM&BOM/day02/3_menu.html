@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/1.css" />
+</head>
+<body>
+  <ul class="tree">
+		<li>
+			<span class="open">考勤管理</span>
+			<ul>
+				<li>日常考勤</li>
+				<li>请假申请</li>
+				<li>加班/出差</li>
+			</ul>
+		</li>
+		<li>
+			<span>信息中心</span>
+			<ul>
+				<li>通知公告</li>
+				<li>公司新闻</li>
+				<li>规章制度</li>
+			</ul>
+		</li>
+		<li>
+			<span>协同办公</span>
+			<ul>
+				<li>公文流转</li>
+				<li>文件中心</li>
+				<li>内部邮件</li>
+				<li>即时通信</li>
+				<li>短信提醒</li>
+			</ul>
+		</li>
+  </ul>
+  <script>
+    //查找触发事件的span
+    var spans=document.querySelectorAll("ul.tree>li>span");
+    //为每个span绑定单击事件
+    for(var sp of spans){
+      sp.onclick=function(){
+        var span=this;
+        //如果当前span自己是开着的
+        if(span.className=="open"){
+          span.className="";//只要关上自己
+        }else{//否则
+          //找ul下开着的span
+          var openSpan=document.querySelector("ul.tree>li>span.open");
+          //如果找不到
+          if(openSpan!=null){
+            //关上的开着的span
+            openSpan.className="";
+          }
+          span.className="open";//将自己打开
+        }
+      }
+    }
+  </script>
+</body>
+</html>

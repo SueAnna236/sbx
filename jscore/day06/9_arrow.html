@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  /*
+  var arr1=[12,3,23,123,2,1];
+  arr1.sort(function(a,b){return a-b;});
+  console.log(arr1);
+  */ 
+  var arr1=[12,3,23,123,25,13];
+  arr1.sort((a,b)=>a-b);
+  console.log(arr1);
+
+  /*
+  var str="you can you up";
+  str=str.replace(/\b[a-z]/ig,function(kword){
+    return kword.toUpperCase();
+  });
+  console.log(str);
+  */ 
+  var str="you can you do";
+  str=str.replace(/\b[a-z]/ig,kword=>kword.toUpperCase());
+  console.log(str);
+
+  /*
+  var arr2=[1,2,3,4,5];
+  arr2.forEach(function(elem,i,arr){
+    arr[i]=elem*2;
+  });
+  console.log(arr2);
+  */ 
+  var arr2=[1,2,3,4,5];
+  arr2.forEach((elem,i,arr)=>arr[i]=elem*2);
+  console.log(arr2);
+
+  /*
+  var arr3=[1,2,3,4,5];
+  var evens=arr3.filter(function(elem){
+    return elem%2==0;
+  });
+  console.log(evens);
+  */ 
+  var arr3=[1,2,3,4,5];
+  var evens=arr3.filter(elem=>elem%2==0);
+  console.log(evens);
+
+  /*
+  (function(){
+    var start=new Date();
+    console.log(`开始加载页面内容,at:${start.toLocaleString()}`);
+  })()
+  var n=1;
+  setInterval(function(){
+    console.log(n++);
+  },1000);
+  */ 
+  (()=>{
+    var start=new Date();
+    console.log(`开始加载页面内容，at：${start.toLocaleString()}`);
+  })();
+  var n=1;
+  setInterval(()=>console.log(n++),1000);
+  </script>
+</body>
+</html>

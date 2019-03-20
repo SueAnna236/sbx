@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h3>获取修改数据</h3>
+  <script>
+    var name1 = sessionStorage.getItem("name1");
+    var car1 = sessionStorage.getItem("car1");
+    var car2 = sessionStorage.getItem("car2");
+    var car3 = localStorage.getItem("car3");
+    console.log(car3)
+    console.log(sessionStorage.length);
+    sessionStorage.removeItem("car1");
+    console.log(sessionStorage.length)
+    var key = sessionStorage.key(1);
+    console.log(key)
+  </script>
+  
+</body>
+</html>

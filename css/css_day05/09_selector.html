@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		p+span{
+			color: #f00;
+			font-size: 40px;
+		}
+		p~span{
+			color: #0f0;
+			font-size: 44px;
+		}
+		h3+div{
+			margin-top: 30px;
+		}
+		div~div{
+			margin-top: 10px;
+		}
+		p[id]{
+			color: #f0f;
+		}
+		[class][title]{
+		 color: #afafaf;
+		 font-size: 24px;
+		}
+		[class='c']{
+			color: #567de4;
+			font-size: 56px;
+		}
+		[title^='s']{
+			color: #0ff;
+			font-size: 38px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p id="p1">大力娃</p>
+		<h3>二娃</h3>
+		<span id="d1">三娃</span>
+		<p class="c" title="看看看">火娃</p>
+		<p class="c">七娃</p>
+		<span id="one">爷爷</span>
+		<b>蛇精</b>
+		<div>穿山甲</div>
+		<h4 title="shuisshjk">蝎子精</h4>
+	</div>
+	<hr>
+	<h3>静夜思</h3>
+	<div>床前明月光，</div>
+	<div>疑是地上霜。</div>
+	<div>举头望明月，</div>
+	<div>低头思故乡。</div>
+</body>
+</html>

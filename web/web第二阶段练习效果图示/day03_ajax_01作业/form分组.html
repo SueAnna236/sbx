@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style></style>
+ </head>
+ <body>
+    <form action="" method="post">
+	   <fieldset>
+	    <legend>用户基本信息</legend>
+	    <p>
+	    用户名称：<input type="text" name="uname" maxlength="8" placeholder="请输入您的用户名称" >
+		</p>
+		<p>用户密码：<input type="password" name="upwd" placeholder="请输入用户密码" value="123456" readonly maxlength="12"></p>
+		<p>
+		  用户性别：<input type="radio" name="gender" checked value="1" id="man">
+		  <label for="man">男</label>
+
+		 <input type="radio" name="gender" value="0" id="woman">
+		  <label for="woman">女</label>
+		</p>
+	  </fieldset>
+		<p>
+		  用户爱好：<input type="checkbox" name="hobby[]" value="eat" id="eat">
+		  <label for="eat">吃</label>
+
+		  <input type="checkbox" name="hobby[]" value="drink">喝
+		  <input type="checkbox" name="hobby[]" value="play">玩
+		  <input type="checkbox" name="hobby[]" value="happy">乐
+		</p>
+        <p>
+		  <input type="hidden" value="10" name="uid">
+		</p>
+		<p>
+		  选择头像：<input type="file">
+		</p>
+		<p>
+		  自我介绍：<textarea name="intro" cols="20" rows="5" readonly></textarea>
+		</p>
+		<p>工作城市：
+		   <select name="city" size="3" multiple>
+		      <option value="bj">北京</option>
+		      <option value="sh" selected>上海</option>
+		      <option value="sz">深圳</option>
+		      <option value="xa">西安</option>
+		   </select>
+		</p>
+	    <p>
+		  <input type="submit" value="登录">
+		  <input type="reset" value="重填">
+		  <input type="button" value="普通按钮" onclick="sayHello()">
+		</p>
+		
+	</form>
+	
+	<script>
+	  function sayHello(){
+	    alert("123456");
+	  }
+	</script>
+ </body>
+</html>

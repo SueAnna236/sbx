@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 850px;
+      height: 420px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
+    .form{
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      opacity: 0.6;
+    }
+    .bgVideo{
+      position: absolute;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <h3>创建表单，背景循环播放视频</h3>
+  <div class="container">
+    <div class="form">
+      <form action="#" id="form1">
+        用户名<input type="text" autofocus name="uname" placeholder="请输入用户名" required minlength="6" maxlength="12"><br>
+        密码<input type="password" name="upwd" placeholder="请输入密码"><br>
+        <input type="submit" value="注册">
+      </form>   
+    </div>
+    <div class="bgVideo">
+      <video src="../../res/x.mp4" loop muted autoplay></video>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <select v-model="selected">
+        <option v-for="p in vOptions" :value="p.value">{{p.text}}</option>
+      </select>
+      <p>你的选项是：{{selected}}</p>
+    </div>
+    <div>
+      <input type="radio" v-model="picked" :value="value">
+      <label>单选按钮</label>
+      <p>{{picked}}</p>
+      <p>{{value}}</p>
+    </div>
+    <div>
+      <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+      <label>复选框</label>
+      <p>{{toggle}}</p>
+      <p>{{value1}}</p>
+      <p>{{value2}}</p>
+    </div>
+    <div>
+      <select v-model="selects">
+        <option :value="{number: 123}">123</option>
+      </select>
+      <p>{{selects.number}}</p>
+    </div>
+    <div>
+      <input type="text" v-model.lazy="message">
+      <p>{{message}}</p>
+    </div>
+    <div>
+      <input type="number" v-model.number="num">
+      <p>{{ typeof num }}</p>
+    </div>
+    <div>
+      <input type="text" v-model.trim="trimV">
+      <p>{{trimV}}</p>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        trimV: '',
+        num: 123,
+        message: '',
+        selects: '',
+        toggle: false,
+        value1: 'a',
+        value2: 'b',
+        picked: false,
+        value: 122539,
+        selected: 'html',
+        vOptions: [
+          {
+            text: 'HTML',
+            value: 'html'
+          },
+          {
+            text: 'JavaScript',
+            value: 'js'
+          },
+          {
+            text: 'CSS',
+            value: 'css'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

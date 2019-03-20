@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <select v-model="city">
+      <option selected>-请选择-</option>
+      <option value="../imgs/bj.jpg">北京</option>
+      <option value="../imgs/hz.jpg">杭州</option>
+      <option value="../imgs/sh.jpg">上海</option>
+    </select>
+    <hr>
+    <img :src="city" alt="请选择城市图片">
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        city:"-请选择-"
+      }
+    })
+  </script>
+  
+</body>
+</html>

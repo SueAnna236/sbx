@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>定义多个组件联动</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app"><todo></todo></div>
+  <template id="tplTodo">
+    <div>
+      <h1>待办事项列表</h1>
+      <hr>
+      <todo-add @add="add"></todo-add>
+      <todo-list :tasks="tasks"></todo-list>
+    </div>
+  </template>
+  <template id="tplTodoAdd">
+    <div>
+      <input type="text" v-model="task"><button @click="add()">添加</button>
+    </div>
+  </template>
+  <template id="tplTodoList">
+    <ul>
+      <todo-item v-for="(task,i) in tasks" :key="" :i="i" :task="task" @del="del"></todo-item>
+    </ul>
+  </template>
+  <template id="tplTodoItem">
+  <li>{{i+1}} - {{task}} <button @click="del()">×</button></li>
+  </template>
+  <script>
+    var todoAdd={//<todo-add>
+      template:"#tplTodoAdd",
+      data(){
+        return {
+          task:""
+        }
+      },
+      methods:{
+        add(){
+          this.$emit("add",this.task);
+          this.task=""
+        }
+      }
+    };
+    var todoItem={//<todo-item>
+      template:"#tplTodoItem",
+      props:["i","task"],
+      methods:{
+        del(){//this.i传递参数
+          this.$emit("del",this.i);//$emit->触发
+        }
+      }     
+    };
+    var todoList={//<todo-list>
+      template:"#tplTodoList",
+      props:["tasks"],//准备接父组件给的tasks
+      components:{todoItem},
+              //todo-item
+      methods: {
+        del(i){//i必须写
+          this.tasks.splice(i,1)
+        }
+      },
+    };
+    Vue.component("todo",{//如果发现<todo>
+      template:"#tplTodo",//就用template id="tplTodo"代替
+      data(){
+        return {
+          tasks:["吃饭","睡觉","打亮亮"],
+        }
+      },
+      components:{todoAdd,todoList},
+                //todo-add,todo-list
+      methods:{
+        add(task){
+          this.tasks.push(task);
+        }
+      }
+    }); 
+  </script>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{}
+    })
+  </script>
+</body>
+</html>

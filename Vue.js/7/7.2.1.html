@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="parentMessage">
+    <my-component :message="parentMessage"></my-component>
+    <my-component warning-text="提示信息" msg="来自父组件的数据"></my-component>
+  </div>
+  <script>
+    Vue.component('my-component',{
+      props: [ 'message', 'warningText', 'msg' ],
+      template: '<div><h1>{{ message }}</h1><h1>{{ warningText }}</h1><h1>{{ msg }}</h1></div>'
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        parentMessage: ''
+      }
+    })
+  </script>
+  
+</body>
+</html>

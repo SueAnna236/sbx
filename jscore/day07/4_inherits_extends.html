@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  class Enemy{
+    //function Enemy(fname,speed){
+    constructor(fname,speed){
+      this.fname=fname;
+      this.speed=speed;
+    }
+    //Enemy.prototype.fly=function(){
+    fly(){
+      document.write(`${this.fname}以时速 ${this.speed} 飞行....<br>`);
+    }
+  }
+  class Plane extends Enemy{
+    //function Plane(fname,speed,score){
+    constructor(fname,speed,score){
+      //Enemy.call(this,fname,speed);
+      super(fname,speed);
+      this.score=score;
+    }
+    //Plane.prototype.getScore=function(){
+    getScore(){
+      document.write(`击落${this.fname} 得 ${this.score} 分 <br>`);
+    }
+  }
+    var f16=new Plane("F16",1000,5);
+    f16.fly();
+    f16.getScore();
+    console.log(f16)
+  </script>
+</body>
+</html>

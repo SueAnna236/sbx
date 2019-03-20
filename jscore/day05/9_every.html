@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var liang=[65,58,82];
+    var ran=[91,85,90];
+    var dong=[95,99,98];
+    function isBest(arr){
+      var bool=arr.every(function(elem,i,arr){
+        return elem>=90;
+      });
+      console.log(bool?"优秀":"一般");
+    }
+    isBest(liang);
+    isBest(ran);
+    isBest(dong);
+
+    var arr1=[1,2,3,2,1];
+    var arr2=[1,2,3,4,5,];
+    console.log(
+      arr1.every(function(elem,i,arr){
+        //如果没到在最后一个位置
+        return i<arr.length-1?elem<arr[i+1]:true;
+      }),
+      arr2.every(function(elem,i,arr){
+        return i<arr.length-1?elem<=arr[i+1]:true;
+      })
+    )
+  </script>
+</body>
+</html>

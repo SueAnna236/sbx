@@ -1,0 +1,8 @@
+$jd_red:#f10215;
+$my_border:1px solid $jd_red;
+$my_width:50%;
+p{
+  width: $my_width;
+  border: $my_border;
+  background: $jd_red;
+}

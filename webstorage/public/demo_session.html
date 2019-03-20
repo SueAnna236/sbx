@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/jquery-3.2.1.js"></script>
+</head>
+<body>
+  <h1>服务器端session的使用</h1>
+  <h2>用户登录</h2>
+  用户名：<input type="text" id="inputUname"><br>
+  <input type="button" value="登录" id="btLogin">
+  <script>
+    btLogin.onclick = function(){
+      $.ajax({
+        type:'GET',
+        url: '/login',
+        data: {uname: inputUname.value},
+        success: function(result){
+          if(result.code == 200){
+            location.href = 'demo_session2.html';
+          }else{
+            alert('用户名或者密码错误')
+          }
+        }
+      })
+    }
+  </script>
+</body>
+</html>

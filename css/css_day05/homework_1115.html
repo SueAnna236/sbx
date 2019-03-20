@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		ul{
+			list-style: none;
+		}
+		.banner{
+			width: 1000px;
+			height: 400px;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.banner ul.banner_img li{
+			float: left;
+		}
+		.banner a.ck_side{
+			width: 35px;
+			height: 70px;
+			border-radius: 5px;
+			top: 165px;
+			position: absolute;
+		}
+		.banner a.ck_left{
+			background: rgba(210,210,210,0.5) url("index/arrow-left.png") no-repeat center center;
+			left: 5px;
+		}
+		.banner a.ck_left:hover{
+			background: rgba(180,180,190,0.5) url("index/arrow-left.png") no-repeat center center;
+			left: 5px;
+		
+		}
+		.banner a.ck_right{
+			background: rgba(210,210,210,0.5) url("index/arrow-right.png") no-repeat center center;
+			right: 5px;
+		}
+		.banner a.ck_right:hover{
+			background: rgba(180,180,190,0.5) url("index/arrow-right.png") no-repeat center center;
+			right: 5px;
+		}
+		ul.ind{
+			width: 120px;
+			height: 20px;
+			position: absolute;
+			left: 440px;
+			bottom: 20px;
+		}
+		ul.ind li{
+			width: 10px;
+			height: 10px;
+			float: left;
+			border-radius: 50%;
+			background: #fff;
+			margin-right: 5px;
+		}
+		ul.ind li.active{
+			background: #0ca4ec;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul class="banner_img">
+			<li><a><img src="index/banner1.png"></a></li>
+			<li><a><img src="index/banner2.png"></a></li>
+			<li><a><img src="index/banner3.png"></a></li>
+			<li><a><img src="index/banner4.png"></a></li>
+		</ul>
+		<a href="" class="ck_side ck_left"></a>
+		<a href="" class="ck_side ck_right"></a>
+		<ul class="ind">
+			<li></li>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

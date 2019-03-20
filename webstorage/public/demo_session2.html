@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/jquery-3.2.1.js"></script>
+</head>
+<body>
+  <h1><span class="spanUname"></span>的用户中心</h1>
+  <p><span class="spanUname"></span>的余额：...</p>
+  <p><span class="spanUname"></span>的用户积分：...</p>
+  <script>
+    // 异步请求：获取保存在服务器端session中的登录用户信息
+    $.ajax({
+      url: '/logininfo',
+      success: function(result){
+        console.log(result);
+        $('.spanUname').text(result);
+      }
+    })
+  </script>
+</body>
+</html>

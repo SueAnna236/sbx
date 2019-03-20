@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    canvas{
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="120" height="30"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    // 1：创建背景图片 颜色随机
+    ctx.fillStyle = rc(180,230)
+    ctx.fillRect(0,0,120,30);
+    // 2：在图片添加4个随机字符
+    var pool = "ABCDEFGHIJKLMNOPQRST1234567890";
+    for(var i=0;i<4;i++){
+      var idx = rn(0,pool.length);
+      var c = pool[idx];
+      ctx.textBaseline = "top";
+      var fs = rn(10,30);
+      ctx.font = fs+"px SimHei";
+      ctx.fillStyle = rc(10,150)
+      ctx.fillText(c,i*30,10);
+    }
+    // 3：在图片添加5个干扰线
+    for(var i=0;i<5;i++){
+      ctx.beginPath();
+      ctx.moveTo(rn(0,120),rn(0,30));
+      ctx.lineTo(rn(0,120),rn(0,30));
+      ctx.strokeStyle = rc(0,255);
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    // 4：在图片添加50个干扰点
+    for(var i=0;i<50;i++){
+      ctx.beginPath();
+      ctx.fillStyle = rc(0,255);
+      ctx.arc(rn(0,120),rn(0,30),1,0,2*Math.PI);
+      ctx.fill();
+    }
+
+    // 返回指定范围内整型数
+    function rn(min,max){
+      var n = Math.random()*(max-min)+min;
+      return Math.floor(n);
+    };
+    // 返回指定范围内随机颜色
+    function rc(min,max){
+      var r = rn(min,max);
+      var g = rn(min,max);
+      var b = rn(min,max);
+      return `rgb(${r},${g},${b})`;
+    };
+  </script>
+</body>
+</html>

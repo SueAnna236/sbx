@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form action="" method="post">
+		<table cellspacing="10px">
+			<tr>
+				<td>用户名：</td>
+				<td>
+					<input type="text" name="uname">
+				</td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" name="upwd"></td>
+			</tr>
+			<tr>
+				<td>籍贯：</td>
+				<td>
+					<select name="address">
+						<option value="beijing">北京</option>
+						<option value="hebei">河北</option>
+						<option value="henan">河南</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>性别：</td>
+				<td>
+					<input type="radio" name="gender" value="m" id="gender_m"><label for="gender_m">男</label>
+					<input type="radio" name="gender" value="f" id="gender_f"><label for="gender_f">女</label>
+					<input type="radio" name="gender" value="no" id="gender_no" checked><label for="gender_no">不透露</label>
+				</td>
+			</tr>
+			<tr>
+				<td>头像：</td>
+				<td><input type="file" name="tx" enctype="multiple/form-data"></td>
+			</tr>
+			<tr>
+				<td colspan="2">愿意到以下城市工作：</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<select name="work" size="5">
+						<option value="beijing">北京</option>
+						<option value="hebei">河北</option>
+						<option value="henan">河南</option>
+						<option value="shenzhen" selected>深圳</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">留言：</td>
+				<td>
+					<textarea name="ly" cols="30" rows="10"></textarea>
+				</td>
+			</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input type="submit" value="登录">			
+				<input type="reset" value="重填">
+				<input type="button" value="普通按钮">
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input type="checkbox">不要公开我的信息
+			</td>
+		</tr>
+		</table>
+	</form>
+</body>
+</html>

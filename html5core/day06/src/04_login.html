@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* body{
+      margin: 0 auto;
+    }
+    div{
+      position: relative;
+    }
+    form{
+      position: absolute;
+      top: 35px;
+      left: 5%;
+
+    } */
+  </style>
+</head>
+<body>
+  <h3>登录页</h3>
+  <form action="">
+    用户名：<input type="text" id="uname"><br>
+    密码：<input type="password"><br>
+    <input type="button" value="登录" id="btn">
+  </form>
+
+  <script>
+    // 1：获取用户名和登录按钮元素
+    var btn = document.getElementById("btn");
+    var uname = document.getElementById("uname");
+    // 2：为登录按钮绑定点击事件
+    btn.onclick = function(){
+      // 3：保存用户名 sessionStorage
+      sessionStorage.setItem("uname",uname.value);
+      // 4：3s自动跳转 03_index.html
+      alert("3s后跳转回首页");
+      setTimeout(function(){
+        location.href = "03_index.html"
+      },3000)
+    }
+  </script>
+</body>
+</html>

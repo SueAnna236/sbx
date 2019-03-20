@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body onload="loadUsers()">
+	<table border="1px" width="800px">
+		<thead>
+			<th>登录名称</th>
+			<th>电子邮箱</th>
+			<th>联系方式</th>
+			<th>真实姓名</th>
+			<th>用户性别</th>
+			<th>更多操作</th>
+		</thead>
+		<tbody id="content">
+			
+		</tbody>
+	</table>
+	<script>
+		function loadUsers(){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					//console.log(result);
+					var users=JSON.parse(result);
+					var html='';
+					for (var i=0;i<users.length;i++)
+					{
+						html+="<tr>";
+						html+="<td>"+users[i].uname+"</td>";
+						html+="<td>"+users[i].email+"</td>";
+						html+="<td>"+users[i].phone+"</td>";
+						html+="<td>"+users[i].user_name+"</td>";
+						var gender="";
+						if (users[i].gender==1)
+						{
+							gender="男";
+						}else if (users[i].gender==0)
+						{
+							gender="女";
+						}else{
+							gender="不详";
+						}
+						html+="<td>"+gender+"</td>";
+						html+="<td>";
+						html+="<a href='javascript:deleteUser("+users[i].uid+")'>删除</a> | ";
+						html+="<a href='javascript:updateUser("+users[i].uid+")'>更新</a>";
+						html+="</td>";
+						html+="</tr>";
+					}
+					content.innerHTML=html;
+				}
+			}
+			xhr.open("get","/pro/list",true);
+			xhr.send(null);
+		}
+		function deleteUser(){
+			var xhr=new XMLHttpRequest(uid);
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					var users=JSON.parse(result);
+					console.log(uid);
+					
+				}
+			}
+			xhr.open("get","pro/list",true);
+			console.log(123145);
+			xhr.send(null);
+			console.log(uid);
+		}
+		function updateUser(uid){
+			console.log(uid);
+		}
+	</script>
+</body>
+</html>

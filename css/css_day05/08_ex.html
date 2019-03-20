@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		*{margin:0;padding:0;}
+		ul{
+			list-style: none;
+		}
+		.banner{
+			width: 1000px;
+			height: 400px;
+			margin: 0 auto;
+			/*为子元素的绝对定位做准备*/
+			position: relative;
+			overflow: hidden;
+		}
+		.banner ul.banner_img li {
+			float: left;
+		}
+		.banner a.ck-side{
+			width: 35px;
+			height: 70px;
+			position: absolute;
+			top:165px;
+			border-radius: 5px;
+		}
+		.ck-left{
+			background: rgba(100,100,100,0.5) url("index/arrow-left.png") no-repeat center center;
+			left: 5px;
+		}
+		.ck-right{
+			background: rgba(100,100,100,0.5) url("index/arrow-right.png") no-repeat center center;
+			right: 5px;
+		}
+		ul.ind{
+			width: 120px;
+			height: 20px;
+			position: absolute;
+			left: 440px;
+			bottom: 20px;
+		}
+		ul.ind li{
+			width: 10px;
+			height: 10px;
+			float: left;
+			background: #fff;
+			border-radius: 50%;
+			margin-right: 5px;
+		}
+		.banner li.active{
+			background: #0aa1ad;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+<!--大图-->
+		<ul class="banner_img">
+			<li><a href=""><img src="index/banner1.png" alt=""></a></li>
+			<li><a href=""><img src="index/banner2.png" alt=""></a></li>
+			<li><a href=""><img src="index/banner3.png" alt=""></a></li>
+			<li><a href=""><img src="index/banner4.png" alt=""></a></li>
+		</ul>
+<!--左右箭头-->
+		<a href="" class="ck-left ck-side"></a>
+		<a href="" class="ck-right ck-side"></a>
+<!--导航指示器-->
+		<ul class="ind">
+			<li></li>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	
+</body>
+</html>

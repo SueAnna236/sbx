@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>用户名称：
+		<input type="text" id="uname" onfocus="uname_focus()" onblur="uname_blur()">
+		<span id="showUname"></span>
+	
+	</p>
+	<p>用户密码：
+		<input type="password" id="upwd" onfocus="upwd_focus()" onblur="upwd_blur()">
+		<span id="showUpwd"></span>
+	</p>
+	<script>
+		function upwd_blur(){
+			if (upwd.value=='')
+			{
+				showUpwd.innerHTML="密码不能为空";
+			}else if (upwd.value.length>=8&&upwd.value.length<=16)
+			{
+				showUpwd.innerHTML="正确.通过";
+			}else{
+				showUpwd.innerHTML="您输入的密码超出范围";
+			}
+		}
+		//判断用户名是否为空
+		function uname_blur(){
+			if (uname.value=='')
+			{
+				showUname.innerHTML="用户名不能为空";
+			}else if (uname.value.length>=6&&uname.value.length<=12)
+			{
+				showUname.innerHTML="正确.通过";
+			}else{
+				showUname.innerHTML="您输入的内容超出范围";
+			}
+		}
+		//用户名文本框获取焦点调用的方法
+		function uname_focus(){
+			showUname.innerHTML="用户名在6到12位之间"
+		}
+		function upwd_focus(){
+			showUpwd.innerHTML="密码在8到16位之间";
+		}
+	</script>
+</body>
+</html>

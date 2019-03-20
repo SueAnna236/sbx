@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>用户注册页面</h1>
+	
+		<p>登录名称：
+			<input type="text" id="uname" onfocus="uname_focus()" onblur="checkuname()">
+			<span id="showUname"></span>
+		</p>
+		<p>登录密码：
+			<input type="password" id="upwd" onfocus="upwd_focus()" onblur="checkupwd()">
+			<span id="showUpwd"></span>
+		</p>
+		<p>用户邮箱：
+			<input type="email" id="email" onfocus="email_focus()" onblur="checkemail()">
+			<span id="showEmail"></span>
+		</p>
+		<p>联系方式：
+			<input type="text" id="phone" onfocus="phone_focus()" onblur="checkphone()">
+			<span id="showPhone"></span>
+		</p>
+		<p>真实姓名：
+			<input type="text" id="user_name">
+		</p>
+		<p>用户性别：
+			<select id="gender">
+				<option value="1">男</option>
+				<option value="0">女</option>
+				<option value="2">保密</option>
+			</select>
+		</p>
+		<p>
+			<input type="hidden" id="h_uid">
+			<input type="button" value="提交注册" onclick="register()">
+		</p>
+
+	<script>
+	var isregister=false;
+	//提交注册
+		function register(){
+			//1.获取所有input的值
+			//var urlParams=new URLSearchParams()
+			if (isregister==false)
+			{
+	console.log(158115);
+				alert("注册失败");
+			}else{
+				var input_uid=h_uid.value;			
+				//2.xhr四部曲
+				var xhr=new XMLHttpRequest();
+				//xhr.onreadystatechange=function(){
+					if (xhr.readyState==4&&xhr.status==200)
+					{
+						var result=xhr.responseText;
+						//console.log(result);
+						if (result==1)
+						//if (isregister)
+						{
+							alert("注册成功");
+							window.location.href="http://127.0.0.1:3000/02_list.html";
+						}//else{
+						//	alert("验证未通过");
+						//}
+							//跳转到用户列表列
+							//window.location.href="http://127.0.0.1:3000/02_list.html";
+					}
+				}
+				xhr.open("post","/pro/register",true);
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				var formdata="uname="+uname.value+"&upwd="+upwd.value+"&email="+email.value+"&phone="+phone.value+"&user_name="+user_name.value+"&gender="+gender.value;
+				xhr.send(formdata);
+			}
+		}
+/*
+		function checkuname(){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					console.log(result);
+					console.log(124541);
+					if (result==1)
+					{
+						showUname.innerHTML="可以注册";
+						isregister=true;
+					}else{
+						showUname.innerHTML="用户名被占用";
+						isregister=false;
+					}
+					if (uname.value=='')
+					{
+						showUname.innerHTML="用户名不能为空";
+						isregister=false;
+					}else if (uname.value.length<3)
+					{
+						showUname.innerHTML="用户名不能少于3位";
+						isregister=false;
+					}else if (uname.value.length>9)
+					{
+						showUname.innerHTML="用户名不能多于9位";
+						isregister=false;
+					}
+				}
+			}
+			xhr.open("get","/pro/checkUname?uname="+uname.value,true);
+			xhr.send(null);
+		}
+			*/
+		//验证用户名
+		function checkuname(){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					//console.log(result);
+					if (result==1)
+					{
+						showUname.innerHTML="可以注册";
+						return isregister=true;
+					}else{
+						showUname.innerHTML="用户名被占用";
+						return isregister=false;
+					}
+					if (uname.value=='')
+					{
+						showUname.innerHTML="用户名不能为空";
+						return isregister=false;
+					}else if (uname.value.length<3)
+					{
+						showUname.innerHTML="用户名不能少于3位";
+						return isregister=false;
+					}else if (uname.value.length>9)
+					{
+						showUname.innerHTML="用户名不能多于9位";
+						return isregister=false;
+					}
+				}
+			}
+			xhr.open("post","/pro/checkUname",true);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.send("uname="+uname.value);
+		}
+		//验证密码
+		function checkupwd(){
+			if (upwd.value=='')
+			{
+				showUpwd.innerHTML="密码不能为空";
+				isregister=false;
+			}else if (upwd.value.length<6)
+			{
+				showUpwd.innerHTML="密码长度不少于6位";
+				isregister=false;
+			}else if (upwd.value.length>16)
+			{
+				showUpwd.innerHTML="密码长度不多于16位";
+				isregister=false;
+			}else{
+				showUpwd.innerHTML="密码可以使用";
+				isregister=true;
+			}
+		}
+		//验证邮箱
+		function checkemail(){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					if (result==1)
+					{
+						showEmail.innerHTML="此邮箱可以注册";
+						isregister=true;
+					}else{
+						showEmail.innerHTML="此邮箱不可用";
+						isregister=false;
+					}
+					if (email.value=='')
+					{
+						showEmail.innerHTML="用户邮箱不能为空且必须格式正确";
+						isregister=false;
+					}else if (email.value.indexOf("@")!=-1)
+					{
+						showEmail.innerHTML="用户邮箱格式正确";
+						isregister=true;
+					}else{
+						showEmail.innerHTML="用户邮箱格式不正确";
+						isregister=false;
+					}
+				}
+			}
+			xhr.open("get","/pro/checkEmail?email="+email.value,true);
+			xhr.send(null);
+		}
+		//验证手机号码
+		function checkphone(){
+			var xhr=new XMLHttpRequest();
+					//console.log(124541);
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					if (result==1)
+					{
+						showPhone.innerHTML="此手机号码可以注册";
+						isregister=true;
+					}else{
+						showPhone.innerHTML="此手机号码不可用";
+						isregister=false;
+					}
+					if (phone.value=='')
+					{
+						showPhone.innerHTML="用户联系方式不能为空";
+						isregister=false;
+					}else if (phone.value.length==11)
+					{
+						showPhone.innerHTML="用户联系方式格式正确";
+						isregister=false;
+					}else{
+						showPhone.innerHTML="用户联系方式格式不正确";
+						isregister=false;
+					}
+				}
+			}
+			xhr.open("post","/pro/checkPhone",true);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.send("phone="+phone.value);
+		}
+		function uname_focus(){
+			showUname.innerHTML="用户名长度在6到9位之间";
+			isregister=false;
+		}
+		function upwd_focus(){
+			showUpwd.innerHTML="密码长度在8到16之间";
+			isregister=false;
+		}
+		function email_focus(){
+			showEmail.innerHTML="用户邮箱不能为空";
+			isregister=false;
+		}
+		function phone_focus(){
+			showPhone.innerHTML="联系方式不能为空";
+			isregister=false;
+		}
+	</script>
+</body>
+</html>

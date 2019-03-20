@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<p>MySQL支持的类型：数值类型、日期/时间类型、字符串类型。</p>
+<h4>惯例：</h4>
+<p><strong><em>M</em></strong> ：表示最大显示宽度。最大有效显示宽度是255.</p>
+<p><strong><em>D</em></strong> ：适用于浮点和定点类型，并表示小数点后面的位数。最大可能的值是30，但不应大于<strong><em>M</em></strong>-2.</p>
+<h2>11.1列类型概述</h2>
+<h3>11.1.1数值类型概述</h3>
+<p>SERIAL：BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE</p>
+<p>SERAIL DEFAULT VALUE：NOT NULL AUTO_INCRMENT UNIQUE</p>
+<ul>整数类型
+	<li>BIT[(<em>M</em>)]位字段类型：范围从1到64 。<em>M</em>被省略，默认为1。</li>
+	<li>TINYINT[(<em>M</em>)][UNSIGNED][ZEROFILL]很小的帧数：带符号的范围是-128到127。无符号的范围是0到255。</li>
+	<li>BOOL,BOOLEAN是TINYINT(1)的同义词。zero值被视为假，非zero值视为真。</li>
+	<li>SMALLINT[(<em>M</em>)][UNSIGNED][ZEROFILL]小的整数：带符号的范围是-32768到32768.无符号的范围是0 到65535。</li>
+	<li></li>
+</ul>
+
+</body>
+</html>

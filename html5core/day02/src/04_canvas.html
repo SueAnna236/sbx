@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    canvas{
+      background: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>绘图</h3>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    // ctx.lineWidth = 1 #描边宽度
+    // ctx.strokeStyle = "#fff" #描边样式
+    // ctx.fillStyle = "#fff" #填充样式
+    // ctx.strokeRect(x,y,w,h) #描边矩形
+    // ctx.fillRect(x,y,w,h) #填充矩形
+    // ctx.clearRect(x,y,w,h) #清除矩形范围内所有元素
+    // 50,50,100,80
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#f00"
+    ctx.strokeRect(50,50,100,80);
+
+    // 250,200,100,80 实心矩形
+    ctx.fillStyle = "#00f"
+    ctx.fillRect(250,200,100,80);
+
+    // 清除画布
+    ctx.clearRect(0,0,500,400);
+  
+  </script>
+  
+</body>
+</html>

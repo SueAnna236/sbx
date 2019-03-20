@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class='slider'>
+  <swiper autoplay='true' interval='2500' indicator-dots='true'>
+    <swiper-item wx:for='{{list}}' wx:key='{{id}}'>
+      <image lazy-load='true' mode='aspectFill' src='{{item.img_url}}'></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view bindtap="handleTap1">跳转下一个组件</view>
+<view bindtap="handleTap2">保留跳转到下一个组件</view>
+<!-- 将参数19传递 logs组件接收 -->
+<view bindtap="handleTap3" data-age='19'>保留跳转到下一个组件</view>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1.用外层函数包裹要保护的变量和内层函数
+    function outer(){
+      var i=1;
+      //2.外层函数将内层函数对象返回到外层
+      return function(){
+        console.log(i++)
+      }
+    }
+    //3.使用者调用外层函数获得返回的内层函数对象
+    var 取号机=outer();
+    console.dir(取号机)
+    //问题：outer()调用后，局部变量i=1应该释放
+    //但是，取号机->outer()->window
+    //所以，outer()调用后，局部变量i=1不释放
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+    取号机();
+  </script>
+</body>
+</html>

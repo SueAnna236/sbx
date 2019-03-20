@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <a v-bind:href="url">连接</a>
+    <img v-bind:src="imgurl">
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        url: "http://www.baidu.com",
+        imgurl: "https://p2.ifengimg.com/2019_09/0c0b3c4c-b52e-4ace-b851-ba0b57a2a8e1_D91F4FBA18CDFE2E7586EAE62864DA033668D57E_w1024_h703.jpg"
+      }
+    })
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 一行三列 flex 魔人布局 */
+    .father{
+      display: flex;
+      border: 1px solid #f00;
+      /* 默认子元素按行排列 */
+    }
+    /* 三行一列 */
+    .son{
+      width: 100px;
+      height: 100px;
+      background: pink;
+      border: 1px solid blue;
+    }
+    .father1{
+      display: flex;
+      border: 1px solid red;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <h3>移动端常用布局方式 flex 一行三列</h3>
+  <div class="father">
+    <div class="son"></div>
+    <div class="son"></div>
+    <div class="son"></div>
+  </div>
+  <div class="father1">
+    <div class="son"></div>
+    <div class="son"></div>
+    <div class="son"></div>
+  </div>  
+</body>
+</html>

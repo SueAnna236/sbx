@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .blue{background:#ddf;color:#33a}
+    .pink{background:#fdf;color:#a3a}
+    .dark{background:#333;color:#eee}
+  </style>
+</head>
+<body>
+  <!-- 练习2：用户喜欢个人风格
+    index.html 首页 选择用户喜欢的风格（保存-永久）“蔚蓝天空” “芭比公主” “暗黑主题”----样式
+    每个选项对应一个class名
+    .blue{background:#ddf;color:#33a}
+    .pink{background:#fdf;color:#a3a}
+    .dark{background:#333;color:#eee}
+    用户选中某项（select.onchange）为当前body应用指定样式
+    usercenter.html 用户中心 应用首页中选择的风格
+    打开此页面 应用与index.html相同的样式，即使重新启动浏览器直接访问usercenter.html -->
+  <h3>自定义风格</h3>
+  选择你喜欢的主体题：
+  <select id="sty">
+    <option value="k">--请选择主题--</option>
+    <option value="blue">蔚蓝天空</option>
+    <option value="pink">芭比公主</option>
+    <option value="dark">暗黑主题</option>
+  </select>
+  <script>
+    // 1：获取下拉列表
+    var sty = document.getElementById("sty");
+    // 2：绑定事件 onchange
+    sty.onchange = function(){
+      // 3：获取当前value
+      var v = this.value;
+      // 4：应用body className
+      document.body.className = v;
+      // 5：长期保存风格样式
+      localStorage.setItem("sty",v);
+    }
+    // 6：当页面加载成功后重新获取风格样式
+    var v = localStorage.getItem("sty");
+    // 7：如果获取成功应用body.className中
+    if (v){
+      document.body.className = v;
+    }
+  </script>
+</body>
+</html>

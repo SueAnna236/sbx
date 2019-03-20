@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .blue{background:#ddf;color:#33a}
+    .pink{background:#fdf;color:#a3a}
+    .dark{background:#333;color:#eee}
+  </style>
+</head>
+<body>
+  <h3>显示样式</h3>
+  <script>
+    // 1：获取样式风格
+    var v = localStorage.getItem("sty");
+    // 2：如果不为空
+    if(v){
+      // 3：将样式赋值className
+      document.body.className = v;
+      //console.log(document.body)
+    } 
+    // 4：监听localStorage数据是否发生修改
+    window.onstorage = function(){
+      var v = localStorage.getItem("sty");
+      document.body.className = v;
+    } 
+  </script>
+</body>
+</html>

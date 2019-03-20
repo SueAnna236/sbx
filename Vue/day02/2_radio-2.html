@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <input type="radio" :checked="picked">
+      <label>单选按钮</label>
+    </div>
+    <div>
+      <input type="radio" v-model="picked" value="html" id="html">
+      <label for="html">HTML</label>
+      <br>
+      <input type="radio" v-model="picked" value="js" id="js">
+      <label for="js">JavaScript</label>
+      <br>
+      <input type="radio" v-model="picked" value="css" id="css">
+      <label for="css">CSS</label>
+      <br>
+      <p>你的选项是：{{picked}}</p>
+    </div>
+    <div>
+        <input type="checkbox" v-model="checked" id="checked">
+        <label for="checked">选择状态：{{checked}}</label>
+      </div>
+      <div>
+        <input type="checkbox" v-model="chosed" value="html" id="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="checkbox" v-model="chosed" value="js" id="js">
+        <label for="js">JavaScript</label>
+        <br>
+        <input type="checkbox" v-model="chosed" value="css" id="css">
+        <label for="css">CSS</label>
+        <br>
+        <p>你的选项是：{{chosed}}</p>
+      </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        picked: 'js',
+        checked: 'false',
+        chosed: ['html','js']
+      }
+    })
+  </script>
+  
+</body>
+</html>

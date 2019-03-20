@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  
+</head>
+<body>
+  <script>
+    function add(){
+      //arguments[  ].length
+      //          0 1 2
+      var sum=0;
+      //遍历arguments中每个值
+      for (var i=0;i<arguments.length;i++){
+        //当前参数值累加到sum中
+        sum+=arguments[i];
+      }
+      return sum;
+    }
+    console.log(add(1,2,3),add(88,555,555,444,888,55,33,2566),add(44,5588,45522,8885,6,22,55));
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var lilei={
+      sname:"lilei",
+      sage:11
+    };
+    function clone(obj){
+      var newObj={};
+      for (var key in obj){
+        newObj[key]=obj[key];
+      }
+      return newObj;
+    }
+    var lilei2=clone(lilei);//克隆出一个新对象
+                          //var newObj()
+    var lilei3=lilei;
+    //  0x1234 0x1234
+    //只是将原对象的地址给对方，原对象还是只有一个
+    console.log(lilei);
+    console.log(lilei2);
+    //两个对象作比较，比的是地址值
+    console.log(lilei==lilei2);
+    console.log(lilei==lilei3);
+  </script>
+</body>
+</html>

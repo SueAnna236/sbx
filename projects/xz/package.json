@@ -1,0 +1,27 @@
+{
+  "name": "xz",
+  "version": "1.0.0",
+  "description": "this is a node test project",
+  "main": "app.js",
+  "scripts": {
+    "test": "node ./test.js",
+    "start": "node ./app.js",
+    "stop": "node ./bin/×××.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SueAnna236/xz.git"
+  },
+  "keywords": [
+    "node",
+    "webpack",
+    "demo",
+    "project"
+  ],
+  "author": "AnnaSue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SueAnna236/xz/issues"
+  },
+  "homepage": "https://github.com/SueAnna236/xz#readme"
+}

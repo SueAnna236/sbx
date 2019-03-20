@@ -1,0 +1,10 @@
+<!--pages/message/message.wxml-->
+<!-- 1：分页显示消息列表 -->
+<!-- 2：用户向上滑动操作 显示下一页 -->
+<view class='card' wx:for='{{list}}' wx:key='index'>
+  <text class='card-title'>{{item.title}}</text>
+  <text class='card-date'>{{item.ctime}}</text>
+  <image lazy-load='true' mode='aspectFill' class='card-image' src='{{item.img_url}}'></image>
+  <text class='card-desc'>{{item.desc2}}</text>
+  <text class='card-read arrow'>查看详情</text>
+</view>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    div{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #app{
+      width: 100%;
+      height: 100%;
+      background: pink;
+    }
+    #app>div{
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      background: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" @mousemove="move($event)">
+    <!-- <div :style="{left,top}"></div> -->
+    <div :style="divStyle" @mousedown="down($event)" @mouseup="up()"></div>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        // left:"100px",top:"50px"
+        divStyle:{
+          left:"100px",
+          top:"50px"
+        },
+        canMove:false,//是否可移动
+        offsetX:0,
+        offsetY:0,//开始拖拽时，鼠标距离小div左上角的位置
+      },
+      methods: {
+        down(e){
+          this.canMove=true;
+          this.offsetX=e.offsetX;
+          this.offsetY=e.offsetY;
+        },
+        up(){
+          this.canMove=false;
+        },
+        move(e){
+          if(this.canMove){
+            var left=e.clientX-this.offsetX;
+            var top=e.clientY-this.offsetY;
+            this.divStyle.left=left+"px";
+            this.divStyle.top=top+"px";
+          }
+        }
+      },
+    })
+  </script>
+</body>
+</html>

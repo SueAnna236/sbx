@@ -1,0 +1,11 @@
+/*pad*/
+body{
+    font: 16px "黑体";
+    margin: 0;
+    padding: 0;
+}
+.content{
+    color: #fff;
+    background: #f00;
+    font-size: 12px;
+}

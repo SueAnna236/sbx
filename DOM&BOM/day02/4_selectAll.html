@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>管理员列表</h2>
+	<table border="1px" width="500px">
+	  <thead>
+		<tr>
+			<th><input type="checkbox"/>全选</th>
+			<th>管理员ID</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>1</td>
+	  		<td>Tester</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>2</td>
+	  		<td>Manager</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>3</td>
+	  		<td>Analyst</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>4</td>
+	  		<td>Admin</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  </tbody>
+	</table>
+  <button>删除选定</button>
+  <script>
+    //1.查找触发事件的元素
+    var chbAll=document.querySelector("table>thead>tr>th:first-child>input");
+    //2.绑定单击事件
+    chbAll.onclick=function(){
+      var chbAll=this;
+      //查找tbody中每行第一个徒弟中的input
+      var chbs=document.querySelectorAll("table>tbody>tr>td:first-child>input");
+      //让每个chb的checked属性值和chbAll一致
+      for(var chb of chbs){
+        chb.checked=chbAll.checked;
+      }
+    }
+
+    //查找tbody中每行第一个td中的input
+    var chbs=document.querySelectorAll("table>tbody>tr>td:first-child>input");
+    //为每个chb绑定单击事件
+    for(var chb of chbs){
+      chb.onclick=function(){
+        var chb=this;
+        var chbAll=document.querySelector("table>thead>tr>th:first-child>input");
+        if(!chb.checked){//如果当前chb是未选中
+          chbAll.checked=false;//chbAll一定是未选中
+        }else{//否则
+          //查找其余chb中是否有未选中的
+          var unchecked=document.querySelector("table>tbody>tr>td:first-child>input:not(:checked)");
+          if(unchecked!=null){//如果有未选中的
+            chbAll.checked=false;//chbAll一定是未选中
+          }else{//否则
+            chbAll.checked=true;//chbAll一定是选中
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

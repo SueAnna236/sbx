@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  </style>
+</head>
+<body>
+
+<ul id="list">
+  <li>98</li>
+  <li>85</li>
+  <li>33</li>
+  <li>99</li>
+  <li>52</li>
+</ul>
+
+<script src="js/jquery-1.11.3.js"></script>
+<!-- <script>
+  //请给每个不足60分的成绩+10分，并将超过90分的成绩用绿色背景标识出来
+  $("#list>li").each((i,elem)=>{
+    var $li=$(elem)
+    var score=parseInt($li.html());
+    if(score>=90)
+      $li.css("background","green")
+    else if(score<60)
+      $li.html(score+10)
+  })
+
+  function add(){
+    //arguments
+    var sum=0;
+    $.each(arguments,(i,elem)=>{
+      sum+=elem
+    })
+    return sum;
+  }
+  console.log(
+    add(1,2,3), //6
+    add(1,2,3,4,5) //15
+  );
+</script> -->
+<script>
+  //遍历ul下的每个li
+  $("ul>li").each((i,elem)=>{
+    //每遍历一个li就执行一次function
+    //i是只当前的位置
+    //elem->当前的DOM元素
+    var $li=$(elem);
+    if($li.html()<60){
+      var score=parseFloat($li.html());
+      score+=10;//将当前li的内容+10分
+      $li.html(score);
+    }else if($li.html()>=90){
+      //将当前的li的背景色设置为绿色
+      $li.css("background","green")
+    }
+  })
+  
+  function add(...nums){
+    var sum=0;
+    $.each(nums,(i,value)=>sum+=value);
+    return sum;
+  }
+  console.log(add(2,3,1),add(55,5,666));
+
+</script>
+
+</body>
+</html>

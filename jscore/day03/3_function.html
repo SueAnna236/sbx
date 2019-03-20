@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function 家庭1(){
+      var 烤肠="家庭1自带的烤肠";
+      document.write(`吃<b>${烤肠}</b>——家庭1内<br>`)
+    }
+    家庭1();
+    if(window.烤肠!==undefined){
+      document.write(`吃<b>${烤肠}</b>——全局范围内<br>`)
+    }else{
+      document.write("<span style='color:red'>全局范围没有烤肠</span>")
+    }
+
+  </script>
+</body>
+</html>

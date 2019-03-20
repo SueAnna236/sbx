@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  
+</head>
+<body>
+  <div id="app">
+    <!-- 3. 用<template>内容代替这里 -->
+    <xz-counter></xz-counter>
+  </div>
+  <!-- 1.1 编写组件的HTML模板 -->
+  <template id="tplCounter">
+    <!-- 要求：只能有唯一的父元素 -->
+    <div>
+      <button @click="changeN(-1)">-</button><span>{{n}}</span><button @click="changeN(+1)">+</button>
+    </div>
+  </template>
+  <!-- 1.2 定义组件：监控#tplCounter的HTML内容 -->
+  <script>
+    Vue.component("xz-counter",{
+      template:"#tplCounter",
+      data(){
+        return {
+          n:1
+        }
+      },
+      methods: {
+        changeN(i){
+          this.n+=i;
+          if(this.n<=0){
+            this.n=1;
+          }
+        }       
+      }
+    })
+  </script>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+      }
+    })
+  </script>  
+</body>
+</html>

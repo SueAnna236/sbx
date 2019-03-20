@@ -1,0 +1,36 @@
+$a1:#f00;
+$a2:16px;
+#content{
+  div.top {
+    background: $a1;
+    h1 {
+      color: $a1;
+    }
+    p {
+      font-size: $a2;
+      a {
+        color: $a1;
+        &:hover {
+          color: #fdf;
+        }
+      }
+
+    }
+  }
+  div.middle{
+    background: $a1;
+  }
+}
+nav,aside,footer{
+  a{
+    color:#d1ecf3;
+  }
+}
+nav{
+  border: {
+    style: solid;
+    width: 38px;
+    color: #0000ff;
+  }
+}
+

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		table{
+			width: 900px;
+			color: #c0bbc4;
+			font-size: 12px;
+			border-bottom: 1px solid #ddd;
+		}
+		table th{
+			border-bottom: 1px solid #2f2f2f;
+			color: #797979;
+			padding: 5px 0;
+		}
+		table td a{
+			text-decoration: none;
+			color: #005aa0;
+		}
+		.one{
+			text-align: left;
+			width: 70%;
+		}
+		table td{
+			border-bottom: 1px dotted #ddd;
+			text-align: center;
+			padding: 5px 0;
+		}
+		#top{
+			width: 900px;
+			height: 30px;
+			background: #eee;
+			border: 1px solid #ddd;
+		}
+		#top>a{
+/*			float: left;*/
+/*让a标签变为行内块*/
+			display: inline-block;
+			width: 100px;
+			height: 30px;
+			text-decoration: none;
+			color: #005aa0;
+			font-size: 12px;
+			text-align: center;
+			line-height: 30px;
+		}
+		.active{
+			height: 32px !important;
+			background: #fff;
+			border-top: 2px solid #f00;
+			color: #f00 !important;
+			margin-top: -4px;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+			border-bottom: 1px solid #fff;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<img src="1.png" alt="">
+		<div id="top">
+			<a href="">网友讨论圈</a>
+			<a href="" class="active">晒单帖</a>
+			<a href="">讨论帖</a>
+			<a href="">问答帖</a>
+			<a href="">圈子帖</a>
+		</div>
+		<tr>
+			<th colspan="2" class="one">主题</th>
+			<th>回复/浏览</th>
+			<th>作者</th>
+			<th>时间</th>
+		</tr>
+		<tr>
+			<td colspan="2" class="one"><a href="">银灰色的，很酷</a></td>
+			<td class="center">0/0</td>
+			<td><a href="">2001年冬天</a></td>
+			<td>2014-11-19 13:56:40</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="one"><a href="">银灰色的，很酷</a></td>
+			<td>0/0</td>
+			<td><a href="">2001年冬天</a></td>
+			<td>2014-11-19 13:56:40</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="one blue"><a href="">银灰色的，很酷</a></td>
+			<td>0/0</td>
+			<td><a href="">2001年冬天</a></td>
+			<td>2014-11-19 13:56:40</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="one blue"><a href="">银灰色的，很酷</a></td>
+			<td>0/0</td>
+			<td><a href="">2001年冬天</a></td>
+			<td>2014-11-19 13:56:40</td>
+		</tr>
+	</table>
+</body>
+</html>

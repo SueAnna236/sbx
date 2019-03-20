@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .outer {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #3399ee;
+      background: #3399ee;
+      position: absolute;
+      /*设置top、left后使盒子的左上角处于页面的中心位置，要向使盒子的整体处于页面的中心位置，须向上移动(上外边距)盒子高的一半，向左移(左外边距)盒子宽的一半*/
+      top: 50%;
+      left: 50%;
+      margin-top: -150px;
+      margin-left: -250px;
+      text-align: center;
+      line-height: 200px;
+    }
+    .inner {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ee22ee;
+      background: #ff5533;
+      position: relative;
+      margin-top: -100px;
+      margin-left: -100px;
+      top: 50%;
+      left: 50%;      
+    }
+  </style>
+</head>
+<body>
+  <div class="outer">
+    <div class="inner">inner</div>
+  </div>  
+</body>
+</html>

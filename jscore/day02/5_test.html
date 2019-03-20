@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var reg=/^\d{6}$/;
+    var input=prompt("请输入密码（6位数字）");
+    var result=reg.test(input);
+    if (result){
+      document.write("<h1 style='color:green'>验证通过</h1>")
+    }else{
+      document.write("<h1 style='color:red'>验证未通过</h1>")
+    }
+  </script>
+</body>
+</html>

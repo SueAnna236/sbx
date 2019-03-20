@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <select name="pro" id="pro"></select>
+    <select name="city" id="city"></select>
+    <select name="country" id="country"></select>
+  </div>
+
+  <script>
+    window.onload = function(){
+      data = {"河北省":["邯郸","廊坊"],"北京":["海淀","朝阳"],"陕西":["延安","西安"]};
+      var pro = document.getElementById("pro");
+      for(var i in data){
+        // 创建option标签
+        var option_pro = document.createElement("option");
+        // 将data里的对象插入到id位置
+        option_pro.innerHTML = i;
+        pro.appendChild(option_pro);
+      }
+
+      var choice = (self.option[self.selectedIndex]).innerHTML;
+      var city = document.getElementById("city");
+      for(var i in data[choice]){
+        var option_city = document.getElement("option");
+        option_city.innerHTML = data[choice][i];
+        city.appendChild(option_city);
+      }
+    }
+
+  </script>
+  
+</body>
+</html>

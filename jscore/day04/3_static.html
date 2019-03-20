@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Product(pid,pname,price){
+      this.pid=pid;
+      this.pname=pname;
+      this.price=price;
+    }
+    //.save()将一个新建的商品保存到数据库去
+    Product.prototype.save=function(){//实例
+      console.log(`保存id为${this.pid}的商品到数据库`);
+    }
+    var p=new Product(1001,"macbook",6688);
+    p.save();
+    //.getById(id)按id查询出一个商品
+    Product.getById=function(id){//静态
+      console.log(`返回id为${id}的商品对象`);
+      return new Product(1001,"数据库中的MacBook",6688);
+    }
+    var p2=Product.getById(1001);
+  </script>
+</body>
+</html>

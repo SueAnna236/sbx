@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="echarts.min.js"></script>
+  <script src="jquery-1.11.3.js"></script>
+</head>
+<body>
+  <!-- 练习：销售统计图
+  1：app.js [{name:"东城",value:100},{name:"西城",value:190}，{name:"南城",value:150}，{name:"北城",value:120}]
+  2:11_echarts.html 依据服务器创建销售统计柱形图
+  -->
+  <h3>销售统计柱形图</h3>
+  <div id="main" style="width:600px;height:500px;"></div>
+  <script>
+    // 1：获取容器并且创建echarts对象
+    var main = document.getElementById("main");
+    var mychart = echarts.init(main);
+    // 2：发送ajax请求
+    $.ajax({
+      url:"http://127.0.0.1:3000/sales",
+      success:(res)=>{
+        console.log(res);
+        // 从获取的区域中：选择区域
+        var arealist = [];
+        var slist = [];
+        for(var item of res){
+          arealist.push(item.name);
+          slist.push(item.value);
+        }
+        // 3：创建option对象
+        var option = {
+          title : {
+            text:"销售统计柱形图"
+          },
+          xAxis : {data:arealist},
+          yAxis : {},
+          series : [{
+            type:"bar",
+            data: slist
+          }]
+        } 
+          // 4：将options对象添加到echarts对象中
+          mychart.setOption(option); 
+      }
+    });
+    
+    
+  </script>
+  
+</body>
+</html>

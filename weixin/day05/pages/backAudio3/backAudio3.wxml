@@ -1,0 +1,10 @@
+<!--pages/backAudio3/backAudio3.wxml-->
+<!-- 
+练习：背景音乐播放实现切换图片
+1：创建组件backAudio3
+2：创建图片元素
+3：图片实现切换效果并且并且背景音乐播放/暂停切换
+ -->
+ <view class='play'>
+  <image bindtap='onMusicTap' src="{{isPlaying?'http://127.0.0.1:3000/img/music-stop.png':'http://127.0.0.1:3000/img/music-start.png'}}" lazy-load='true' mode='aspectFill'></image>
+ </view>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<!-- 
+	<p>
+		<input type="text" name="pno" id="pno">
+	</p>
+-->
+	<input id="d" type="button" value="获取后端数据" onclick="getMsg()"><br><br>
+	<div id="d1"></div>
+	<script>
+		function getMsg(){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					//响应回来的结果是字符串
+					//js无法操作字符串中具体的对象
+					//这个字符串是json字符串，我们可以把这个字符串转化成json数组
+					var arr=JSON.parse(result);
+					var content='';
+					for (var i=0;i<arr.length;i++)
+					{
+						console.log(arr[i]);
+						console.log(arr[i].uname);
+						content+="<p>"+arr[i].uname+"</p>";
+					}
+					d1.innerHTML=content;
+					//console.log(result);
+				}
+			}
+			xhr.open("get","/demo/userlist",true);
+			//xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			//var input_d=d1.innerHTML;
+			
+			xhr.send(null);
+		}
+	</script>
+	<br>
+	
+</body>
+</html>

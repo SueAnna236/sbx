@@ -1,0 +1,8 @@
+<!--pages/login03/login03.wxml-->
+<view>
+  <form bindsubmit='checkForm'>
+    <view>用户名：<input type='text' name='uname' placeholder='请输入用户名'></input></view>
+    <view>密码：<input type='password' name='upwd' placeholder='请输入密码'></input></view>
+    <view><button type='button' formType='submit'>登录</button></view>
+  </form>
+</view>

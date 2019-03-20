@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    Student.prototype.intr=function(){
+      console.log(`I'm ${this.sname},I'm ${this.sage}`);
+    }
+    var lilei=new Student("lilie",11);
+    var hanmm=new Student("hanmm",12);
+    console.log(lilei);
+    console.log(hanmm);
+    lilei.intr();
+    hanmm.intr();
+    console.log(lilei.intr==hanmm.intr);
+    console.log(Student.prototype==lilei.__proto__);
+    console.log(Student.prototype==hanmm.__proto__);
+    console.log(lilei.__proto__==hanmm.__proto__);
+  </script>
+  
+</body>
+</html>

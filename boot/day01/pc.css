@@ -1,0 +1,11 @@
+/*pc*/
+body{
+    font: 16px "黑体";
+    margin: 0;
+    padding: 0;
+}
+.content{
+    color: #fff;
+    background: #0000ff;
+    font-size: 12px;
+}

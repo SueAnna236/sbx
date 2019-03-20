@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      body{
+        text-align: center;
+      }
+      canvas{
+        background: #dddddd;
+      }
+    </style>
+</head>
+<body>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d")
+    // 练习：左上角 右上角 左下角 右下角 居中位置五个秒板矩形，颜色不同 100*80
+    ctx.strokeStyle = "#f00";
+    ctx.strokeRect(0,0,100,80);
+    ctx.strokeStyle = "#f0f";
+    ctx.strokeRect(400,0,100,80);
+    ctx.strokeStyle = "#ff0";
+    ctx.strokeRect(0,320,100,80);
+    ctx.strokeStyle = "#000";
+    ctx.strokeRect(400,320,100,80);
+    ctx.strokeStyle = "#0f0";
+    ctx.strokeRect(200,160,100,80);
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title> 
+  <script src="./js/echarts.min.js"></script>
+</head>
+<body>
+  <h3>饼状统计图</h3>
+  <div id="main" style="width:600px;height:500px;"></div>
+  <script>
+    var main = document.getElementById("main");
+    var mychart = echarts.init(main);
+    var option = {
+      series : [{
+        type:"pie",
+        radius:"40%",
+        center:["50%","50%"],
+        data:[{value:255,name:"油条"},
+        {value:339,name:"豆浆"},
+        {value:224,name:"豆花"},
+        {value : 285,name : "油饼"},
+        {value : 325,name : "肉包子"},
+        {value : 175,name : "素包子"},
+        {value : 365,name : "豆包"}]
+      }]
+    };
+    mychart.setOption(option);
+  </script>
+</body>
+</html>

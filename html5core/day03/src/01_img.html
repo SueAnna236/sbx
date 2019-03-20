@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      text-align: center
+    }
+    canvas{background-color: #dddddd}
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    // 1：创建图片对象
+    var p3 = new Image();
+    // 2：下载图片
+    p3.src = "../../res/p3.png";
+    // 3：绑定下载成功的事件
+    p3.onload = function(){
+      var w = p3.width;
+      var h = p3.height;
+      // 4：绘制图片
+      ctx.drawImage(p3,250,200);
+      ctx.drawImage(p3,0,0,2*w,2*h)
+    }
+    
+  </script>
+</body>
+</html>

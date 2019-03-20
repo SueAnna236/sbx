@@ -1,0 +1,34 @@
+@import "myColor";
+#d2{
+  color: $myRed;
+}
+
+$myBlue:#0aa1ed;
+$fontColor:#fff;
+$myHeight:2.5rem;
+$myalign:0 auto;
+.mybtn{
+  width: 150px;
+  height: $myHeight;
+  color: $fontColor;
+  background: $myBlue;
+  margin: $myalign;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  padding-top: 1rem;
+  border-radius: 0.25rem;
+  &:hover{
+    color:#c3325f;
+  }
+}
+#d1{
+  width: 200px;
+  height: 200px;
+  background: #ff0000;
+  &:hover{
+    background: #ff0;
+    border-radius: 50%;
+    transition:all 2s linear;
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <select name="province" id="province">
+      <option> -- 请选择 -- </option>
+      <option value="山西省">山西省</option>
+      <option value="山东省">山东省</option>
+      <option value="河北省">河北省</option>
+      <option value="江苏省">江苏省</option>
+    </select>
+    <select name="city" id="city">
+      <option> -- 请选择 -- </option>
+    </select>
+  </div>
+
+  <script>
+    window.onload = function(){
+      var pro = document.getElementById("province");
+      pro.onchange = function(){
+        var city = document.getElementById("city");
+        var cityOptions = city.getElementsByTagName("option");
+        console.log(cityOptions)
+        /*
+        for(var i = 1; i < cityOptions.length; i++){
+          city.removeChild(cityOptions[i]);
+          i--;
+          console.log(city.cityOptions[i])
+        }
+        */
+        city.childNodes = "";
+        var province = this.value;
+        if(province == ""){
+          return;
+        }
+        var arr = [
+        [ "山西省", "忻州", "太原", "吕梁" ],
+        [ "山东省", "青岛", "烟台", "潍坊" ],
+        [ "河北省", "秦皇岛", "石家庄", "张家口" ],
+        ["江苏省", "南京", "南通", "苏州", "泰州"]
+        ];
+        for(var i = 0; i < arr.length; i++){
+          for(var j = 1; j < arr[i].length; j++){
+            if(province == arr[i][0]){
+              var cityText = arr[i][j];
+              console.log(cityText)
+              var cityTextNode = document.createTextNode(cityText);
+              var optionNode = document.createElement("option");
+              console.log(optionNode)
+              optionNode.appendChild(cityTextNode);
+              city.appendChild(optionNode);
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../src/css/style.css">
+  <script src="../src/js/vue.js"></script>
+  <script src="../src/js/index.js"></script>
+  <style>
+    #app{
+      height: 150px;
+    }
+    #app img{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <mt-swipe :auto="2500">
+      <mt-swipe-item v-for="item in list">
+        <img :src="item">
+      </mt-swipe-item>
+    </mt-swipe>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:function(){
+        return{
+          list:[
+            "../src/img/banner1.png",
+            "../src/img/banner2.png",
+            "../src/img/banner3.png",
+            "../src/img/banner4.png",
+          ]
+        }
+      }
+    })
+  </script>
+  
+</body>
+</html>

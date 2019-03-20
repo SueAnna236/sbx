@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>播放音频文件</h3>
+  <audio id="a3" src="../res/bg.mp3"></audio>
+  <input id="c3" type="checkbox">是否播放背景音乐
+  <script>
+    var a3 = document.getElementById("a3");
+    console.log(a3)
+    var c3 = document.getElementById("c3");
+    c3.onchange = function(){
+      var rs = this.checked;
+      if(rs){
+        a3.play();
+      }else{
+       a3.pause();
+      }
+    }   
+    
+  </script>
+</body>
+</html>

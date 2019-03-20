@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 300px;
+      height: 300px;
+      border: 1px solid #cccccc;
+      overflow: hidden;
+    }
+    .one{
+      float: left;
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="one">one</div>
+  </div>
+  <script>
+    var one = document.querySelector(".one");
+    one.addEventListener("touchstart",function(e){
+      console.log(1);
+    });
+    one.addEventListener("touchmove",function(e){
+      console.log(2);
+    });
+    one.addEventListener("touchend",function(){
+      console.log(3)
+    });
+  </script>
+  
+</body>
+</html>

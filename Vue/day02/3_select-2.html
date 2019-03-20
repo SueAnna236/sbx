@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- <div>
+      <select v-model="selected">
+        <option value="html">HTML</option>
+        <option value="js">JavaScript</option>
+        <option value="css">CSS</option>
+      </select>
+      <p>你的选项是：{{selected}}</p>
+    </div>
+    <div>
+      <select multiple v-model="chosed">
+        <option value="html">HTML</option>
+        <option value="js">JavaScript</option>
+        <option value="css">CSS</option>
+      </select>
+      <p>你的选项是：{{chosed}}</p>
+    </div> -->
+    <div>
+      <select v-model="vSelected">
+        <option v-for="p in vOptions" :value="p.vallue">{{p.text}}</option>
+      </select>
+      <p>你的选项是：{{vSelected}}</p>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        selected: 'html',
+        chosed: ['html','js'],
+        vSelected: 'html',
+        vOptions: [
+          {
+            text: 'HTML',
+            value: 'html'
+          },
+          {
+            text: 'JavaScript',
+            value: 'js'
+          },
+          {
+            text: 'CSS',
+            value: 'css'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

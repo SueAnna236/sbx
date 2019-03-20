@@ -1,0 +1,13 @@
+﻿Error: Can't set headers after they are sent.
+----使用了多次send
+
+RangeError: Invalid status code: 1
+----参数出错，如果写数字，会认为是状态码
+
+TypeError: path must be absolute or specify root to res.sendFile
+----类型错误，路径必须是完整的绝对路径
+
+
+Error: listen EADDRINUSE :::3000
+----端口被占用
+

@@ -1,0 +1,11 @@
+/*phone*/
+body{
+    font: 16px "黑体";
+    margin: 0;
+    padding: 0;
+}
+.content{
+    color: #fff;
+    background: #f0f;
+    font-size: 12px;
+}

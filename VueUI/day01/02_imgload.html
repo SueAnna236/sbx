@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../src/css/style.css">
+  <script src="../src/js/vue.js"></script>
+  <script src="../src/js/index.js"></script>
+</head>
+<style>
+  #app ul{
+    list-style: none;
+    background: #333333;
+    padding-left:0; 
+  }
+  #app ul img{
+    width: 100%;
+  }
+  /* 组件要求 旋转图片 */
+  #app ul img[lazy=loading]{
+    width: 100%;
+    height: 100px;
+    margin: auto;
+  }
+</style>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in list">
+        <img v-lazy="item">
+      </li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:function(){
+        return {
+          list:[
+            "../src/img/banner1.png",
+            "../src/img/banner2.png",
+            "../src/img/banner3.png",
+            "../src/img/banner4.png"
+          ]
+        }
+      }
+    })
+  </script>
+  
+</body>
+</html>

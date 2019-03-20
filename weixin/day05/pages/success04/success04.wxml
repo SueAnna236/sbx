@@ -1,0 +1,5 @@
+<!--pages/success04/success04.wxml-->
+<view>
+  欢迎回来：{{uname}}
+</view>
+<view bindtap='handleLogout'>退出登录</view>

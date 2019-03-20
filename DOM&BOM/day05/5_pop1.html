@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+ <head>
+	<meta charset="UTF-8">
+	<title>在当前显示区范围内实现点不到的小方块</title>
+	<style>
+		div{position:fixed;width:100px;height:100px;
+			background-image:url(images/xiaoxin.gif);
+      background-size:100%;
+		}
+	</style>
+	
+ </head>
+ <body>
+	<div id="pop"></div>
+	<script>
+	var canMove=false;//充当图片的开关
+	var offsetX,offsetY;
+	pop.onmousedown=function(e){
+		canMove=true;//打开 开关
+		//e.offsetX和e.offsetY是相对于pop左上角的
+		offsetX=e.offsetX,offsetY=e.offsetY;
+	}
+	pop.onmouseup=function(){
+		canMove=false;//关闭开关
+	}
+	//当鼠标在窗口中移动时
+	window.onmousemove=function(e){
+		//e.offsetX和e.offsetY是相对于文档显示区左上角的
+		if(canMove){
+			var x=e.clientX,y=e.clientY;
+			var top=y-offsetY,left=x-offsetX;
+			//pop.style.cssText=`top:${top}px;left:${left}px`;
+			pop.style.top=top+"px";
+			pop.style.left=left+"px";
+		}
+	}
+	</script>
+  <!-- <script>
+		var canMove=false,offsetX,offsetY;
+		pop.onmousedown=function(e){
+			canMove=true;
+			offsetX=e.offsetX;
+			offsetY=e.offsetY;
+		}
+		window.onmousemove=function(e){
+			if(canMove){
+				var top=e.clientY-offsetY;
+				var left=e.clientX-offsetX;
+				pop.style.top=top+"px";
+				pop.style.left=left+"px";
+			}
+		}
+		pop.onmouseup=function(){
+			canMove=false;
+		}
+	</script> -->
+ </body>
+</html>

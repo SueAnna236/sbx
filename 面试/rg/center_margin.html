@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 300px;
+      background: #653012;     
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="inner"></div>
+  </div>
+  <script>
+    var jsObj = {};
+    jsObj.testArray = [1,2,3,4,5]; 
+    jsObj.name = 'CSS3'; 
+    jsObj.date = '8 May, 2011';   
+    var str = JSON.stringify(jsObj);   
+    alert(str);//结果：{"testArray":[1,2,3,4,5],"name":"CSS3","date":"8 May, 2011"}
+    var str = '{"name":"小明","age":18}';
+    var json = JSON.parse(str);
+    console.log(json)
+    var json = eval("(" + str + ")");
+    console.log(json);
+    var json = (new Function("return " + str))();
+    console.log(json)
+  </script>
+</body>
+</html>

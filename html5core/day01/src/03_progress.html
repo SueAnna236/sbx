@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h3>进度条</h3>
+    <progress value="0.5" max="10"></progress>
+    <!-- 练习：实现一个可以动态前进的进度条 -->
+    <!-- 定时器+progress的value 到100%停止 -->
+    <progress value="0" id="p3"></progress>
+    <script>
+      //进度条 动态
+      //进度条 value 0.1 0.2 0.3
+      //1：获取操作的元素
+      var p3 = document.getElementById("p3");
+      //2：创建变量保存变量的值
+      var v = 0;//变化的值
+      //3：创建定时器
+      var t = setInterval(function(){
+      //3.1：修改变量
+        v += 0.1;
+      //3.2：修改进度条
+        p3.value = v;
+      //3.3：添加判断条件停止定时器       
+        if(v > 0.9){
+          clearInterval(t);
+        }
+      },1000);
+    </script>
+  
+  </body>
+</html>

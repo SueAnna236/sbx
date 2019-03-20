@@ -1,0 +1,11 @@
+<!--pages/exam/exam.wxml-->
+<text>pages/exam/exam.wxml</text>
+<view>
+  <text>事件绑定的方式</text>
+  <view class='cont'>
+    <view bindtap='handleTap1'>绑定tap1事件</view>
+    <view bindtap='handleTap2'>绑定tap2事件</view>
+    <view bindtap='handleTap3' data-id="9">绑定tap3事件</view>
+    <view bindtap='handleTap4' data-age="29" data-idx="101">绑定tap4事件</view>
+  </view>
+</view>

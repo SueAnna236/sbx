@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var json=["我艹","卧槽","我草","我曹","我去"];
+    //var reg=/json.join("|")/;
+    var reg=new RegExp(json.join("|"));
+    console.log(reg);
+    var msg="我去，你家真大!";
+    //var i=msg.search(reg);
+    //if (i!=-1){
+    if (reg.test(msg)){
+      console.log("发现敏感词，关小黑屋");
+    }else{
+      console.log(`成亮说：${msg}`);
+    }
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="static" :class="{ 'active': isActive, 'error': isError }">hello</div>
+    <div>
+      <div :class="classes">world</div>
+    </div>
+    <div :class="[activeCls, errorCls]">数组语法</div>
+    <div :class="[isActive ? activeCls: '',errorCls]">三元表达式</div>
+    <button :class="classC">点</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        activeCls: 'active',
+        errorCls: 'error',
+        isActive: true,
+        isError: false,
+        error: null,
+        size: 'large',
+        disabled: true
+      },
+      computed: {
+        classC: function(){
+          return [
+            'btn',
+            {
+              ['btn-' + this.size]: this.size !== '',
+              ['btn-disabled']: this.disabled
+            }
+          ]
+        },
+        classes: function(){
+          return {
+            active: this.isActive && !this.error,
+            'text-fail': this.error && this.error.type === 'fail'
+          }
+        }
+      },
+    })
+  </script>
+  
+</body>
+</html>

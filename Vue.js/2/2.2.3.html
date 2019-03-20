@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-if="show">这是一段文本</p>
+    <!-- <button v-on:click="handleClose">点击隐藏</button> -->
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        show: true
+      },methods: {
+        init: function(text){
+          console.log(text)
+        }
+      },
+      mounted() {
+        this.init("在初始化时调用")
+      }
+    });
+    vm.init("通过外部调用");
+  </script>
+</body>
+</html>

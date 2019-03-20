@@ -1,0 +1,13 @@
+/* pages/test3/test3.wxss */
+.contain{
+  text-align: center;
+}
+.pic{
+  width: 21rpx;
+  height: 21rpx;
+}
+.baidu{
+  width: 540rpx;
+  height: 258rpx;
+  margin: 0 auto;
+}

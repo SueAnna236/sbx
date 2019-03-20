@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function pay(){
+      if (arguments.length==1){
+        console.log(`现金结账：收您${arguments[0]}元`);
+      }else if (arguments.length==2){
+        console.log(`刷卡结账：卡号${arguments[0]}的银行卡扣款成功！`)
+      }else{
+        console.log("手机支付，请扫二维码");
+      }
+    }
+    pay(100);
+    pay("65531234","123456");
+    pay()
+  </script>
+</body>
+</html>

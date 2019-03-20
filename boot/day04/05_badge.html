@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <title>徽章$</title>
+  <style>
+    .breadcrumb-item + .breadcrumb-item::before {
+      content: ">";
+    }
+    .pagination>.page-item>.page-link{
+      border-radius: 0.25rem;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>进度条</h1>
+  <div class="progress">
+    <div class="progress-bar w-25 bg-danger"></div>
+  </div>
+  <!-- 条纹进度条-->
+  <div class="progress">
+    <div class="progress-bar w-50 bg-primary progress-bar-striped"></div>
+  </div>
+<!--条纹+动画-->
+  <div class="progress">
+    <div class="progress-bar w-100 bg-warning progress-bar-striped progress-bar-animated"></div>
+  </div>
+  <!-- 25%为红色，50%为黄色，75%为绿色，100%蓝色，都加动画条纹-->
+  <div class="progress">
+    <div class="progress-bar w-25 bg-danger progress-bar-striped progress-bar-animated"></div>
+
+    <div class="progress-bar w-50 bg-warning progress-bar-striped progress-bar-animated"></div>
+
+    <div class="progress-bar w-75 bg-success progress-bar-striped progress-bar-animated"></div>
+
+    <div class="progress-bar w-100 progress-bar-striped progress-bar-animated"></div>
+  </div>
+
+  <br/><br/>
+  <hr/>
+  <br/><br/><br/>
+  <h1>分页W</h1>
+  <div class="w-75">
+    <ul class="pagination pagination-sm justify-content-around w-50">
+      <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+    </ul>
+  </div>
+
+  <hr/>
+  <h1>分页</h1>
+  <ul class="pagination pagination-sm justify-content-around w-50">
+    <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+
+  </ul>
+
+  <br/><br/>
+  <h1>面包屑导航</h1>
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">首页</a></li>
+    <li class="breadcrumb-item"><a href="#">学习用品</a></li>
+    <li class="breadcrumb-item"><a href="#">笔记本电脑</a></li>
+    <li class="breadcrumb-item"><a href="#">戴尔燃7000</a></li>
+  </ul>
+
+  <br/><br/>
+  <h1>巨幕</h1>
+  <div class="jumbotron">
+    <h3>boot的组件课程</h3>
+    <p>就是考研时英文档次和记忆力</p>
+    <p>cu存在的</p>
+  </div>
+  <hr/>
+  <br/><br/>
+  <h1>徽章</h1>
+  <ul class="list-unstyled">
+    <li>收件箱
+      <a href="#" class="badge badge-danger badge-pill">11298</a>
+    </li>
+    <li>点赞
+      <a href="#" class="badge badge-warning badge-pill">98</a>
+    </li>
+    <li>踩
+      <a href="#" class="badge badge-success">454598</a>
+    </li>
+    <li>评论
+      <a href="#" class="badge badge-info badge-pill">98</a>
+    </li>
+  </ul>
+
+</div>
+</body>
+</html>

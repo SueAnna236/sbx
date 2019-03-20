@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      text-align: center
+    }
+    video{
+      width: 430px;
+      height: 380px;
+    }
+  </style>
+</head>
+<body>
+  <h3>播放视频文件</h3>
+  <!-- 控件 controls -->
+  <!-- 循环播放 loop -->
+  <!-- poster 封面图片 -->
+  <!-- muted 静音 -->
+  <!-- preload 加载数据 auto-默认自动加载数据，metadata-只加载元数据-->
+  <video id="v3" src="../../res/x.mp4" autoplay controls loop muted="false" poster="../../res/ad.png" preload="auto"><img src="../../res/pause.png"></video>
+  <hr>
+  <button id="btn2">播放视频</button>
+  <button id="btn3">暂停播放</button>
+  <script>
+    // volume: 1 范围0~1
+    // playbackRate: 1  回放速度 大于1-快放 小于1-慢放
+    var v3 = document.getElementById("v3");
+    v3.volume = 0.5;
+    v3.playbackRate = 2;
+    // paused = true 当前视频是否处于暂停状态 true-暂停
+    // play() 播放视频
+    var btn2 = document.getElementById("btn2");
+    btn2.onclick = function(){
+      v3.play()
+    }
+    // pause() 暂停播放
+    var btn3 = document.getElementById("btn3");
+    btn3.onclick = function(){
+      v3.pause()
+    }
+    // onplay  当前视频开始播放时触发的事件
+    v3.onplay = function(){
+      console.log("视频正在播放...")
+    }
+    // onpause 当前视频暂停播放触发的事件
+    v3.onpause = function(){
+      console.log("视频已经暂停...")
+    }
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		#d1{
+			background: #ff0;
+		}
+		#d2{
+			background: #0ff;
+/*			/*旋转了45度，位移了50px*/
+/*			transform: rotate(45deg) translate(50px);*/
+/*			/*旋转原点*/
+/*			transform-origin: bottom right;*/
+/*		位移	*/
+/*		缩放	*/
+				transform: scale(-2,0.5);
+		}
+		#d2:hover{
+				transform: translate(200px,200px);
+				transform: rotate(-60deg);
+				transform-origin: bottom right;
+		}
+	</style>
+</head>
+<body>
+	<div id="d1">参考元素</div>
+	<div id="d2">转换元素</div>
+</body>
+</html>

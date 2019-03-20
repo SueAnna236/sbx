@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div>
+		<h3>新用户注册</h3>
+		<form method="post" action="/demo/register">
+			<p>用户名称：
+				<input type="text" name="uname" id="uname" placeholder="请输入用户名" onfocus="uname_focus()" onblur="uname_blur()">
+				<span id="showUname"></span>
+			</p>
+			<p>登录密码：
+				<input type="password" name="upwd" id="upwd" placeholder="请输入密码" onfocus="upwd_focus()" onblur="upwd_blur()">
+				<span id="showUpwd"></span>
+			</p>
+			<input type="submit" value="提交注册信息">
+		</form>
+	</div>
+	<script>
+		function uname_blur(){
+			if (uname.value=='')
+			{
+				showUname.innerHTML="用户名不能为空";
+			}else if (uname.value.length<3)
+			{
+				showUname.innerHTML="用户名不能少于3位";
+			}else if (uname.value.length>9)
+			{
+				showUname.innerHTML="用户名不能多于9位";
+			}
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if (xhr.readyState==4&&xhr.status==200)
+				{
+					var result=xhr.responseText;
+					console.log(result);
+					
+				}
+			}
+			xhr.open("post","/demo/register",true);
+			
+			xhr.send();
+		}
+		function upwd_blur(){
+			if (upwd.value=='')
+			{
+				showUpwd.innerHTML="密码不能为空";
+			}else if (upwd.value.length<6)
+			{
+				showUpwd.innerHTML="密码长度不能少于6位";
+			}
+		}
+		function uname_focus(){
+			showUname.innerHTML="用户名长度在6到9位之间";
+		}
+		function upwd_focus(){
+			showUpwd.innerHTML="密码长度在6到12位之间";
+		}
+	</script>
+</body>
+</html>

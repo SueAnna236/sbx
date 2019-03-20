@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+<!-- 直接获取data中的数据 -->
+  {{msg}}
+  <!-- 将数据绑定到属性中 -->
+  <view id='item-{{id}}'>数据一</view>
+  <!-- 如果条件为false删除view -->
+  <view wx:if='{{condition}}'>值为true</view>
+  <!-- 完成计算 -->
+  <view>{{id + 9}}</view>
+  <!-- 数组 !!!重点-->
+  <!-- 通用技巧：显示指定数组下标内容 前面先加判断 -->
+  <view>{{list.length}}</view>
+  <view wx:if='{{list.length > 0}}'>{{list[0]}}</view>
+  <!-- 遍历数组 默认有两个属性index item-->
+  <view wx:for='{{list}}' wx:key='{{index}}'>{{index}}：{{item}}</view>
+  <view wx:for='{{list2}}' wx:key='{{index}}'>{{index}}:{{item.id}}:{{item.name}}</view>
+  <view wx:for='{{list3}}' wx:key='{{index}}'>
+    {{item.name}}
+    <view wx:for='{{item.addr}}' wx:key='index'>|{{item}}|</view>
+  </view>
+</view>

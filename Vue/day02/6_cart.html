@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>总价：{{total}}</h1>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        cartItems:[
+          {pid:1,price:12.5,count:5},
+          {pid:2,price:15,count:6},
+          {pid:3,price:20,count:2}
+        ]
+      },
+      computed: {
+        total(){
+          return this.cartItems.reduce((prev,elem)=>prev+=elem.price*elem.count,0)
+        }
+      },
+    })
+  </script>
+  
+</body>
+</html>

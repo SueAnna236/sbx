@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		#d1::before{
+			content: "灰太狼：";
+		}
+		#d2::after{
+			content: "——《您好》";
+			display: block;
+			background: #ff0;
+			margin-left: 150px;
+		}
+		#d3{
+			width: 200px;
+			height: 200px;
+			background: #f00;
+		}
+		#d4{
+			width: 150px;
+			height: 150px;
+			background: #f0f;
+			margin: 15px;
+		}
+		#d3::before{
+			content: "";
+			display: table;
+		}
+		#parent{
+			width: 700px;
+			border: 2px solid #f00;
+		}
+		div.c{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #0ff;
+			float: left;
+		}
+		#parent::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+<!--高度坍塌-->
+	<div id="parent">
+		<div class="c"></div>
+		<div class="c"></div>
+		<div class="c"></div>
+	</div>
+<!--子元素外边距溢出 -->
+	<div id="d3">
+<!--  	<table></table> -->	
+		<div id="d4"></div>
+	</div>
+	<div id="d1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo voluptatem aspernatur itaque possimus. Enim esse omnis facilis excepturi ducimus porro tempore corrupti doloremque quod unde aliquid modi sint tempora accusantium!</div>
+	<div id="d2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo voluptatem aspernatur itaque possimus. Enim esse omnis facilis excepturi ducimus porro tempore corrupti doloremque quod unde aliquid modi sint tempora accusantium!</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <script>
+    Vue.filter("sexFilter",function(val,lang){
+      if(lang==="zh"){
+        return val==1?"男":"女";
+      }else{
+        return val==1?"Male":"Female";
+      }      
+    })
+    Vue.filter("sexIcon",function(val){
+      return val+=(val==="男"||val==="Male"?" ♂":" ♀");
+    })
+  </script>
+</head>
+<body>
+  <div id="app">
+    <h1>性别1：{{sex1 | sexFilter("en") | sexIcon}}</h1>
+    <h1>性别2：{{sex2 | sexFilter("zh") | sexIcon}}</h1>
+  </div>
+  
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        sex1:0,
+        sex2:1
+      }
+    })
+
+(function(){
+var x1 =y1 =1;
+})();
+console.info(y1);
+console.info(x1);
+  </script>
+  
+</body>
+</html>

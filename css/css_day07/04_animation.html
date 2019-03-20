@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			border: 2px solid #f00;
+			animation-name: change;
+			animation-duration: 5s;
+			animation-timing-function: linear;
+			animation-delay: 2s;
+/*			animation-iteration-count: infinite;*/
+			animation-direction: alternate;
+			animation-fill-mode: backwards;
+		}
+		/*写动画，必须有关键帧*/
+		@keyframes change{
+			0%{background: blue;border-radius: 0%;}
+			25%{background: pink;border-radius: 50%;}
+			50%{background: yellow;border-radius: 0%;}
+			75%{background: orange;border-radius: 50%;}
+			100%{background: #f0f;border-radius: 0%;}
+		}
+		div:hover{
+			animation-play-state: paused;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 练习：
+  创建表单
+  在表单中添加input 请输入数值
+  在表单中添加button 开始计算累加和
+  当用户点击按钮创建一个window线程来计算用户计算输入数值 累加和并且表单最下方div中显示计算结果
+-->
+  <input type="number" name="num" id="num1" placeholder="请输入数值">
+  <br>
+  <button id="btn">计算累加和</button>
+  <div id="sum">请等待....</div>
+  <script> 
+    // 1：获取所有的元素
+    var num1 = document.getElementById("num1");
+    var btn = document.getElementById("btn");
+    var sum = document.getElementById("sum");
+    // 2：为按钮绑定点击事件
+    btn.onclick = function(){
+      // 2.1：创建worker线程
+      var w = new Worker("js/2.js");
+      // 2.2：并且将用户输入数据发送worker线程
+      var n = num1.value;
+      w.postMessage(n);
+      // 2.3：接收worker返回累加和
+      w.onmessage = function(e){
+        // 2.4：加累加和显示到div
+        sum.innerHTML = e.data;
+      }     
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+div {
+  width: 200px; }
+
+p {
+  border-radius: 5px;
+  background: #ff0; }
+
+div {
+  height: 200px; }
+
+div {
+  width: 20px; }
+
+p {
+  width: 13px; }
+
+p:after {
+  content: aabbcc; }
+
+#d5 {
+  width: 300px;
+  height: 300px;
+  background: #422424; }
+
+p {
+  width: 60px;
+  height: 15px;
+  color: #333333; }
+
+div::after {
+  content: "i eat 60 pies";
+  color: #113355;
+  background: rgba(255, 255, 0, 0.4); }
+
+#d4::before {
+  content: "AAABBB";
+  font-family: "Arial"; }
+
+#d3 {
+  width: 15%;
+  height: 2.0625in; }
+
+.my_border, .my_bottom_border {
+  border: 10px solid transparent;
+  background: #0099cc;
+  width: 400px;
+  height: 400px;
+  margin-left: 20px; }
+
+.my_bottom_border {
+  border-bottom: 5px solid #ff0000; }
+  .my_bottom_border:hover {
+    border-bottom: 5px solid #0000ff; }

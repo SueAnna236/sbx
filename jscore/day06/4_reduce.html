@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var class1=[1,2,3,4,5,6];
+    var sum=class1.reduce(function(prev,elem,i,arr){
+      return prev+elem;
+    },0);
+    console.log(sum);
+    var class2=[2,4,6,8,10,12];
+    sum=class2.reduce(function(prev,elem,i,arr){
+      return prev+elem;
+    },sum);
+    console.log(sum);
+
+    var str="helloworld";//[h,e,l,l,o,w,o,r,l,d]
+    var result=str.split("").reduce(function(prev,elem,i,arr){
+      //elem每次获得一个字母：h,e,l,l,o,w,o,r,l,d
+      if(prev[elem]===undefined)
+        prev[elem]=1;
+      else
+        prev[elem]++;
+      return prev;//用修改后的替换旧的，为下次做准备
+
+    },{}/*初始化一个空对象存储结果*/);
+    /*如果prev中暂时没有这个字母，就添加该字母并将个数初始化为1
+      prev:{} elem:h=>{h:1}
+      prev:{h:1} elem:e=>{h:1,e:1}
+      prev:{h:1,e:1} elem:l=>{h:1,e:1,l:1}
+      如果prev中有这个字母，则给该字母对应的值+1
+      prev:{h:1,e:1,l:1} elem:l=>{h:1,e:1,l:2}
+      */
+    console.log(result)
+  </script>
+</body>
+</html>

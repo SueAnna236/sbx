@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  class Product{
+    constructor(){
+    }
+    //实例方法
+    save(){//Product.prototype.save=
+      console.log("保存商品对象")
+    }
+    //静态方法
+    static getById(id){
+      console.log("按id查询出一个商品")
+    }
+  }
+  Product.getById(1001);
+  var p1=new Product();
+  p1.save();
+  </script>
+</body>
+</html>

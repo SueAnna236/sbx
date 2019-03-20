@@ -1,0 +1,9 @@
+<!--pages/test3/test3.wxml-->
+<view class='contain'>
+  <text selectable='true'>HTMl CSS JAVASCRIPT......</text>
+  <view>图片</view>
+  <view>本地的绝对路径</view>
+  <image class="pic" src='/pages/img/blue.png' lazy-load='true' mode='aspectFill'></image>
+  <view>网络绝对路径</view>
+  <image class="baidu" src='https://www.baidu.com/img/bd_logo1.png' lazy-load="true" mode="aspectFill"></image>
+</view>

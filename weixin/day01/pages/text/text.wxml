@@ -1,0 +1,12 @@
+<!--pages/text/text.wxml-->
+<view>
+  <text>微信小程序</text>
+  <view>微信订阅号</view>
+  <view>微信小游戏</view>
+  <image lazy-load='lazy-load' src='https://www.baidu.com/img/bd_logo1.png'></image>
+  <form>
+    用户名：<input type='text'></input>
+    密码：<input type='password'></input>
+    <input type='button' value='登录'></input>
+  </form>
+</view>

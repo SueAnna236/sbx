@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var t=0;
+  function conn(){
+    console.log("连接数据库，耗时0.3s");
+    t+=0.3;
+  }
+  function query(){//是作用域
+  //var t;underfined 声明提前
+    console.log("查询数据，耗时0.8s");
+    t+=0.8;
+
+    var err=false;
+    if (err==true){//不是作用域
+      //(function(){
+      //var _t=new Date();
+      let t=new Date();
+      console.log("出错了！ at："+t.toLocaleString());
+     //})
+    }
+  }
+  conn();
+  query();
+  console.log(t);
+  </script>
+</body>
+</html>

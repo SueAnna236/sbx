@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/backAudio3/backAudio3",
+    "pages/backAudio2/backAudio2",
+    "pages/backAudio/backAudio",
+    "pages/login03/login03",
+    "pages/toastexam/toastexam",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/addExam/addExam",
+    "pages/delExam/delExam",
+    "pages/success04/success04",
+    "pages/logout05/logout05"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

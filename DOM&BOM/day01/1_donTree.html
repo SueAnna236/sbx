@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <span id="s1">Hello</span>
+  <h1>标题一</h1>
+  <script>
+    window.onload=function(){
+      //当 窗口 加载完成，自动调用function执行任务
+      //on window load
+      var body=document.body;
+      console.log(body);
+
+      //var childNodes=body.childNodes;//3个节点
+      var children=body.children;//3个节点
+      //console.log(childNodes);
+      console.log(children);
+
+      //var span=body.firstChild;
+      var span=body.firstElementChild;
+      console.log(span);
+
+      //var script=body.lastChild;
+      var script=body.lastElementChild;
+      console.log(script);
+
+      var h1=children[1];//script.previousElementSibling;
+      //span.nextElementSibling;
+      console.log(h1);
+    }
+  </script>
+</body>
+</html>

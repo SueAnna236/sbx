@@ -1,0 +1,4 @@
+<!--pages/toastexam/toastexam.wxml-->
+<!-- 练习：在当前组件中添加元素view，内容del 当用户点击del元素时显示模态对话框“是否删除指定数据”，如果用户选择“是”，提示：数据已经删除；如果用户选择“否”，不执行任何操作 -->
+<view bindtap='del' data-name='tom'>del</view>
+<view bindtap='tap'>tap</view>

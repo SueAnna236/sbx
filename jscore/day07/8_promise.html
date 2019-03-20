@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function liang(){
+    return new Promise(function(open,err){
+    //参数fun得到任务function(){ran();}
+      console.log("亮起跑！");
+      setTimeout(function(){       
+        //在亮执行完自己的任务后，执行fun任务
+        if(Math.random()<0.5){
+          console.log("亮到达终点！");
+          open();//(function(){ran();})()
+        }else
+          err("出错了！亮摔倒了！");     
+      },6000);
+    })  
+  }
+  function ran(){
+    return new Promise(function(open,err){     
+      console.log("然起跑！");
+      setTimeout(function(){
+        if(Math.random()<0.5){
+          console.log("然到达终点！");
+          open();
+        }else
+          err("出错了！然摔倒了！");
+      },4000);
+    }) 
+  }
+  function dong(){
+    return new Promise(function(open,err){
+      console.log("东起跑！");
+      setTimeout(function(){
+        if(Math.random()<0.5){
+          console.log("东到达终点！");
+          open();
+        }else        
+          err("出错了！东摔倒了！");
+      },2000);
+    })   
+  }
+  //让两个异步任务必须先后执行！
+  /*
+  liang(function(){//亮起跑时，提前保存意向任务
+    ran(function(){
+      dong();
+    });
+  })
+  */
+  liang().then(ran).then(dong).catch(function(msg){console.error(msg)});//ran()立刻执行
+  </script>
+</body>
+</html>

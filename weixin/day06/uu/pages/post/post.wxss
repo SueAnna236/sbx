@@ -1,0 +1,3 @@
+/* pages/post/post.wxss */
+/* 引入模板样式 */
+@import "item/template.wxss";

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="dv"></div>
+  <script>
+    var fromObj = {
+      name: 'Tom',
+      gender: '男',
+      age: 18
+    }
+    var toObj = {}
+    function deepCopy(fromObj, toObj){
+      for(var key in fromObj){
+        var fromValue = fromObj[key];
+        if(!isObj(fromValue)){
+          toObj[key] = fromValue;
+        }else{
+          var tempObj = new fromValue.constructor;
+          console.log(fromValue.constructor);
+          deepCopy(fromObj, tempObj);
+          toObj[key] = tempObj;
+        }
+      }
+    }
+    function isObj(obj){
+      return obj instanceof Object;
+    }
+    deepCopy(fromObj, toObj);
+    alert(toObj.name + " " + toObj.gender + " " + toObj.age)
+  </script>  
+</body>
+</html>

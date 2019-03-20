@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var nums=[1,2,3,4,5,6];
+  var evens=nums.map(/*var newArr=[];newArr[i]=*/function(elem,i,arr){
+    return elem*2;
+    //return newArr;
+  });
+  console.log(nums);
+  console.log(evens);
+
+  function eat1(baos){
+    baos--;
+  }
+  var count=5;//按值传递：复制一个新的5
+  eat1(count);
+  console.log(count);
+
+  function eat2(baos){
+    baos.length--;
+  }
+  var arr=["bao","bao","bao","bao","bao"];//按值传递：仅复制地址值，数组依然只有一个
+  eat2(arr);
+  console.log(arr);
+  </script>
+</body>
+</html>

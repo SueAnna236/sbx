@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var email="zhangdong@tedu.cn";
+    var arr=email.split("@");
+    var uname=arr[0];
+    var upwd=arr[1];
+    console.log(uname,upwd);
+    //笔试题：反转字符串
+    var pid="130102199512262151";
+    //pid=pid.reverse();//报错：pid是字符串，不是数组，不能使用数组API
+    //将字符串打散为字符数组
+    pid=pid.split("");//无权直接修改原字符串
+    console.log(pid);//变为字符数组
+    //字符数组可调用数组的API
+    pid.reverse();//可直接修改原数组
+    //反转前是字符串，反转后页必须无缝拼接回字符串
+    console.log(pid.join(""));
+    //字符数组可调用数组排序API sort()
+    pid.sort(function(a,b){return a-b});//可直接修改原数组
+    //无缝拼接回字符串，再显示
+    console.log(pid.join(""));
+  </script>
+</body>
+</html>

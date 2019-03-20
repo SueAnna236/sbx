@@ -1,0 +1,2 @@
+<!--pages/exam3/exam3.wxml-->
+<navigator url='/pages/exam2/exam2?id=19&age=58'>跳转</navigator>

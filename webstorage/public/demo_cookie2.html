@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Cookie的使用</h1>
+  <hr>
+  <h3>在客户端生成并读取Cookie</h3>
+  <button id="bt1">客户端读取Cookie(会话级)</button>
+  <script>
+    bt1.onclick = function(){
+      // 使用浏览器读取Cookie
+      console.log(document.cookie);//是一个大的字符串，用分号加空格分割；
+      //一般情况下，Cookie字符串的处理方法
+      var arr = document.cookie.split("; ");
+      var cookieObj = {}; //用于保存Cookie的对象
+      arr.forEach((str)=>{
+        var pair = str.split("=");//把'key=value'拆成数组
+        cookieObj[pair[0]] = pair[1];
+      })
+      console.log(cookieObj);
+
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var $商店="公园的商店";
+    var $烤肠="公园的烤肠";
+    function 家庭1(){
+      var $烤肠="家庭1自带的烤肠";
+      document.write(`吃<b>${$烤肠}</b>——家庭1内<br>`);
+      document.write(`去<b>${$商店}</b>买好吃的——家庭1内<br>`);
+      document.write(`就想吃<b>${window.$烤肠}</b>——家庭1内<br>`)
+    }
+    /*console.log()//输出内容*/
+    console.dir(家庭1)//输出对象结构
+    家庭1();
+  </script>
+</body>
+</html>

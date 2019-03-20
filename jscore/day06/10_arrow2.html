@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var lilei={
+    sname:"Li Lei",
+    friends:["jack","rose","tom","jerry"],
+    /*
+    intr:function(){
+      //this->lilei
+      this.friends.forEach(function(fname){
+        //回调函数 this->window
+        console.log(`${this.sname}认识${fname}`)
+      }.bind(this))
+    }
+    */
+    intr:function(){
+      //this->lilei
+      this.friends.forEach((fname)=>{//遍历lilei的每个朋友
+      //想输出Li Lei认识×××
+        //回调函数 this->window
+        console.log(`${this.sname}认识${fname}`);
+      });
+    }
+  }
+  lilei.intr();
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>
+		用户名称：<input type="text" id="uname">
+	</p>
+	<p>
+		用户密码：<input type="password" id="upwd">
+	</p>
+		<input type="button" value="登录" onclick="login()">
+		<div id="d1"></div>
+		<script>
+			function login(){
+				var xhr=new XMLHttpRequest();
+				console.log(xhr);
+					console.log(111);
+				xhr.onreadystatechange=function(){
+					console.log(222);
+					if (xhr.readyState==4&&xhr.status==200)
+					{
+						console.log(333);
+						var result=xhr.responseText;
+						console.log(result);
+						d1.innerHTML=result;
+					}
+				}
+
+				var input_name=uname.value;
+				var input_upwd=upwd.value;
+
+				xhr.open("get","/demo/login?uname="+input_name+"&upwd="+input_upwd,true);
+				xhr.send(null);
+			}
+		</script>
+</body>
+</html>
