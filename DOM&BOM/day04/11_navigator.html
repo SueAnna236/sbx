@@ -1,0 +1,54 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>navigator对象常用属性</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+	<script>
+    if(navigator.cookieEnabled){
+      document.write("已启用cookie，请妥善保存个大人信息<br>")
+    }else{
+      document.write("cookie已禁用，无法记住密码！<br>")
+    }
+    if(navigator.plugins["Chrome PDF Viewer"]!==undefined)
+      document.write("<h1>已安装pdf插件</h1>")
+    else
+      document.write("<h1>未安装pdf插件<a href='#'>点此下载</a></h1>")
+
+    if(navigator.plugins["Shockwave Flash"]!==undefined)
+      document.write("<h1>已安装flash插件</h1>")
+    else
+      document.write("<h1>未安装flash插件<a href='#'>点此下载</a></h1><br>");
+    var ua=navigator.userAgent;
+    document.write(ua+"<br>");
+    //用Edge浏览器打开->F12->仿真->用户代理字符串->切换不同浏览器，观察userAgent字符串的变化
+    var browser,version;
+    if(/IE/.test(ua)){
+      browser="IE";
+    }else if(/Trident/.test(ua)){
+      browser="IE",version=11;
+    }else if(/Firefox/.test(ua)){
+      browser="Firefox";
+    }else if(/Edge/.test(ua)){
+      browser="Edge";
+    }else if(/OPR/.test(ua)){
+      browser="OPR";
+    }else if(/Chrome/.test(ua)){
+      browser="Chrome";
+    }else if(/Safari/.test(ua)){
+      browser="Safari";
+    }
+    document.write(`<h1>${browser}</h1>`);
+
+    if(version===undefined){
+      var i=ua.indexOf(browser);
+      i=i+browser.length+1;
+      version=parseInt(ua.slice(i,i+3));
+    }
+    document.write(`<h1>${version}</h1>`)
+
+  </script>
+</body>
+</html>
