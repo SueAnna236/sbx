@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>  
+    <video id="videoPane" width="500" height="400" controls loop>
+      <source src="images/x.mp4"/>
+      <source src="images/x.webm"/>
+      <source src="images/x.Ogg"/>
+    </video>
+  </div>
+  <script>
+    /*
+    // 判断浏览器对video支持的格式
+    function videoType(video){
+      var returnType = '';
+      if(video.canPlayType('video/mp4') == 'probably' || video.canPlayType('video/mp4') == 'maybe'){
+        returnType = 'mp4';
+      }else if(video.canPlayType('video/ogg') == 'probably' || video.canPlayType('video/ogg') == 'maybe'){
+        returnType = 'ogg';
+      }else if(video.canPlayType('video/webm') == 'probably' || video.canPlayType(video/webm) == 'maybe'){
+        returnType = 'webm';
+      }
+      return returnType;
+    }
+    // 动态添加video标签
+    var videoElem;
+    var videoV;
+    function createVideo(){
+      // 创建video
+      videoElem = document.createElement("source");
+      // 获得video的外层容器
+      videoV = document.getElementById("videoPane");
+      console.log(videoV);
+      videoV.appendChild(videoElem);
+      // 判断浏览器支持的格式
+      var vType = videoType(videoElem);
+      if(vType == ""){
+        videoDiv.innerHTML('不支持video')
+      }else{
+        videoElem.setAttribute('src',"images/x." + vType);
+      }
+    }
+    */
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/miniui.css">
+  <script src="js/miniui.js"></script>
+</head>
+<body>
+  <div id="datagrid1" class="mini-datagrid" style="width:800px;height:280px;" url="D:/sbx/jQuery-MiniUI/miniui_php/demo/data/AjaxService.aspx?method=SearchEmployees" idField="id" allowResize="true" pageSize="20" allowCellEdit="true" allowCellSelect="true" multiSelect="true">
+    <div property="columns">
+      <div type=checkcolumn></div>
+      <div field="loginname" width="120" headerAlign="center" allowSort="true">员工账号
+        <input property="editor" class="mini-textbox" style="width:100%" data="Genders">
+      </div>
+      <div field="gender" width="100" renderer="onGenderRenderer" align="center" headerAlign="center">性别
+        <input property="editor" class="mini-combobox" style="width:100%;" data="Genders">
+      </div>
+      <div field="age" width="100" allowSort="true" >年龄
+        <input property="editor" class="mini-spinner" minValue="0" maxValue="200" value="25" style="width:100%;"/>
+    </div>
+    <div field="birthday" width="100" allowSort="true" dateFormat="yyyy-MM-dd">出生日期
+        <input property="editor" class="mini-datepicker" style="width:100%;"/>
+    </div>    
+    <div field="remarks" width="120" headerAlign="center" allowSort="true">备注
+        <input property="editor" class="mini-textarea" style="width:100%;" minHeight="80"/>
+    </div>                                 
+    <div field="createtime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">创建日期</div>
+    </div>
+  </div>
+  <script>
+    function search(){
+      var key = document.getElementById("key").value;
+      grid.load({key: key});
+    }
+    function addRow() {
+      var newRow = { name: "New Row" };
+      grid.addRow(newRow, 0);
+    }
+    function removeRow() {
+      var rows = grid.getSelecteds();
+      if (rows.length > 0) {
+          grid.removeRows(rows, true);
+      }
+    }
+    function saveData() {
+      var data = grid.getChanges();
+      var json = mini.encode(data);
+      grid.loading("保存中，请稍后......");        
+      $.ajax({
+          url: "../data/AjaxService.aspx?method=SaveChangedEmployees",
+          data: { data: json },
+          type: "post",
+          success: function (text) {
+              grid.reload();
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+              alert(jqXHR.responseText);
+          }
+      });
+    }
+  </script>
+</body>
+</html>

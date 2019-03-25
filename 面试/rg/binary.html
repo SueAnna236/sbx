@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="js/binary.js"></script>
+  <script>
+    var ts = TinyStream('我叫张亚涛');
+    ts.writeUTF('你好');
+    console.log('获取缓冲区字节流:',ts.getBytesArray());
+    console.log('当前的缓冲区position为:',ts.position,'writen为:',ts.writen);
+    console.log('读取第一个utf8字节流:',ts.readUTF());
+    console.log('当前的缓冲区position为:',ts.position,'writen为:',ts.writen);
+    console.log('读取第二个utf8字节流:',ts.readUTF());
+    console.log('当前的缓冲区position为:',ts.position,'writen为:',ts.writen);
+  </script>
+  
+</body>
+</html>

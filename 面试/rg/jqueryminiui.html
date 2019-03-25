@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/miniui.css">
+  <script src="js/miniui.js"></script>
+</head>
+<body>
+  <input type="text" id="helloBtn" class="mini-button" text="Hello" onclick="onHelloClick">
+  <script>
+    function onHelloClick(e){
+      var button =e.sender;
+      mini.alert("Hello MiniUI!");
+    }
+  </script>
+</body>
+</html>
