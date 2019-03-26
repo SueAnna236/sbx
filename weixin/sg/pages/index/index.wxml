@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="index-container">
+  <view class="topImg">
+    <image lazy-load="true" mode="aspectFill" src="/pages/img/images/ww.jpg"></image>
+  </view>
+  <view class="fit"></view>
+  
+  
+</view>
