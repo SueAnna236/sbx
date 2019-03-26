@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../scripts/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../面试/rg/css/miniui.css">
+  <script src="../scripts/miniui/miniui.js"></script>
+  <script src="../../../面试/rg/js/boot.js"></script>
+</head>
+<body>
+  <div style="position:absolute;left:100px;top:50px;">
+    <input type="button" id="left" value="Ajax tooltip" data-url="data/data.txt" data-placement="right"/>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  var tip = new mini.ToolTip();
+  tip.set({
+    target: document,
+    selector: '[data-tooltip], [title], [data-url]',
+    onbeforeopen: function(e){
+      e.cancel = false;
+    },
+    onopen: function(e){
+      var el = e.element;
+      var url = $(el).attr("data-url");
+      if(url){
+        this.showLoading();
+        $.ajax({
+          url: url,
+          success: function(text){
+            setTimeout(function(){
+              tip.setContent(text)
+            },1000)
+          }
+        })
+      }
+    }
+  })
+</script>

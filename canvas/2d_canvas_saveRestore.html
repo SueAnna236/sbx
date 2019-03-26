@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background-color: #ebc1eb;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="draw" width="500" height="500"></canvas>
+  <script>
+    var draw = document.getElementById("draw");
+    if(draw.getContext){
+      var context = draw.getContext("2d");
+
+      //保存红色填充
+      context.fillStyle = "#ff0000";
+      context.save();
+
+      // 保存绿色填充、以(100, 100)为原点
+      context.fillStyle = "#00ff00";
+      context.translate(100, 100);
+      context.save();
+
+      context.fillStyle = "#0000ff";
+      context.fillRect(0, 0, 100, 200);//从点(100, 100)开始绘制蓝色矩形
+
+      context.restore();
+      context.fillRect(10, 10, 100, 200);//从点(110, 110)开始绘制绿色矩形
+
+      context.restore();
+      context.fillRect(0, 0, 100, 200);//从点(0, 0)开始绘制红色矩形
+    }
+  </script>
+</body>
+</html>

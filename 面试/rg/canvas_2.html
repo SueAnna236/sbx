@@ -7,33 +7,32 @@
     <script src="js/jquery-1.11.3.js"></script>
     <!-- <script type="text/javascript" src="http://html2canvas.hertzen.com/build/html2canvas.js"></script> -->
     <script src="js/html2canvas.min.js"></script>
+    <style>
+      canvas {
+        background-color: #01ffee;
+      }
+    </style>
     
   </head>
   <body>
     Hello!
-    <div class="" style="background-color: #abc;">
+    <div class="" style="background-color: #43ee90;;">
         html5页面截图
     </div>
     <textArea id="textArea" col="20" rows="10" ></textArea>
-    <input class="example1" type="button" value="截图">
+    <input class="example1" type="button" style="background-color: #7e35d0; border: 2px solid #093;" value="截图">
     生成界面如下：
-
+    <!-- <canvas id="mycanvas" width="500" height="500" ></canvas> -->
     <script  type="text/javascript" >
       $(document).ready( function(){
         $(".example1").on("click", function(event) {
           event.preventDefault();
-          html2canvas(document.body, {
-            allowTaint: true,
-            taintTest: false,
-            onrendered: function(canvas) {
-              canvas.id = "mycanvas";
-              //document.body.appendChild(canvas);
-              //生成base64图片数据
-              var dataUrl = canvas.toDataURL();
-              var newImg = document.createElement("img");
-              newImg.src =  dataUrl;
-              document.body.appendChild(newImg);
-            }
+          html2canvas(document.body).then(function(canvas){
+            var dataUrl = canvas.toDataURL();
+            var newImg = document.createElement("img");
+            document.body.appendChild(canvas);
+            newImg.src = dataUrl;
+            document.body.appendChild(newImg);
           });
         }); 
       });

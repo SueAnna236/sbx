@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
   <link rel="stylesheet" href="css/miniui.css">
-  <script src="js/miniui.js"></script>
+  <script type="text/javascript" src="js/miniui.js"></script>
+  <script type="text/javascript" src="js/boot.js"></script>
 </head>
 <body>
   <div id="p1" class="mini-progressbar" value="55"></div>
@@ -15,15 +16,16 @@
   <br>
   <input type="button" value="setValue" onclick="setValue()">
   <input type="button" value="getValue" onclick="getValue()">
-  <script>
-    mini.parse();
-    var bar = mini.get("p1");
-    function setValue(){
-      bar.setValue(bar.setValue + 10);
-    }
-    function getValue(){
-      alert(bar.getValue());
-    }
-  </script>
+  
 </body>
 </html>
+<script type="text/javascript">
+  mini.parse();
+  var bar = mini.get("p1");
+  function setValue(){
+    bar.setValue(bar.getValue() + 10);
+  }
+  function getValue(){
+    alert(bar.getValue());
+  }
+</script>

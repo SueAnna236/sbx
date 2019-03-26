@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background-color: #ebc1eb;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="draw" width="500" height="500"></canvas>
+  <script>
+    var draw = document.getElementById("draw");
+    if(draw.getContext){
+      var context = draw.getContext("2d");
+
+      var fontSize = 100;
+      context.font = fontSize + "px Arial";
+      while(context.measureText("Hello World!").width > 140){
+        fontSize--;
+        context.font = fontSize + "px Arial";
+      }
+      context.fillText("Hello World!", 10, 30);
+      context.fillText("Font size is " + fontSize + "px", 10, 70);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background-color: #ebc1eb;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="draw" width="500" height="500"></canvas>
+  <script>
+    var draw = document.getElementById("draw");
+    if(draw.getContext){
+      var context = draw.getContext("2d");
+
+      // 1：创建图片对象
+      var image = new Image();
+      // 2：下载图片
+      image.src = "images/smile.png";
+
+      // 3：绑定下载成功的事件
+      image.onload = function(){
+        // 4：绘制图片
+        // 原始图片
+        context.drawImage(image, 10, 10);
+
+        // 改变图像大小
+        context.drawImage(image, 50, 10, 20, 30);
+
+        // 把图像中的某个区域绘制到上下文中
+        context.drawImage(image, 0, 10, 50, 256, 0, 100, 40, 60);
+
+      }      
+    }
+  </script>
+</body>
+</html>

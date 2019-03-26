@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="draw" width="200" height="200">绘图</div>
+  <script>
+    var draw = document.getElementById("draw");
+    if (draw.getContext){
+      var imgURI = draw.toDataURL("image/png");
+      var image = document.createElement("img");
+      image.src = imgURI;
+      document.body.appendChild(image);
+    }
+  </script>
+</body>
+</html>
